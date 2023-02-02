@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/01/22/JavaEE/%E6%B5%85%E5%AD%A6javaweb%E5%B0%8F%E7%BB%93/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            浅学javaweb小结 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">浅学javaweb小结</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-22 15:49:24</span>
+        <span class="mobile">2023-01-22 15:49</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/javaEE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">javaEE学习笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="浅学JavaWeb小结"><a href="#浅学JavaWeb小结" class="headerlink" title="浅学JavaWeb小结"></a>浅学JavaWeb小结</h1><h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><h3 id="理解DAO层，UI层，Business-logic层"><a href="#理解DAO层，UI层，Business-logic层" class="headerlink" title="理解DAO层，UI层，Business logic层"></a>理解DAO层，UI层，Business logic层</h3><blockquote>
+<p>DAO(data access object) should perform raw database operations and translate them to some higher level constructs (objects, collections).  </p>
+</blockquote>
+<blockquote>
+<p>Services should call DAOs and perform business operations. Typically transactions demarcation is performed on service layer to span several DAO calls.</p>
+</blockquote>
+<blockquote>
+<p>Finally DAO should abstract business logic from persistence details, ideally allowing to switch persistence layer without business logic (services) changes. This is hardly ever possible due to leaking abstraction of persistence providers (e.g. lazy loading).</p>
+</blockquote>
+<h3 id="理解servlet和web-service"><a href="#理解servlet和web-service" class="headerlink" title="理解servlet和web service"></a>理解servlet和web service</h3><blockquote>
+<p>A web service is a service that provides service methods to its clients using either the REST programming paradigm or the SOAP protocol for communication.</p>
+</blockquote>
+<blockquote>
+<p>A servlet is a Java-specific way of writing software that responds to HTTP requests (transport HTTP requests and responses).It can be used to write a web application with JSPs and HTML, or to serve XML and JSON responses (as in a RESTful service) and of course also to receive and return SOAP messages.</p>
+</blockquote>
+<blockquote>
+<p>A more comprehensive and practical approach is to write a web service with a framework and to publish it on an application server or servlet container such as Tomcat or JBoss. In this case you would use a Servlet to handle the transport of the HTTP requests which transmit your SOAP or REST messages.</p>
+</blockquote>
+<h3 id="Tomcat只是servlet容器"><a href="#Tomcat只是servlet容器" class="headerlink" title="Tomcat只是servlet容器"></a>Tomcat只是servlet容器</h3><blockquote>
+<p>A servlet-container supports only the servlet API (including JSP, JSTL).<br>So it is a Web Server that must be able to run Java Servlets.It is possible to run most of the JavaEE technologies on a servlet-container, but you have to install a standalone implementation of the particular technology.</p>
+</blockquote>
+<blockquote>
+<p>Web Server, on the other hand, is a broader term including all software running and communicating through HTTP protocol.An application server supports the whole JavaEE - EJB, JMS, CDI, JTA, the servlet API (including JSP, JSTL), etc.</p>
+</blockquote>
+<blockquote>
+<p>All Servlet Containers are Web Servers.<br>Not all Web Servers are Servlet Containers. I.E. Apache HTTP Server can not run Java Servlet directly.</p>
+</blockquote>
+<h3 id="Mysql-Mybatis使用"><a href="#Mysql-Mybatis使用" class="headerlink" title="Mysql+Mybatis使用"></a>Mysql+Mybatis使用</h3><ol>
+<li><p>导入mysql，mybatis，lombox依赖</p>
+</li>
+<li><p>连接数据库</p>
+</li>
+<li><p>创建并编写mybatis-config.xml，创建对应实体类的映射接口，创建并编写对应的映射配置文件xml，并将其添加到mybatis-config.xml中</p>
+</li>
+<li><p>可选：创建SqlUtil来管理SqlSessionFactory的创建</p>
+</li>
+<li><p>在要用数据库的地方，用一个SqlSession对象的getMapper函数创建映射接口类对象a,就可用a来进行定义好的数据库操作了</p>
+</li>
+</ol>
+<h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ol>
+<li>创建继承于HttpServlet的类，<code>@WebServlet(路径)</code>给创建的servlet注册一个访问路径</li>
+<li>html的表单添加method属性(提交该表单执行<code>get</code>还是<code>post</code>请求)，<br>action属性（响应该表单的servlet是哪个）</li>
+<li>在对应的servlet中实现<code>doGet()</code>或<code>doPost()</code>函数<br>前后端交互：前端发送get，post等请求，后端要有对应的doPost，doGet进行相应</li>
+</ol>
+<h3 id="上传，下载文件"><a href="#上传，下载文件" class="headerlink" title="上传，下载文件"></a>上传，下载文件</h3><ul>
+<li>前端从后端下载文件：<br>输入流读到文件后将它复制给输出流，从后端输出到前端</li>
+<li>前端上传文件给后端：<br>输入流读到上传的文件后将其复制给输出流，输出到指定路径上</li>
+</ul>
+<h3 id="重定向和请求转发"><a href="#重定向和请求转发" class="headerlink" title="重定向和请求转发"></a>重定向和请求转发</h3><p>重定向代码(转到<code>@WebServlet(&quot;\time&quot;)</code>)</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.sendRedirect(<span class="string">&quot;time&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+<p>请求转发代码(转到<code>@WebServlet(&quot;\time&quot;)</code>)</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestDispatcher(<span class="string">&quot;/time&quot;</span>).forward(req, resp);</span><br></pre></td></tr></table></figure></div>
+<p>两者的区别为：</p>
+<ul>
+<li>请求转发是一次请求，重定向是两次请求</li>
+<li>请求转发地址栏不会发生改变， 重定向地址栏会发生改变</li>
+<li>请求转发可以共享请求参数 ，重定向之后，就获取不了共享参数了</li>
+<li>请求转发只能转发给内部的Servlet</li>
+</ul>
+<h3 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h3><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><blockquote>
+<p>帮客户端(浏览器)保存一些数据，辅助服务端操作，即服务端从客户端获取数据（比如：<br>将正确的用户名，密码保存到Cookie后接下来的maxAge周期内都可免密登录，不用到登录界面）</p>
+</blockquote>
+<ol>
+<li>创建Cookie可有多个，用resp的<code>addCookie()</code>函数添加创建的对象<br>可用<code>setMaxAge()</code>规定 Cookie失效的时间<br>maxAge默认-1：关闭浏览器，cookie才会被删除，不关则一直在<br>     0：删除<br>     正数：cookie在浏览器上保存多少秒，保存期过后就被删除（期间关闭浏览器，</li>
+</ol>
+<p>cookie也会保存）<br>2. 获得客户端req传来的Cookie（因为有多个，所以用数组）：<code>req.getCookies（）</code></p>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><p>服务端为每个浏览器（会话）创建一个Session，这样后端就可以知道是哪个用户在发送请求。用户访问浏览器的数据就保存在里面，需<br>要用到时，可以拿出来</p>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><ol>
+<li>创建过滤器类，继承HttpFilter，<code>@WebFilter（路径）</code>来确定访问哪里时要用到该过滤器</li>
+<li>重写<code>doFilter()</code>函数，里面写过滤时的操作。因为过滤器可以有多个，因此在结尾要用到<code>chain.getFilter(req,res)</code>让下一个过滤器工作【实际上时递归调用，看笔记】</li>
+</ol>
+<h2 id="开发一个javaweb项目"><a href="#开发一个javaweb项目" class="headerlink" title="开发一个javaweb项目"></a>开发一个javaweb项目</h2><p><strong>涉及：<br>MySql+Mybatis<br>Lombox<br>Servlet<br>Thymeleaf<br>Maven<br>Tomcat</strong></p>
+<h3 id="前置工作"><a href="#前置工作" class="headerlink" title="前置工作"></a>前置工作</h3><ol>
+<li><p>Maven框架+Servlet依赖+Thymeleaf依赖（JavaEE 8里有）+Tomcat服务器<br>若是javaEE 8，创建后pom.xml里的Servlet依赖要改：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;jakarta.servlet&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jakarta.servlet-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">5.0</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></div></li>
+<li><p>为项目创建好主要的软件包</p>
+<ol>
+<li>dao：放Mybatis实体映射对象的接口类</li>
+<li>entity：放项目需要用到的实体类</li>
+<li>filter：放项目需要用到的过滤器类</li>
+<li>service：放项目业务逻辑层方面的类<br>规范：先写接口，然后再开个impl包，在包里创Java类去实现定义的接口</li>
+<li>servlet：放创建的Servlet容器</li>
+<li>utils：将Mybatis和Thymeleaf写成工具类，方便使用</li>
+</ol>
+</li>
+<li><p>静态资源放webapp下，动态资源放在resources</p>
+</li>
+<li><p>为项目做前置工作：导入依赖，编写需要的配置文件，连接数据库</p>
+</li>
+<li><p>根据需求完成类的实现（后端代码修改后，前端代码也要有对应修改）</p>
+</li>
+</ol>
+<h3 id="可复用的代码"><a href="#可复用的代码" class="headerlink" title="可复用的代码"></a>可复用的代码</h3><h4 id="导入依赖-mysql-mybatis-lombox"><a href="#导入依赖-mysql-mybatis-lombox" class="headerlink" title="导入依赖(mysql,mybatis,lombox)"></a>导入依赖(mysql,mybatis,lombox)</h4><div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.27<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="mybatis-config-xml"><a href="#mybatis-config-xml" class="headerlink" title="mybatis-config.xml"></a>mybatis-config.xml</h4><div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span></span></span><br><span class="line"><span class="meta">  <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="string">&quot;https://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/example/BlogMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="MyBatisUtil"><a href="#MyBatisUtil" class="headerlink" title="MyBatisUtil"></a>MyBatisUtil</h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisUtil</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory factory;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            factory=<span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(Resources.getResourceAsStream(<span class="string">&quot;mybatis-config.xml&quot;</span>));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title function_">getSession</span><span class="params">(<span class="type">boolean</span> autoCommit)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> factory.openSession(autoCommit);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="ThymyleafUtil"><a href="#ThymyleafUtil" class="headerlink" title="ThymyleafUtil"></a>ThymyleafUtil</h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThymeleafUtil</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> TemplateEngine engine;</span><br><span class="line">    <span class="keyword">static</span>  &#123;</span><br><span class="line">        engine = <span class="keyword">new</span> <span class="title class_">TemplateEngine</span>();</span><br><span class="line">        <span class="type">ClassLoaderTemplateResolver</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassLoaderTemplateResolver</span>();</span><br><span class="line">        r.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        engine.setTemplateResolver(r);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(String template, IContext context, Writer writer)</span>&#123;</span><br><span class="line">        engine.process(template,context,writer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="利用Thymeleaf实现前后端交互-展示其主要用法"><a href="#利用Thymeleaf实现前后端交互-展示其主要用法" class="headerlink" title="利用Thymeleaf实现前后端交互(展示其主要用法)"></a>利用Thymeleaf实现前后端交互(展示其主要用法)</h4><p><strong>实例1：将后端数据展示在前端下拉框中</strong></p>
+<ul>
+<li>后端<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">       Context context=<span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">       User user= (User) req.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">       context.setVariable(<span class="string">&quot;usernameForheaderHtml&quot;</span>,user.getUsername());<span class="comment">//将登录的用户名显示在页面上（看header.html）</span></span><br><span class="line">       context.setVariable(<span class="string">&quot;student_list&quot;</span>,studentService.returnStudentList());<span class="comment">//将学生信息展示到前端</span></span><br><span class="line">       context.setVariable(<span class="string">&quot;activeBook_list&quot;</span>,bookService.returnActiveBook());<span class="comment">//将未借阅的书籍展示到前端</span></span><br><span class="line">       ThymeleafUtil.process(<span class="string">&quot;addBorrow.html&quot;</span>,context, resp.getWriter());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></div></li>
+<li>前端页面<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;select2 form-control&quot;</span> <span class="attr">id</span>=<span class="string">&quot;city&quot;</span> <span class="attr">name</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">th:each</span>=<span class="string">&quot;students: $&#123;student_list&#125;&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;students.getName()&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;students.getSid()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<strong>实例2：将后端的对象数组展示到前端表格+还书按钮功能实现</strong></li>
+<li>后端<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        Context context=<span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">        User user= (User) req.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        context.setVariable(<span class="string">&quot;usernameForheaderHtml&quot;</span>,user.getUsername());<span class="comment">//将登录的用户名显示在页面上（看header.html）</span></span><br><span class="line">        context.setVariable(<span class="string">&quot;borrow_list&quot;</span>,service.returnBorrowList());<span class="comment">//从数据库获取借阅表，通过Thymeleaf和index.html展示到主页面</span></span><br><span class="line">        ThymeleafUtil.process(<span class="string">&quot;index.html&quot;</span>,context,resp.getWriter());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div></li>
+<li>前端<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">&quot;borrow: $&#123;borrow_list&#125;&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;&#x27;#&#x27;+$&#123;borrow.getBookId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;borrow.getBookName()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;borrow.getBorrowTime()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;borrow.getBorrowStudent()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;&#x27;#&#x27;+$&#123;borrow.getStudentId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;relative&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;action-btn &quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;&#x27;return-book?id=&#x27;+$&#123;borrow.getId()&#125;+&#x27;&amp;bid=&#x27;+$&#123;borrow.getBookId()&#125;&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="如何实现一个具体功能-一个功能对应一个Servlet"><a href="#如何实现一个具体功能-一个功能对应一个Servlet" class="headerlink" title="如何实现一个具体功能(一个功能对应一个Servlet)"></a>如何实现一个具体功能(一个功能对应一个Servlet)</h3><h4 id="思考和代码编写顺序："><a href="#思考和代码编写顺序：" class="headerlink" title="思考和代码编写顺序："></a>思考和代码编写顺序：</h4><p>Dao层(Mapper)—&gt;业务逻辑层(Service)—&gt;表现层(Servlet)—&gt;前端代码   </p>
+<ul>
+<li>Dao层一般是用来执行Sql语句并映射到实体类</li>
+<li>Service层一般是使用Dao层的方法去完成特定的业务功能(比如下面的登录功能) </li>
+<li>Servlet层是获取前端请求，调用对应的Service方法完成请求，并回复给前端相应的信息</li>
+<li>前面的三层可能会要求前端代码的动态更新，因此要相应地修改前端代码(用Thymeleaf)</li>
+</ul>
+<h4 id="以登录功能为例"><a href="#以登录功能为例" class="headerlink" title="以登录功能为例"></a>以登录功能为例</h4><p>涉及到的知识：过滤+数据库搜索+实体类映射+HttpSession记录登录成功</p>
+<ol>
+<li>过滤器工作<br>除了访问静态资源或登录功能的Servlet，否则都要判断有没有登录，没有登录就重定向到登录功能的Servlet</li>
+<li>创建User实体类</li>
+<li>Dao层实体类映射工作<br>创UserMapper接口类，在里面用注解方法声明明并实现一个<code>getUser()</code></li>
+<li>业务逻辑层工作（service）<br>创UserService接口类，在里面声明判断是否登录成功的函数声明<code>isLogin()</code><br>创对应的UserServiceImpl实现类去实现接口</li>
+<li>表示层工作（Servlet）<br>类里定义UserService的成员变量<br><code>Init()</code>里创建UserService变量<br><code>doGet()</code>里用Thymeleaf加载前端页面<br><code>doPost()</code>里完成登录校验流程（判断登录是否成功用业务逻辑层的函数），<code>doPost()</code>管理登录成功后的操作和登录失败后的操作</li>
+</ol>
+<h3 id="打包发布"><a href="#打包发布" class="headerlink" title="打包发布"></a>打包发布</h3><p>maven生命周期package打包生成war文件，将war文件放在tomcat服务器的webapps目录下，启动tomcat服务器即可在浏览器访问写好的网站<br>localhost:8080&#x2F;war文件的文件名</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：浅学javaweb小结</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-01-22 15:49:24</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/01/22/JavaEE/浅学javaweb小结/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/27/%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E7%94%A8%E6%B3%95/Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Thymeleaf模板引擎简单使用</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/Queue/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Queue</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%85%E5%AD%A6JavaWeb%E5%B0%8F%E7%BB%93"><span class="nav-text">浅学JavaWeb小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE"><span class="nav-text">前置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3DAO%E5%B1%82%EF%BC%8CUI%E5%B1%82%EF%BC%8CBusiness-logic%E5%B1%82"><span class="nav-text">理解DAO层，UI层，Business logic层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3servlet%E5%92%8Cweb-service"><span class="nav-text">理解servlet和web service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat%E5%8F%AA%E6%98%AFservlet%E5%AE%B9%E5%99%A8"><span class="nav-text">Tomcat只是servlet容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql-Mybatis%E4%BD%BF%E7%94%A8"><span class="nav-text">Mysql+Mybatis使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet"><span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%EF%BC%8C%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-text">上传，下载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91"><span class="nav-text">重定向和请求转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServletContext"><span class="nav-text">ServletContext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-text">Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session"><span class="nav-text">Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-text">过滤器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAjavaweb%E9%A1%B9%E7%9B%AE"><span class="nav-text">开发一个javaweb项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C"><span class="nav-text">前置工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%A4%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">可复用的代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96-mysql-mybatis-lombox"><span class="nav-text">导入依赖(mysql,mybatis,lombox)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mybatis-config-xml"><span class="nav-text">mybatis-config.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatisUtil"><span class="nav-text">MyBatisUtil</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThymyleafUtil"><span class="nav-text">ThymyleafUtil</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Thymeleaf%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92-%E5%B1%95%E7%A4%BA%E5%85%B6%E4%B8%BB%E8%A6%81%E7%94%A8%E6%B3%95"><span class="nav-text">利用Thymeleaf实现前后端交互(展示其主要用法)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E5%8A%9F%E8%83%BD-%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%AF%B9%E5%BA%94%E4%B8%80%E4%B8%AAServlet"><span class="nav-text">如何实现一个具体功能(一个功能对应一个Servlet)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E5%92%8C%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E9%A1%BA%E5%BA%8F%EF%BC%9A"><span class="nav-text">思考和代码编写顺序：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A5%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E4%B8%BA%E4%BE%8B"><span class="nav-text">以登录功能为例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83"><span class="nav-text">打包发布</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
