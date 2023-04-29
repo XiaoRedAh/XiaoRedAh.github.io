@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            动态规划理论 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">动态规划理论</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-04-29 20:11:48</span>
+        <span class="mobile">2023-04-29 20:11</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA/">算法理论</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>直接看算法导论理解一下</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1065433/what-is-dynamic-programming#" >stackoverflow上的一些理解 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<ul>
+<li><p>一般是解决最优解问题，核心是划分和递推</p>
+</li>
+<li><p><strong>基本条件</strong>  </p>
+<ol>
+<li>有重叠子问题：即子问题间不独立（DP就是为了解决重复计算的）  </li>
+<li>最优子结构：最优解包含的解也最优</li>
+<li>无后效性：未来不影响现在</li>
+</ol>
+</li>
+<li><p><strong>三要素</strong>：状态，阶段，决策</p>
+</li>
+<li><p><strong>思路</strong> </p>
+<p><em>算法导论</em>：</p>
+<ol>
+<li>描述最优解的结构（证明最优化问题有最优子结构）</li>
+<li>递归地定义最优解的值</li>
+<li>计算最优解的值（自底向上更为自然）</li>
+<li>一边计算一边构建最优解（如果需要的话）</li>
+</ol>
+<p>*来自一个不错的博文(确定三要素)*：</p>
+<ol>
+<li>定义dp数组的含义</li>
+<li>递推公式</li>
+<li>dp数组初始化的考虑</li>
+<li>遍历顺序</li>
+</ol>
+</li>
+<li><p><strong>最优决策表</strong></p>
+<ol>
+<li>作用之一是保存，避免重复计算  </li>
+<li>整个求解过程可以用一个最优决策表来描述，它一般是一个二维表，行表示决策的阶段，列表示问题状态，表格需要填写的数据一般对应此问题在某个阶段某个状态下的最优值（如最短路径，最长公共子序列，最大价值等）</li>
+<li><strong>填表的过程</strong>根据递推关系，从1行1列开始，以行或者列优先的顺序，依次填写表格，最后对表格的数据进行取舍或运算求得问题的最优解</li>
+</ol>
+</li>
+</ul>
+<p><strong>注意两个细节</strong></p>
+<ol>
+<li>边界条件：初始化的时候要考虑</li>
+<li>循环遍历的顺序：一般都是遍历一个二维表，先遍历行还是先遍历列？还是都可以？遍历的时候是正序遍历还是倒序遍历？还是都可以？</li>
+</ol>
+<h2 id="实现动态规划的方式"><a href="#实现动态规划的方式" class="headerlink" title="实现动态规划的方式"></a>实现动态规划的方式</h2><p>这个部分来自算法导论P386</p>
+<h3 id="top-down-with-memorization"><a href="#top-down-with-memorization" class="headerlink" title="top-down with memorization"></a>top-down with memorization</h3><p>递归就是自顶向下的过程，不足之处就是不能记忆，导致重复计算。这种dp方法就是改造递归，在递归的过程中记忆子问题的解，避免重复计算</p>
+<h3 id="bottom-up-method"><a href="#bottom-up-method" class="headerlink" title="bottom-up method"></a>bottom-up method</h3><p>实际就是迭代法</p>
+<p>从最小的子问题开始，逐步解决更大的子问题（每个子问题的解都要保存），到最后，一个问题所有子问题的解都有了，它就自然可以通过之前的运算规则解决了</p>
+<h2 id="何时用dp"><a href="#何时用dp" class="headerlink" title="何时用dp"></a>何时用dp</h2><p>两个关键点：</p>
+<ul>
+<li>最优化问题拥有最优子结构</li>
+<li>最优化问题有重复子问题</li>
+</ul>
+<p><strong>最优子结构</strong></p>
+<ul>
+<li><p>证明：一个问题的最优解包含其子问题的最优解</p>
+</li>
+<li><p>寻找最优子结构</p>
+<ol>
+<li>问题的解包含一系列的选择（比如切割杆：选择在哪个位置开始切割），做出选择后，就会有1个或多个子问题衍生</li>
+<li>对于给定的问题，做出一个可以得到最优解的选择（不关心如何做出这个选择，假设这个选择是给定的）</li>
+<li>做出这个这个选择后，接着确定接下来会出现哪些子问题，以及如何最好地<em>刻画子问题空间</em></li>
+<li>利用“cut and paste”技术证明作为构成原问题最优解的组成部分，每个子问题的解就是它本身的最优解。<br> 假定子问题的解不是自身的最优解，那么从原问题中cut掉这些非最优解，将最优解paste进去，从而得到原问题一个更优的解。如果这个解确实更好，那么原先的最优解就会被推翻</li>
+</ol>
+</li>
+<li><p>刻画子问题空间</p>
+<p>保持子问题空间尽量简单，只在必要时才扩展它</p>
+</li>
+<li><p>最优子结构的不同主要来自以下两方面：</p>
+<ol>
+<li>源问题的最优解涉及多少个子问题</li>
+<li>在确定最优解使用哪些子问题的时候，需要考察多少种选择</li>
+</ol>
+</li>
+</ul>
+<p><strong>重复子问题</strong></p>
+<p>适合用动态规划方法求解最优化问题的第二个性质是子问题的空间必须足够小。</p>
+<p>也就是说，问题的递归算法会反复地求解相同的子问题，而不是一直生成新的子问题。（分治法就会不断产生新的分支）</p>
+<p>动态规划算法对重叠的子问题只求解一次，并保存在一张表里，需要用的时候直接查表即可，每次查表的时间代价为常量O(1)。</p>
+<h2 id="从dag角度看动态规划"><a href="#从dag角度看动态规划" class="headerlink" title="从dag角度看动态规划"></a>从dag角度看动态规划</h2><p>这个视角是从算法概论这本书中看到的</p>
+<p><strong>引子：最短路径问题在有向无环图(dag)的情况下很容易解决</strong></p>
+<p>dag的一个独特之处是其节点<strong>可被线性化（拓扑排序）</strong>，也即其中的节点可以被排列在一条直线上，且使得所有的边都保持由左至右的方向</p>
+<p>在每个节点上，我们计算关于其(所有)前驱节点的某个函数值。</p>
+<p>动态规划针对的对象可以不是一个dag，但dag的思想却总是隐含在其求解的过程中。在这个隐含的dag中，节点对应于定义的子问题，边表示子问题间的依赖关系，即:如果求解子问题B必须依赖子问题A的解答，则(概念上)存在一条由A到B的边。此时，A被视为相对B较小的一个子问题</p>
+<p><strong>更多细节直接看书</strong></p>
+<h2 id="算法导论上几道例题"><a href="#算法导论上几道例题" class="headerlink" title="算法导论上几道例题"></a>算法导论上几道例题</h2><p>详细解答直接看书</p>
+<h3 id="Cut-Rod"><a href="#Cut-Rod" class="headerlink" title="Cut Rod"></a>Cut Rod</h3><p>问题描述：</p>
+<blockquote>
+<p>给你一根长度为n的棒，不同长度的棒价格已知，问如何切这个棒(可以不切)，使得最后价格最高<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E7%9A%84%E6%9D%86%E7%9A%84%E4%BB%B7%E6%A0%BC.png"
+                     
+                ></p>
+</blockquote>
+<p><strong>证明有最优子结构</strong></p>
+<p>设最高价格r<del>n</del>&#x3D;max{p<del>n</del>,r<del>1</del>+r<del>n-1</del>,r<del>2</del>+r<del>n-2</del>,…,r<del>n-1</del>+r<del>1</del>},其中p<del>n</del>是没有切割的情况</p>
+<p>也就是说，一旦进行了第一次切割，就会得到两个部分，形成棒切割问题的两个独立实例。因此总体最优解就包含了这两个子问题的最优解</p>
+<h4 id="递归做法"><a href="#递归做法" class="headerlink" title="递归做法"></a>递归做法</h4><p>每次切割的做法：</p>
+<p>长为n的杆，从左边切下长为i的部分，那么右边还剩下n-i，接下来左边不动，只有右边还需继续切割。<br>这种做法包含了不切割：左边切下n，右边还剩0，即不切割</p>
+<p>因此得到下面等式：</p>
+<p>r<del>n</del>&#x3D;max{p<del>i</del>+r<del>n-i</del>:1&lt;&#x3D;i&lt;&#x3D;n}</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve1</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> price[])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (N == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> result=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">		result = <span class="built_in">max</span>(result, price[i] + <span class="built_in">solve1</span>(N - i, price));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>重复子问题：</p>
+<p>这个递归做法会一次又一次地以同样参数调用自身，重复地计算相同子问题，导致效率低下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%9D%86%E9%95%BF%E7%AD%89%E4%BA%8E4%E4%B8%BA%E4%BE%8B%E7%9C%8B%E9%80%92%E5%BD%92%E8%B0%83%E7%94%A8.png"
+                      alt="杆长等于4为例"
+                ></p>
+<h4 id="优化递归"><a href="#优化递归" class="headerlink" title="优化递归"></a>优化递归</h4><p>自顶向下记忆dp</p>
+<p>第一次解决一个子问题，就把它的解保存下来，当再次遇到它时，就可以直接得到答案，而不是重新算一次</p>
+<p>用rem[0…n]保存杆长为i时的最优解 </p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve2</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> price[], <span class="type">int</span> rem[])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (rem[N] &gt;= <span class="number">0</span>)<span class="keyword">return</span> rem[N];<span class="comment">//这个子问题已经有解，直接返回</span></span><br><span class="line">	<span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (N &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		result = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">			result = <span class="built_in">max</span>(result, price[i] + <span class="built_in">solve2</span>(N - i, price, rem));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	rem[N] = result;<span class="comment">//保存这个子问题的最优解</span></span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve2</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> price[])</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> *rem = <span class="keyword">new</span> <span class="type">int</span>[N];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)rem[i] = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">solve2</span>(N, price, rem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="自底向上dp"><a href="#自底向上dp" class="headerlink" title="自底向上dp"></a>自底向上dp</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve3</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> price[])</span> </span>&#123;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(N + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)<span class="comment">//要想解决dp[N],就从最小的dp[1]开始解决，并保存每个子问题的解</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;<span class="comment">//解决dp[i]</span></span><br><span class="line">			dp[i] = <span class="built_in">max</span>(dp[i], price[j] + dp[i - j]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[N];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="构建最优解"><a href="#构建最优解" class="headerlink" title="构建最优解"></a>构建最优解</h4><h3 id="Matrix-chain-multiplication"><a href="#Matrix-chain-multiplication" class="headerlink" title="Matrix-chain multiplication"></a>Matrix-chain multiplication</h3><p><strong>问题描述</strong></p>
+<blockquote>
+<p>给定一个由n个矩阵组成的链〈A1, A2, …, An〉，矩阵A<del>i</del>为p<del>i-1</del>×p<del>i</del>的矩阵(i&#x3D;1…n),通过选择合理的完全括号化方案，使得计算的乘积所需标量乘法的次数最少。输入维度的序列为 〈p<del>0</del>, p<del>1</del>, p<del>2</del>, …, p<del>n</del>〉。<br>研究矩阵链乘问题不是真正地要进行矩阵相乘运算，它的目标是找出计算代价最低的计算顺序。因为确定最优计算顺序所多花费的时间比后续计算矩阵链乘所节省的时间要少。</p>
+</blockquote>
+<p><strong>完全括号</strong></p>
+<p>A product of matrices is fully parenthesized if it is either a single matrix or the product of two fully parenthesized matrix products, surrounded by parentheses</p>
+<p>例如〈A1, A2, A3, A4〉有五种完全括号方案<br>(A1(A2(A3A4))),<br>(A1((A2A3)A4)),<br>((A1A2)(A3A4))，<br>((A1(A2A3))A4),<br>(((A1A2)A3)A4)</p>
+<p>不同的方案，运算次序不同</p>
+<p><strong>运算次序不同，导致运算量不同</strong></p>
+<p>两个矩阵进行标准乘法，RECTANGULAR-MATRIX-MULTIPLY中的A是p × q 的矩阵,B是q × r的矩阵，因此结果C是p × r的矩阵。</p>
+<p>伪代码如下</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RECTANGULAR-MATRIX-<span class="built_in">MULTIPLY</span>(A, B, C, p, q, r)</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to p</span><br><span class="line">        <span class="keyword">for</span> j = <span class="number">1</span> to r</span><br><span class="line">            <span class="keyword">for</span> k = <span class="number">1</span> to q</span><br><span class="line">                c_ij = c_ij + a_ik · b_kj</span><br></pre></td></tr></table></figure></div>
+
+<p>运行时间由执行乘法的次数决定，即pqr次</p>
+<p><strong>括号化方案的数量</strong></p>
+<p>设一个由n个矩阵组成的序列的可选的括号化方案为P(n)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%8B%AC%E5%8F%B7%E5%8C%96%E6%96%B9%E6%A1%88%E7%9A%84%E6%95%B0%E9%87%8F.png"
+                     
+                ></p>
+<p>递归式的解为Ω(2^n^)。如果用暴力法(brute-force method)穷举搜索(exhaustive search)所有的括号化方案寻找最优括号化方案将是一个非常糟糕的策略。</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p><strong>最优解的结构特征</strong></p>
+<p>定义A<del>i:j</del>为A<del>iAi+1 ⋯ A</del>j<del>的乘积（i &lt; j）。利用括号化分割成A</del>i:k<del>和A</del>k+1:j~。</p>
+<p>那么A<del>i:j</del>的括号化后的计算代价&#x3D;A<del>i:k</del>的计算代价 + A<del>k+1:j</del>的计算代价 + A<del>i:k</del>与A<del>k+1:j</del>相乘的计算代价</p>
+<p><strong>递归解（状态转移方程）</strong></p>
+<p>定义m[i, j]是A<del>i:j</del>所需标量乘法的最少次数</p>
+<p>那么对于完整的问题〈A1, A2, …, An〉，最优解是m[1, n]</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E7%9F%A9%E9%98%B5%E9%93%BE%E4%B9%98%E6%B3%95%E7%9A%84%E9%80%92%E5%BD%92%E8%A7%A3.png"
+                     
+                ></p>
+<p><strong>构建最优解</strong></p>
+<p>m[i, j]只保存了最优解的值</p>
+<p>因此定义s[i, j]保存最优解：表示A<del>i:j</del>最优分割方案里的值k</p>
+<h4 id="遍历顺序"><a href="#遍历顺序" class="headerlink" title="遍历顺序"></a>遍历顺序</h4><p>自底向上，自左向右填表</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">			dp[i][j] = INT_MAX;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = i; k &lt;= j - <span class="number">1</span>; k++) &#123;</span><br><span class="line">				temp = dp[i][k] + dp[k + <span class="number">1</span>][j] + p[i - <span class="number">1</span>] * p[k] * p[j];</span><br><span class="line">				<span class="keyword">if</span> (dp[i][j] &gt; temp) &#123;</span><br><span class="line">					dp[i][j] = temp;</span><br><span class="line">					s[i][j] = k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>对角线填表</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">2</span>; l &lt;= n; l++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n-l+<span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="type">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">			dp[i][j] = INT_MAX;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = i; k &lt;= j<span class="number">-1</span>; k++) &#123;<span class="comment">//这个一定是&lt;=</span></span><br><span class="line">				temp = dp[i][k] + dp[k + <span class="number">1</span>][j] + p[i - <span class="number">1</span>] * p[k] * p[j];</span><br><span class="line">				<span class="keyword">if</span> (dp[i][j] &gt; temp) &#123;</span><br><span class="line">					dp[i][j] = temp;</span><br><span class="line">					s[i][j] = k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*写代码的时候有几点小细节没注意导致卡了好久：</span></span><br><span class="line"><span class="comment">	1. 传参n指的是有几个矩阵，而不是p[]数组的大小</span></span><br><span class="line"><span class="comment">	2. 遍历循环的边界有无“等号”，数组越界问题</span></span><br><span class="line"><span class="comment">	3. 循环顺序：对角线</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">minMatrixMul</span><span class="params">(vector&lt;<span class="type">int</span>&gt; p, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; s, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> temp = <span class="number">0</span>;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n + <span class="number">1</span>));</span><br><span class="line">	<span class="comment">//长度为1的，即只有一个矩阵，不用运算</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		dp[i][i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">2</span>; l &lt;= n; l++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n-l+<span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="type">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">			dp[i][j] = INT_MAX;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = i; k &lt;= j<span class="number">-1</span>; k++) &#123;<span class="comment">//这个一定是&lt;=</span></span><br><span class="line">				temp = dp[i][k] + dp[k + <span class="number">1</span>][j] + p[i - <span class="number">1</span>] * p[k] * p[j];</span><br><span class="line">				<span class="keyword">if</span> (dp[i][j] &gt; temp) &#123;</span><br><span class="line">					dp[i][j] = temp;</span><br><span class="line">					s[i][j] = k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[<span class="number">1</span>][n];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印最优解</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printOptimalParens</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; s,<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i == j)cout &lt;&lt; <span class="string">&quot;A&quot;</span> &lt;&lt; i;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;(&quot;</span>;</span><br><span class="line">		<span class="built_in">printOptimalParens</span>(s, i, s[i][j]);</span><br><span class="line">		<span class="built_in">printOptimalParens</span>(s, s[i][j] + <span class="number">1</span>, j);</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; p = &#123; <span class="number">30</span>,<span class="number">35</span>,<span class="number">15</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">20</span>,<span class="number">25</span> &#125;;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">s</span>(p.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(p.<span class="built_in">size</span>(), <span class="number">0</span>));</span><br><span class="line">	cout &lt;&lt; <span class="built_in">minMatrixMul</span>(p, s, p.<span class="built_in">size</span>()<span class="number">-1</span>)&lt;&lt;endl;</span><br><span class="line">	<span class="built_in">printOptimalParens</span>(s, <span class="number">1</span>, <span class="number">6</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="最长公共子序列（LCS）"><a href="#最长公共子序列（LCS）" class="headerlink" title="最长公共子序列（LCS）"></a>最长公共子序列（LCS）</h3><p>问题描述：</p>
+<blockquote>
+<p>给出字符串S1和S2，找出它们的最长公共子序列S3<br>子序列：要求字符出现的顺序和母体一致，但不要求连续<br>例如：Z&#x3D;〈B, C, D, B〉 是X&#x3D;〈A, B, C, B, D, A, B〉的 一个子序列</p>
+</blockquote>
+<p><strong>LCS的最优子结构(证明见p524)</strong></p>
+<p>Let X&#x3D;〈x<del>1</del>, x<del>2</del>, …, x<del>m</del>〉 and Y&#x3D;〈y<del>1</del>, y<del>2</del>, …, y<del>n</del>〉 be sequences, and let Z&#x3D;〈z<del>1</del>, z<del>2</del>, …, z<del>k</del>〉 be any LCS of X and Y.</p>
+<ol>
+<li>If x<del>m</del> &#x3D; y<del>n</del>, then z<del>k</del> &#x3D; x<del>m</del> &#x3D; y<del>n</del> and Z<del>k−1</del> is an LCS of X<del>m−1</del> and Y<del>n−1</del></li>
+<li>If x<del>m</del> ≠ y<del>n</del> and z<del>k</del> ≠ x<del>m</del>, then Z is an LCS of X<del>m−1</del> and Y</li>
+<li>If x<del>m</del> ≠ y<del>n</del> and z<del>k</del> ≠ y<del>n</del>, then Z is an LCS of X and Y<del>n−1</del></li>
+</ol>
+<p>可以看出，两个序列的LCS包含两个序列的前缀的LCS。因此，LCS 问题具有最优子结构属性。</p>
+<h4 id="初版"><a href="#初版" class="headerlink" title="初版"></a>初版</h4><p><strong>从LCS的最优子结构得出解题思路</strong></p>
+<ul>
+<li><p>如果x<del>m</del>&#x3D;y<del>n</del>，就去找到X<del>m−1</del>和Y<del>n−1</del>的LCS，然后将x<del>m</del>&#x3D;y<del>n</del>附加在它后面，得到X和Y的LCS</p>
+</li>
+<li><p>如果x<del>m</del>≠y<del>n</del>，那就需要解决两个子问题：</p>
+<ol>
+<li>找到X<del>m−1</del>和Y的LCS </li>
+<li>找到X和Y<del>n−1</del>的LCS</li>
+</ol>
+<p>这两个LCS中更长的一个是X和Y的LCS</p>
+</li>
+</ul>
+<p><strong>递归公式</strong></p>
+<p>dp[i][j]表示序列X<del>i</del>和Y<del>j</del>的LCS的长度</p>
+<p>显然，i&#x3D;0或j&#x3D;0时，LCS的长度为0</p>
+<p>$$dp[i][j]&#x3D;\begin{cases}<br>0 &amp; i&#x3D;0或j&#x3D;0\<br>dp[i-1][j-1]+1 &amp; i,j&gt;0且X<del>i</del>&#x3D;Y<del>j</del>\<br>max(dp[i][j-1],dp[i-1][j]) &amp; i,j&gt;0且X<del>i</del>≠Y<del>j</del><br>\end{cases}$$</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//打印LCS</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printLCS</span><span class="params">(string s1, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; path, <span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//1：表示左上，2表示上，3表示左</span></span><br><span class="line">	<span class="keyword">if</span> (i == <span class="number">0</span> || j == <span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (path[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">printLCS</span>(s1, path, i - <span class="number">1</span>, j - <span class="number">1</span>);</span><br><span class="line">		<span class="comment">/*这里是i - 1, 因为字符串放在二维表里，下标是从1开始，而实际上</span></span><br><span class="line"><span class="comment">		s1的下标从0开始*/</span></span><br><span class="line">		cout &lt;&lt; s1[i<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (path[i][j] == <span class="number">2</span>)</span><br><span class="line">		<span class="built_in">printLCS</span>(s1, path, i - <span class="number">1</span>, j);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printLCS</span>(s1, path, i, j - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印+返回LCS长度</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> m = s1.<span class="built_in">length</span>();</span><br><span class="line">	<span class="type">int</span> n = s2.<span class="built_in">length</span>();</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(m + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">path</span>(m + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;=n; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (s1[i<span class="number">-1</span>] == s2[j<span class="number">-1</span>]) &#123;<span class="comment">//字符相等</span></span><br><span class="line">				 dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">				 path[i][j] = <span class="number">1</span>;<span class="comment">//记录路径</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;<span class="comment">//字符不相等</span></span><br><span class="line">				<span class="keyword">if</span> (dp[i - <span class="number">1</span>][j] &gt;= dp[i][j - <span class="number">1</span>]) &#123;</span><br><span class="line">					dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">					path[i][j] = <span class="number">2</span>;<span class="comment">//记录路径</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					dp[i][j] = dp[i][j<span class="number">-1</span>];</span><br><span class="line">					path[i][j] = <span class="number">3</span>;<span class="comment">//记录路径</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="comment">//打印LCS</span></span><br><span class="line">	<span class="built_in">printLCS</span>(s1, path, m, n);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> dp[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%89%93%E5%8D%B0LCS.png"
+                      alt="打印LCS"
+                ></p>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="最长公共子串"><a href="#最长公共子串" class="headerlink" title="最长公共子串"></a>最长公共子串</h3><h4 id="初版-1"><a href="#初版-1" class="headerlink" title="初版"></a>初版</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> m = s1.<span class="built_in">length</span>();</span><br><span class="line">	<span class="type">int</span> n = s2.<span class="built_in">length</span>();</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(m + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (s1[i<span class="number">-1</span>] == s2[j<span class="number">-1</span>]) &#123;<span class="comment">//字符相等</span></span><br><span class="line">				dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">				<span class="comment">//更新最长字串的长度</span></span><br><span class="line">				result = (dp[i][j] &gt; result) ? dp[i][j] : result;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> dp[i][j] = <span class="number">0</span>;<span class="comment">//字符不相等</span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="优化-1"><a href="#优化-1" class="headerlink" title="优化"></a>优化</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h3><p>问题描述</p>
+<blockquote>
+<p>给定一个由n个互不相同的关键字组成的序列K &#x3D; 〈k1, k2, …, kn〉，其中k<del>1</del> &lt; k<del>2</del> &lt; … &lt; k<del>n</del>。用这些关键字构造一棵二叉搜索树。对于每个关键字k<del>i</del>，查找的概率为p<del>i</del>。由于有些被查找的关键字不在K中，因此需要构造n+1个虚关键字d<del>0</del>, d<del>1</del>, d<del>2</del>, …, d<del>n</del>。其中d<del>0</del>&lt; k<del>1</del>，k<del>i</del>&lt; d<del>i</del>&lt; k<del>i+1，dn  &gt; k</del>n<del>。对于每个关键字d</del>i<del>，查找的概率为q</del>i<del>。每个关键字 k</del>i<del>对应二叉搜索树中一个内部结点，每个虚关键字d</del>i<del>对应二叉搜索树中一个叶结点。每次成功查找关键字，那么最终落在k</del>i<del>，如果查找失败，那么最终落在 d</del>i~。<br>关键字的查找概率给定，目标是构建一个期望搜索开销最小的二叉搜索树（最优二叉搜索树）</p>
+</blockquote>
+<p><strong>p<del>I</del>和q<del>i</del>关系</strong><br>$\sum_{i&#x3D;1}^n$p<del>i</del> + $\sum_{i&#x3D;0}^n$q<del>i</del> &#x3D; 1</p>
+<p><strong>期望搜索开销</strong></p>
+<p>一次搜索的实际开销 &#x3D; 检查的结点的个数 &#x3D; 结果结点深度+1</p>
+<p>一次期望搜索开销如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%9C%9F%E6%9C%9B%E6%90%9C%E7%B4%A2%E5%BC%80%E9%94%80.png"
+                     
+                ></p>
+<p><strong>n&#x3D;5为例</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%9C%80%E4%BC%98%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BE%8B%E5%AD%90png.png"
+                     
+                ></p>
+<p>左边这棵是最优二叉搜索树，期望搜索开销是2.75</p>
+<p><strong>从例子得出的信息</strong></p>
+<ol>
+<li>最优二叉搜索树的高度不一定是最小的</li>
+<li>最优二叉搜索树的根结点不一定是查找概率最大的结点</li>
+</ol>
+<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p><strong>最优解的结构特征</strong></p>
+<p>一棵二叉搜索树的任意一棵子树必定包含连续的关键字k<del>i</del>，…，k<del>j</del>，其中1 &lt;&#x3D; i &lt;&#x3D; j &lt;&#x3D; n。并且，这个子树必定也含有虚拟关键字d<del>i-1</del>，…，d<del>j</del>作为叶子。</p>
+<p>描述最优子结构：</p>
+<p>如果一棵最优二叉查找树T有一棵包含关键字k<del>i</del>，…，k<del>j</del>的子树 T’，那么这棵子树T’对于关键字k<del>i</del>，…，k<del>j</del>和虚拟关键字d<del>i-1</del> ，…，d<del>j</del>的子问题也必定是最优的。</p>
+<p>构建最优解的结构：</p>
+<p>给定关键字k<del>i</del>，…，k<del>j</del>，假设k<del>r</del>（ i &lt;&#x3D; r &lt;&#x3D; j ）是包含这些关键字的一棵最优子树的根。那么根k<del>r</del>的左子树包含关键字k<del>i</del>，…，k<del>r-1</del>（和虚拟关键字d<del>i-1</del>，…，d<del>r-1</del>），右子树包含关键字k<del>r+1</del>，…，k<del>j</del>（和虚拟关键字d<del>r</del>，…，d<del>j</del>）。只要考察所有的候选根k<del>r</del>（当左子树，右子树都是最优二叉搜索树时），选期望搜索开销最小的那个</p>
+<p><strong>递归解（状态转移方程）</strong></p>
+<p>选取子问题域为找一个包含关键字k<del>i</del>,…,k<del>j</del>的最优二叉搜索树，其中 i &gt;&#x3D; 1 ， j &lt;&#x3D; n 且 j &gt;&#x3D; i - 1</p>
+<p>定义e[i, j]为搜索一棵包含关键字k<del>i</del>,…,k<del>j</del>的最优二叉查找树的期望代价。最终，要计算的是 e[1 , n]</p>
+<p>当 j &#x3D; i - 1时，只有虚拟键d<del>i-1</del>，期望的搜索代价为e[i ,i - 1] &#x3D; q<del>i-1</del></p>
+<p>当 j &gt;&#x3D; i 时，需要从k<del>i</del>,…,k<del>j</del>中选择一个根k<del>r</del>，然后分别构建出左右子树的最优二叉搜索树。当一棵树成为一个结点的子树时，子树中每个结点的深度增加1。这个子树的期望搜索代价的增值等于子树中所有概率的总和（根据上面14.11公式）</p>
+<p>对一棵有关键字k<del>i</del>,…,k<del>j</del>的子树，概率的总和为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E5%AD%90%E6%A0%91%E6%A6%82%E7%8E%87%E6%80%BB%E5%92%8C.png"
+                     
+                ></p>
+<p>那么公式推导为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%9C%80%E4%BC%98%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC.png"
+                     
+                ></p>
+<p>综上所述，状态转移方程如下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%9C%80%E4%BC%98%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E5%85%AC%E5%BC%8F.png"
+                     
+                ></p>
+<p><strong>构建最优解</strong></p>
+<p>用root[i][j]记录每个最优子树的根节点（1 ≤ i ≤ j ≤ n）</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><p>代码细节：</p>
+<ol>
+<li><p>更高效地建立w[i][j]</p>
+<p> 1 ≤ i ≤ n + 1时，w[i, i − 1] &#x3D; q<del>i−1</del> </p>
+<p> j ≥ i时,w[i, j] &#x3D; w[i, j-1] + p<del>j</del> + q<del>j</del></p>
+<p> 计算w[i, j]的时间复杂度就从Θ(n^2^)降到了Θ(1)</p>
+</li>
+<li><p>dp[i][j]的i最大达到n+1而不是n，是因为要构建只含d<del>n</del>的子树(dp[n+1][n])。j的最小达到0，是因为要构建只含d<del>0</del>的子树（dp[1][0]）。</p>
+</li>
+<li><p>dp[i][j]只需要填j ≥ i − 1的地方</p>
+</li>
+<li><p>遍历顺序：对角线</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">optimalBST</span><span class="params">(vector&lt;<span class="type">double</span>&gt; p, vector&lt;<span class="type">double</span>&gt; q, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; &amp;root,<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="type">double</span> temp = <span class="number">0</span>;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">double</span>&gt;&gt;<span class="built_in">dp</span>(n + <span class="number">2</span>, <span class="built_in">vector</span>&lt;<span class="type">double</span>&gt;(n + <span class="number">1</span>));</span><br><span class="line">	vector&lt;vector&lt;<span class="type">double</span>&gt;&gt;<span class="built_in">w</span>(n + <span class="number">2</span>, <span class="built_in">vector</span>&lt;<span class="type">double</span>&gt;(n + <span class="number">1</span>));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">		dp[i][i - <span class="number">1</span>] = q[i - <span class="number">1</span>];</span><br><span class="line">		w[i][i - <span class="number">1</span>] = q[i - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">1</span>;l&lt;=n;l++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n - l + <span class="number">1</span>;i++) &#123;</span><br><span class="line">			<span class="type">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">			dp[i][j] = INT_MAX;</span><br><span class="line">			w[i][j] = w[i][j - <span class="number">1</span>] + p[j] + q[j];</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> r = i; r &lt;= j; r++) &#123;</span><br><span class="line">				temp = dp[i][r - <span class="number">1</span>] + dp[r + <span class="number">1</span>][j] + w[i][j];</span><br><span class="line">				<span class="keyword">if</span> (dp[i][j] &gt; temp) &#123;</span><br><span class="line">					dp[i][j] = temp;</span><br><span class="line">					root[i][j] = r;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[<span class="number">1</span>][n];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vector&lt;<span class="type">double</span>&gt; p = &#123;<span class="number">0</span>,<span class="number">0.15</span>,<span class="number">0.10</span>,<span class="number">0.05</span>,<span class="number">0.10</span>,<span class="number">0.20</span>&#125;;</span><br><span class="line">	vector&lt;<span class="type">double</span>&gt; q = &#123;<span class="number">0.05</span>,<span class="number">0.10</span>,<span class="number">0.05</span>,<span class="number">0.05</span>,<span class="number">0.05</span>,<span class="number">0.10</span>&#125;;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">root</span>(p.<span class="built_in">size</span>()+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(p.<span class="built_in">size</span>()+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">	cout &lt;&lt; <span class="built_in">optimalBST</span>(p, q, root, p.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="图论的最短路径问题"><a href="#图论的最短路径问题" class="headerlink" title="图论的最短路径问题"></a>图论的最短路径问题</h2><p>在我的数据结构笔记里有</p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>参考：<a href="%E8%B5%84%E6%BA%90/%E8%83%8C%E5%8C%85%E4%B9%9D%E8%AE%B2.pdf">背包九讲pdf</a></p>
+<h3 id="01背包问题"><a href="#01背包问题" class="headerlink" title="01背包问题"></a>01背包问题</h3><p>问题描述</p>
+<blockquote>
+<p>有N件物品和一个容量为V的背包。放入第i件物品耗费的费用(占的空间)是C<del>i</del>，得到的价值是W<del>i</del>。<br>求解将哪些物品装入背包可使价值总和最大</p>
+</blockquote>
+<p><strong>特点</strong></p>
+<p>每种物品仅有一件，可以选择放或不放</p>
+<p><strong>用子问题定义状态</strong></p>
+<p>F[i,v]表示前 i 件物品恰放入一个容量为 v 的背包可以获得的最大价值</p>
+<p>只考虑第 i 件物品的策略（放或不放）：</p>
+<ol>
+<li>如果不放第 i 件物品，那么问题就转化为“前 i − 1件物品放入容量为v的背包中，最大价值为 F[i − 1, v]”</li>
+<li>如果放第 i 件物品，那么问题就转化为“前 i − 1件物品放入容量为v − C<del>i</del>的背包中，最大价值为F[i − 1, v − C<del>i</del>]+W<del>i</del>”</li>
+</ol>
+<p>状态转移方程：F[i,v] &#x3D; max{F[i − 1,v], F[i − 1,v − C<del>i</del>] + W<del>i</del>}</p>
+<h4 id="初版-2"><a href="#初版-2" class="headerlink" title="初版"></a>初版</h4><p>dp[i][j]表示前i个物品，放入容量为j的背包得到的最大价值</p>
+<p>遍历顺序：物品和背包的遍历先后顺序不影响结果</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> w[<span class="number">1001</span>];<span class="comment">//第i件物品的占用空间</span></span><br><span class="line"><span class="type">int</span> v[<span class="number">1001</span>];<span class="comment">//第i件物品的价值</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Max</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i &gt;= j)<span class="keyword">return</span> i;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> w[], <span class="type">int</span> v[], <span class="type">int</span> N, <span class="type">int</span> capacity)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span>** dp = <span class="keyword">new</span> <span class="type">int</span>* [N + <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N + <span class="number">1</span>; i++)dp[i] = <span class="keyword">new</span> <span class="type">int</span>[capacity + <span class="number">1</span>];</span><br><span class="line">	<span class="comment">//初始化边界</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N + <span class="number">1</span>; i++)dp[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; capacity + <span class="number">1</span>; i++)dp[<span class="number">0</span>][i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= capacity; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (j &gt;= w[i]) &#123;<span class="comment">//装得下</span></span><br><span class="line">				dp[i][j] = <span class="built_in">Max</span>(dp[i - <span class="number">1</span>][j - w[i]] + v[i], dp[i - <span class="number">1</span>][j]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> dp[i][j] = dp[i - <span class="number">1</span>][j];<span class="comment">//装不下</span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[N][capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="优化-滚动数组"><a href="#优化-滚动数组" class="headerlink" title="优化-滚动数组"></a>优化-滚动数组</h4><p>观察到dp[i][j]始终由dp[i-1][?]决定。也就是说，每一行只与上一行有关系，与更前面的行没有关系。那么用新的一行覆盖原来的就好了</p>
+<p>定义dp[j]表示容量为j的背包的最大价值</p>
+<p>递推公式：dp[j]&#x3D;max{dp[j],dp[j-w[i]]+v[i]}</p>
+<p>注：由于直接将上一层拷贝下来，因此当前层不放物品i的最大价值就是dp[j]</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> w[], <span class="type">int</span> v[], <span class="type">int</span> N, <span class="type">int</span> capacity)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span>* dp = <span class="keyword">new</span> <span class="type">int</span>[capacity+<span class="number">1</span>];</span><br><span class="line">	<span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= capacity; i++)dp[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = capacity; j &gt;= w[i]; j--) &#123;</span><br><span class="line">			dp[j] = <span class="built_in">max</span>(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>注意遍历顺序：j应该<strong>逆序循环</strong>，即从后面往前面覆盖，不然会多次选同一件物品（恰恰是完全背包的解）</p>
+<p>当前状态是i，应该要用i-1（上一行）的状态更新i的状态。如果正序，比如dp[j-1]更新完了（i状态），那到了更新dp[j]的状态时，用的是处于i状态的dp[j-1]，不是我们想要的</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%80%86%E5%BA%8F.png"
+                     
+                ></p>
+<h3 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h3><p>问题描述</p>
+<blockquote>
+<p>有N种物品和一个容量为V的背包，每种物品都有无限件可用。放入第i种物品的费用是C<del>i</del>，价值是W<del>i</del><br>求解：在不超过背包容量的前提下，将哪些物品装入背包，可使价值总和最大</p>
+</blockquote>
+<h4 id="初版-3"><a href="#初版-3" class="headerlink" title="初版"></a>初版</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="优化-2"><a href="#优化-2" class="headerlink" title="优化"></a>优化</h4><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h3><h3 id="混合三种背包问题"><a href="#混合三种背包问题" class="headerlink" title="混合三种背包问题"></a>混合三种背包问题</h3><h3 id="二维费用的背包问题"><a href="#二维费用的背包问题" class="headerlink" title="二维费用的背包问题"></a>二维费用的背包问题</h3><h3 id="分组的背包问题"><a href="#分组的背包问题" class="headerlink" title="分组的背包问题"></a>分组的背包问题</h3><h3 id="有依赖的背包问题"><a href="#有依赖的背包问题" class="headerlink" title="有依赖的背包问题"></a>有依赖的背包问题</h3><h3 id="泛化物品"><a href="#泛化物品" class="headerlink" title="泛化物品"></a>泛化物品</h3>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：动态规划理论</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-04-29 20:11:48</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/04/29/算法笔记/动态规划/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">贪心算法</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%88%86%E6%B2%BB%E6%B3%95/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">分治法</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E8%A7%88"><span class="nav-text">总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">实现动态规划的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#top-down-with-memorization"><span class="nav-text">top-down with memorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bottom-up-method"><span class="nav-text">bottom-up method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%95%E6%97%B6%E7%94%A8dp"><span class="nav-text">何时用dp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8Edag%E8%A7%92%E5%BA%A6%E7%9C%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">从dag角度看动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E4%B8%8A%E5%87%A0%E9%81%93%E4%BE%8B%E9%A2%98"><span class="nav-text">算法导论上几道例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cut-Rod"><span class="nav-text">Cut Rod</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%81%9A%E6%B3%95"><span class="nav-text">递归做法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E9%80%92%E5%BD%92"><span class="nav-text">优化递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8Adp"><span class="nav-text">自底向上dp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%9C%80%E4%BC%98%E8%A7%A3"><span class="nav-text">构建最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matrix-chain-multiplication"><span class="nav-text">Matrix-chain multiplication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F"><span class="nav-text">遍历顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%88LCS%EF%BC%89"><span class="nav-text">最长公共子序列（LCS）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E7%89%88"><span class="nav-text">初版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2"><span class="nav-text">最长公共子串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E7%89%88-1"><span class="nav-text">初版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-1"><span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-text">最优二叉搜索树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90-1"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E8%AE%BA%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="nav-text">图论的最短路径问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">01背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E7%89%88-2"><span class="nav-text">初版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84"><span class="nav-text">优化-滚动数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">完全背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E7%89%88-3"><span class="nav-text">初版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-2"><span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">多重背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E4%B8%89%E7%A7%8D%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">混合三种背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E8%B4%B9%E7%94%A8%E7%9A%84%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">二维费用的背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E7%9A%84%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">分组的背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BE%9D%E8%B5%96%E7%9A%84%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">有依赖的背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%8C%96%E7%89%A9%E5%93%81"><span class="nav-text">泛化物品</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

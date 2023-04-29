@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            贪心算法 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">贪心算法</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-04-29 20:12:48</span>
+        <span class="mobile">2023-04-29 20:12</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA/">算法理论</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="引例-活动选择问题"><a href="#引例-活动选择问题" class="headerlink" title="引例-活动选择问题"></a>引例-活动选择问题</h2><p>来自算法导论第四版p555，算法设计p142</p>
+<p>问题描述</p>
+<blockquote>
+<p>有n个已知开始时间s<del>i</del>和结束时间f<del>i</del>的活动，最多能参加多少个不互斥的活动<br>活动按照结束时间的先后已经排好序<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9.png"
+                     
+                ></p>
+</blockquote>
+<p><strong>最优子结构</strong></p>
+<p>定义S<del>ij</del>：在a<del>i</del>开始之后，在a<del>j</del>结束之前的活动的集合</p>
+<p>我们想要找到S<del>ij</del>中相互兼容的活动数量最多的集合，记作A<del>ij</del>：在a<del>i</del>开始之后，a<del>j</del>结束之前这个时间段，能参加的最多活动的集合</p>
+<p>把活动a<del>k</del>加入S<del>ij</del>后，问题被划分为两个子问题：</p>
+<ol>
+<li>找到S<del>ik</del>中互相兼容的活动</li>
+<li>找到S<del>kj</del>中互相兼容的活动</li>
+</ol>
+<p>那么有：A<del>ik</del> &#x3D; A<del>ij</del> ∩ S<del>ik</del> 和 A<del>kj</del> &#x3D; A<del>ij</del> ∩ S<del>kj</del></p>
+<p>所以：A<del>ij</del> &#x3D; A<del>ik</del> ∪ {a<del>k</del>} ∪ A<del>kj</del></p>
+<p>最大数量：|A<del>ij</del>| &#x3D; |A<del>ik</del>| + |A<del>kj</del>| + 1</p>
+<h3 id="解法一：动态规划"><a href="#解法一：动态规划" class="headerlink" title="解法一：动态规划"></a>解法一：动态规划</h3><p><strong>状态转移方程</strong><br>规定S<del>ij</del>中的最优解A<del>ij</del>的大小为c[i,j]，那么最优解应当是c[0,j+1]</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B.png"
+                     
+                ></p>
+<p><strong>代码</strong></p>
+<p>最优解的值是对的，但解集好像有点问题</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">selector</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; dp, vector&lt;<span class="type">int</span>&gt; &amp;rel,vector&lt;<span class="type">int</span>&gt; s, vector&lt;<span class="type">int</span>&gt; f, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> temp = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//初始化：当i&gt;=j时候，子问题的解为空</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= n+<span class="number">1</span>; j++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = j; i &lt;= n+<span class="number">1</span>; i++)</span><br><span class="line">			dp[i][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//外循环应当是j</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n+<span class="number">1</span>; j++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; j; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = i + <span class="number">1</span>; k &lt; j; k++) &#123;</span><br><span class="line">				<span class="comment">//新增的ak需要在Sij集合中:在ai结束之后开始，在aj开始之前结束</span></span><br><span class="line">				<span class="keyword">if</span> (s[k] &gt;= f[i] &amp;&amp; f[k] &lt;= s[j]) &#123;</span><br><span class="line">					temp = dp[i][k] + dp[k][j] + <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span> (temp &gt; dp[i][j]) &#123;</span><br><span class="line">						dp[i][j] = temp;</span><br><span class="line">						rel[k] = <span class="number">1</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[<span class="number">0</span>][n+<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; s = &#123; <span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">12</span>,INT_MAX &#125;;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; f = &#123; <span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">14</span>,<span class="number">16</span>,INT_MAX &#125;;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rel</span><span class="params">(s.size()<span class="number">-1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(s.<span class="built_in">size</span>(), <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(s.<span class="built_in">size</span>()));</span><br><span class="line">	cout &lt;&lt; <span class="built_in">selector</span>(dp, rel,s, f, s.<span class="built_in">size</span>()<span class="number">-2</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; rel.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (rel[i] == <span class="number">1</span>)cout &lt;&lt; <span class="string">&quot;a&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="解法二：贪心算法"><a href="#解法二：贪心算法" class="headerlink" title="解法二：贪心算法"></a>解法二：贪心算法</h3><p><strong>选取贪心策略</strong></p>
+<ul>
+<li><p>策略1：每次都选择开始最早的活动，这样参加活动就可以尽可能快<br>不能得到最优解：最早开始的活动可能延续时间很长，这样会错过很多之后开始，但时间很短的活动<br>反例：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A51.png"
+                     
+                ></p>
+</li>
+<li><p>策略2：每次都选择用时最短的活动<br>不能得到最优解，反例如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A52.png"
+                     
+                ></p>
+</li>
+<li><p>策略3：每次选择的活动是冲突数最少的活动<br>不能得到最优解，反例如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A53.png"
+                     
+                ></p>
+</li>
+<li><p><strong>策略4（正确的）</strong>：每次都选择结束最早的活动，这样就把更多的资源预留给之后的活动</p>
+</li>
+</ul>
+<p><strong>分析策略4</strong></p>
+<p>所有活动已经按照结束时间从小到大排序，因此第一次选择a<del>1</del>。</p>
+<p>接下来只有一个子问题要处理：选择一个在a<del>1</del>结束后开始的活动。（因为s<del>1</del> &lt; f<del>1</del>且f<del>1</del>是最早结束的，因此在a<del>1</del>开始之前开始的活动都还没结束，和a<del>1</del>不兼容，不用考虑）</p>
+<p>定义S<del>k</del> &#x3D; {a<del>i</del> ∈ S : s<del>i</del> ≥ f<del>k</del>}是在a<del>k</del>结束后开始的活动的集合</p>
+<p><strong>最优子结构（证明在p558）</strong></p>
+<p>如果a<del>1</del>是属于源问题的最优解，那么最优解由a<del>1</del>和子问题S<del>1</del>的最优解构成</p>
+<p><strong>自顶向下递归</strong></p>
+<p>为了启动这个算法，假设活动a<del>0</del>的开始和结束时间都是0，那么S<del>0</del>就是活动的全集</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">selector</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; rel, vector&lt;<span class="type">int</span>&gt; s, vector&lt;<span class="type">int</span>&gt; f, <span class="type">int</span> k, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> m = k + <span class="number">1</span>;<span class="comment">//从结束时间晚于ak的活动里就开始找</span></span><br><span class="line">	<span class="comment">//寻找Sk中结束最早的那个</span></span><br><span class="line">	<span class="keyword">while</span> (m &lt;= n &amp;&amp; s[m] &lt; f[k])m++;</span><br><span class="line">	<span class="comment">//如果找到</span></span><br><span class="line">	<span class="keyword">if</span> (m &lt;= n) &#123;</span><br><span class="line">		k = m;</span><br><span class="line">		rel[k] = <span class="number">1</span>;<span class="comment">//将ak放入最优解里</span></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">selector</span>(rel, s, f, k, n);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果找不到，直接返回（相当于空集）</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rel</span><span class="params">(<span class="number">12</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; s = &#123; <span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">12</span> &#125;;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; f = &#123; <span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">14</span>,<span class="number">16</span> &#125;;</span><br><span class="line">	<span class="built_in">selector</span>(rel, s, f, <span class="number">0</span>, s.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; s.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (rel[i] == <span class="number">1</span>)cout &lt;&lt; <span class="string">&quot;a&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>递归过程</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E9%80%92%E5%BD%92.png"
+                     
+                ></p>
+<p><strong>自底向上迭代</strong></p>
+<p>把上述的递归转换成迭代法</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">selector</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; rel, vector&lt;<span class="type">int</span>&gt; s, vector&lt;<span class="type">int</span>&gt; f, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> k = <span class="number">1</span>;</span><br><span class="line">	rel[<span class="number">1</span>] = <span class="number">1</span>;<span class="comment">//将a1放入最优解</span></span><br><span class="line">	<span class="comment">//寻找Sk中结束最早的那个</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> m = <span class="number">2</span>; m &lt;= n; m++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (s[m] &gt;= f[k]) &#123;</span><br><span class="line">			k = m;</span><br><span class="line">			rel[m] = <span class="number">1</span>;<span class="comment">//将新的ak加入最优解		</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="启示"><a href="#启示" class="headerlink" title="启示"></a>启示</h2><p><strong>设计贪心算法的步骤</strong></p>
+<ol>
+<li>确定问题的最优子结构</li>
+<li>得出递归方程</li>
+<li>证明：每做一次贪心选择后，只会有一个子问题遗留</li>
+<li><strong>证明：每一次贪心选择都是可行的（这一步是最难的）</strong></li>
+<li>设计递归算法实现贪心策略</li>
+<li>将递归算法转换成迭代法</li>
+</ol>
+<p><strong>如何证明“贪心策略可以得到全局最优”才是关键</strong></p>
+<p>严格的证明要靠数学归纳法或反证法，做题的时候不可能这么做。可以对贪心策略举反例，如果举不出反例，那么就可行（不严谨）</p>
+<p><strong>对数据预处理或使用合适的数据结构可以使贪心算法更加高效</strong></p>
+<p>比如活动选择问题，活动按结束时间的先后排序</p>
+<h2 id="dp和贪心"><a href="#dp和贪心" class="headerlink" title="dp和贪心"></a>dp和贪心</h2><p><strong>动态规划和贪心算法的区别</strong></p>
+<p><em>动态规划</em></p>
+<p> 每一步的选择都依赖子问题的解，最自然的dp是自底向上的，解小的子问题，再去得到大的子问题</p>
+<p> 因此在做出第一步选择之前，必须要先把子问题解决了</p>
+<p><em>贪心算法</em></p>
+<p> 每一步都做出在此刻看上去最好的选择，然后再去解决选择后产生的子问题。做出一个选择可以依赖其他选择，但不能依赖未来的选择或子问题的解。最自然的贪心策略是自顶向下的。</p>
+<p> 因此贪心算法是先做出第一次选择，然后再解决其子问题</p>
+<p><strong>如何选择</strong></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="离线缓存"><a href="#离线缓存" class="headerlink" title="离线缓存"></a>离线缓存</h3><p>算法导论第四版p582</p>
+<p>问题描述</p>
+<blockquote>
+<p>有n个访存请求，数据按请求顺序存放在缓存块b1, b2,…, bn。请求并不会完全不同，任何缓存块都有可能被重复访问。比如这里有四个不同缓存块 p, q, r, s，对这些缓存块的请求顺序可能是 s, q, s, q, q, s, p, p, r, s, s, q, p, r, q。缓存最多容纳k个缓存块，在第一个请求之前，缓存是空的。任何请求最多使一个缓存块加入缓存，最多使一个缓存块离开缓存。<br>对于缓存块b<del>i</del>的请求，会出现以下三种情况：<br>b<del>i</del>已经在缓存里，缓存不会更新。这种情况也称为缓存命中<br>b<del>i</del>不在缓存里，当前位于缓存中的块的数量小于k，b<del>i</del>被放入缓存<br>b<del>i</del>不在缓存里，当前缓存已满，必须移除缓存中的一个块后，才能将b<del>i</del>放入缓存<br>后两种就是缓存未命中的情况，目标是尽可能地减少缓存未命中。</p>
+</blockquote>
+<p>注：缓存实际上是在线问题，计算机在不知道未来请求的前提下就决定了缓存中应该保留哪些块。而在这个例题中，考虑的是离线情况下，即计算机提前得知未来完整的n个请求序列以及缓存大小k</p>
+<p><strong>贪心策略</strong></p>
+<p>furthest-in-future：移除的缓存块是在接下来的请求序列中最久到来的</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p><strong>最优子结构</strong></p>
+<p><strong>证明贪心策略正确性</strong></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>在我的数据结构笔记里有</p>
+<h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><p>在我的数据结构笔记里有</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：贪心算法</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-04-29 20:12:48</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/04/29/算法笔记/贪心算法/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%BC%80%E5%92%8C%E5%8F%8A%E5%B7%AE%E5%88%86/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">前缀和及差分</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">动态规划理论</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E4%BE%8B-%E6%B4%BB%E5%8A%A8%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98"><span class="nav-text">引例-活动选择问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">解法一：动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9A%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-text">解法二：贪心算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%A4%BA"><span class="nav-text">启示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dp%E5%92%8C%E8%B4%AA%E5%BF%83"><span class="nav-text">dp和贪心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98"><span class="nav-text">离线缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="nav-text">哈夫曼编码</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

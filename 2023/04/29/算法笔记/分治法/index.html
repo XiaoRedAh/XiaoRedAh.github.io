@@ -6,7 +6,7 @@
     <meta name="keywords" content="Hexo Theme Redefine">
     <meta name="description" content="Hexo Theme Redefine">
     <meta name="author" content="萧">
-    <link rel="canonical" href="http://example.com/2023/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/Recursive/" />
+    <link rel="canonical" href="http://example.com/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%88%86%E6%B2%BB%E6%B3%95/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
@@ -14,7 +14,7 @@
     
     <title>
         
-            Recursive |
+            分治法 |
         
         等想好起什么名字后再来改
     </title>
@@ -275,7 +275,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Recursive</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">分治法</h1></span>
             </div>
 
             
@@ -294,8 +294,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-01-20 13:28:48</span>
-        <span class="mobile">2023-01-20 13:28</span>
+        <span class="pc">2023-04-29 20:10:48</span>
+        <span class="mobile">2023-04-29 20:10</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -303,7 +303,11 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/">数据结构笔记</a>&nbsp;
+                        <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA/">算法理论</a>&nbsp;
                     </li>
                 
             </ul>
@@ -327,36 +331,40 @@
             
 
             <div class="article-content markdown-body">
-                <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><h3 id="递归的想法"><a href="#递归的想法" class="headerlink" title="递归的想法"></a>递归的想法</h3><p>将一个大问题化成若干小问题去解决或化成若干步骤去解决（简化问题思想）  </p>
-<h3 id="如何写递归"><a href="#如何写递归" class="headerlink" title="如何写递归"></a>如何写递归</h3><ol>
-<li>想想什么是最简单&#x2F;特殊的情况（这往往是递归的出口）</li>
-<li>思考如何将当前问题关联到若干小问题上去解决</li>
-<li>按上面的想法用代码实现（不要纠结函数具体会如何运作，先把你的逻辑直观地用递归代码表现出来）</li>
+                <h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h1><p>参考：算法导论和算法设计这两本书</p>
+<ol>
+<li>Devide:将问题划分为多个子问题（相同问题的更小实例）</li>
+<li>Conquer：递归地解决这些子问题</li>
+<li>Combine：将自问题的解联合起来组建成原问题的解</li>
 </ol>
-<h3 id="何时用递归"><a href="#何时用递归" class="headerlink" title="何时用递归"></a>何时用递归</h3><p><strong>A</strong>、问题的解可以用递推式表达（如n的阶乘，斐数列）<br><strong>B</strong>、问题的解法是递归（回溯）<br><strong>C</strong>、数据结构是递归定义的（链表，树）</p>
-<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p><strong>将问题的解决步骤画成一棵树，树的最大深度位置就是返回并获得结果的位置，每个结点都会分出很多分支，分支的宽度就是for循环探索的宽度，在for循环里用递归往深处探索，回溯就是在探索结束后回来，并取消刚刚在这一层for循环里添加的记录。</strong></p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (判断是否结束) &#123;</span><br><span class="line">		收获结果</span><br><span class="line">		<span class="keyword">return</span>；</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> () &#123;</span><br><span class="line">		<span class="keyword">if</span> (是否满足要求) &#123;</span><br><span class="line">			标记</span><br><span class="line">			<span class="built_in">function</span>(向更深一层探索);</span><br><span class="line">			回溯：取消标记</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h3 id="N皇后问题"><a href="#N皇后问题" class="headerlink" title="N皇后问题"></a>N皇后问题</h3><blockquote>
-<p><em>如何能够在 N×N 的国际象棋棋盘上放置N个皇后，使得任何一个皇后都无法直接吃掉其他的皇后？为了达到此目的，任两个皇后都不能处于同一条横行、纵行或斜线上。请输出所有的摆放方法</em></p>
+<h2 id="如何分析复杂度"><a href="#如何分析复杂度" class="headerlink" title="如何分析复杂度"></a>如何分析复杂度</h2><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h3><p>来自算法导论第三版P68</p>
+<p>问题描述</p>
+<blockquote>
+<p>在数组A[1…n]中找一个连续的子数组A[i…j],使得数组元素之和最大</p>
 </blockquote>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> a[<span class="number">20</span>][<span class="number">20</span>];<span class="comment">//棋盘</span></span><br><span class="line"><span class="type">int</span> colFlag[<span class="number">20</span>];<span class="comment">//用colFlag[col]记录这一列上有没有皇后</span></span><br><span class="line"><span class="type">int</span> leftBias[<span class="number">40</span>];<span class="comment">//坐标=col-row的位置在一个左斜线上，用leftBias[col-row]表示该斜线上是否有皇后</span></span><br><span class="line"><span class="type">int</span> rightBias[<span class="number">40</span>];<span class="comment">//坐标=col+row的位置在一个右斜线上，用rightBias[col+row]表示该斜线上是否有皇后</span></span><br><span class="line"><span class="type">int</span> total=<span class="number">0</span>;</span><br><span class="line"><span class="comment">//1、isOk()函数一开始总写不对，两个斜线的关系数组没想出来</span></span><br><span class="line"><span class="comment">//2、何时撤销标记有点不清楚</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isOk</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;<span class="comment">//判断a[i][j]能不能放皇后</span></span><br><span class="line">	<span class="keyword">if</span>(leftBias[j-i]==<span class="number">1</span>||rightBias[i+j]==<span class="number">1</span>)<span class="keyword">return</span>  <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span> (colFlag[j] == <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Place</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> row)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//row&gt;N说明第N行已经放了皇后，可以展示结果了</span></span><br><span class="line">	<span class="keyword">if</span> (row &gt; N) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= N; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (a[i][j] == <span class="number">1</span>)cout &lt;&lt; <span class="string">&#x27;(&#x27;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; j &lt;&lt; <span class="string">&#x27;)&#x27;</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">		total++;<span class="comment">//结果总数+1</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//每一行都试探所有位置（N列），看能不能放</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> col = <span class="number">1</span>; col &lt;= N; col++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">isOk</span>(row, col)) &#123;<span class="comment">//如果可以放</span></span><br><span class="line">			<span class="comment">//放置皇后的同时做好记录</span></span><br><span class="line">			a[row][col] = <span class="number">1</span>;</span><br><span class="line">			colFlag[col] = <span class="number">1</span>;</span><br><span class="line">			leftBias[col - row] = <span class="number">1</span>;</span><br><span class="line">			rightBias[col + row] = <span class="number">1</span>;</span><br><span class="line">			<span class="comment">//下一行放皇后</span></span><br><span class="line">			<span class="built_in">Place</span>(N, row + <span class="number">1</span>);</span><br><span class="line">			<span class="comment">//回溯：又回到这一行，试探其他位置，在这之前，要先把刚刚的标记和放上的皇后取消</span></span><br><span class="line">			a[row][col] = <span class="number">0</span>;</span><br><span class="line">			colFlag[col] = <span class="number">0</span>;</span><br><span class="line">			leftBias[col - row] = <span class="number">0</span>;</span><br><span class="line">			rightBias[col + row] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> row = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> N = <span class="number">8</span>;</span><br><span class="line">	<span class="built_in">Place</span>(N, row);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;共有&quot;</span> &lt;&lt; total &lt;&lt; <span class="string">&quot;种解法&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="数据结构是递归定义的"><a href="#数据结构是递归定义的" class="headerlink" title="数据结构是递归定义的"></a>数据结构是递归定义的</h2><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>前序遍历递归复制树</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span></span><br><span class="line"><span class="function">TreeNode&lt;T&gt;* <span class="title">copy</span><span class="params">(TreeNode&lt;T&gt;* &amp;a, TreeNode&lt;T&gt;* b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (b == <span class="literal">nullptr</span>)<span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		a = <span class="keyword">new</span> TreeNode&lt;T&gt;;</span><br><span class="line">		a-&gt;data = b-&gt;data;</span><br><span class="line">		a-&gt;leftChild = <span class="built_in">copy</span>(a-&gt;leftChild, b-&gt;leftChild);</span><br><span class="line">		a-&gt;rightChild = <span class="built_in">copy</span>(a-&gt;rightChild, b-&gt;rightChild);</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>后序遍历递归计算树的高度</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">getHeight</span><span class="params">(TreeNode&lt;T&gt;* root)</span> </span>&#123;<span class="comment">//规定空树高度为0，一个结点时高度为1</span></span><br><span class="line">		<span class="keyword">if</span> (root == <span class="literal">nullptr</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">//结点高度=max（左子树高度，右子树结点高度）+1</span></span><br><span class="line">			<span class="type">int</span> heightLeft=<span class="built_in">getHeight</span>(root-&gt;leftChild);</span><br><span class="line">			<span class="type">int</span> heightRight=<span class="built_in">getHeight</span>(root-&gt;rightChild);</span><br><span class="line">			<span class="keyword">return</span> (heightLeft &gt; heightRight) ? (heightLeft + <span class="number">1</span>) : (heightRight + <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></div>
-<p>后序遍历递归计算树的结点个数</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">getNodeCount</span><span class="params">(TreeNode&lt;T&gt;* root)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//后序遍历递归计算树的结点个数</span></span><br><span class="line">		<span class="comment">//总节点数=左树结点数+右树结点数+1</span></span><br><span class="line">		<span class="keyword">if</span> (root == <span class="literal">nullptr</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="type">int</span> leftCount = <span class="built_in">getNodeCount</span>(root-&gt;leftChild);</span><br><span class="line">			<span class="type">int</span> rightCount = <span class="built_in">getNodeCount</span>(root-&gt;rightChild);</span><br><span class="line">			<span class="keyword">return</span> leftCount + rightCount + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="解法一：分治法"><a href="#解法一：分治法" class="headerlink" title="解法一：分治法"></a>解法一：分治法</h4><p>找到数组的中点mid，那么任何连续的子数组A[i…j]都应该在这三个范围中的一个：</p>
+<ul>
+<li>在A[low…mid]区间，low&lt;&#x3D;i&lt;&#x3D;j&lt;&#x3D;mid</li>
+<li>在A[mid+1…high]区间，mid+1&lt;&#x3D;i&lt;&#x3D;j&lt;&#x3D;high</li>
+<li>跨越中点，low&lt;&#x3D;i&lt;&#x3D;mid&lt;&#x3D;j&lt;&#x3D;high</li>
+</ul>
+<p>前两种情况可以递归地去解出，因为它们是源问题的更小实例</p>
+<p>但第三种情况必须单独解，因为它有必须“跨越中点”的限制，并非源问题的更小实例</p>
+<p>最大子数组是三者的最大者</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">findCross</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> mid, <span class="type">int</span> high)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//终止条件</span></span><br><span class="line">	<span class="keyword">if</span> (low &gt;= mid)<span class="keyword">return</span> A[low];</span><br><span class="line">	<span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> leftSum = INT_MIN;</span><br><span class="line">	<span class="type">int</span> rightSum = INT_MIN;</span><br><span class="line">	<span class="comment">//中点（包括中点）往左的最大子数组的值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = mid; i &gt; low; i--) &#123;</span><br><span class="line">		sum += A[i];</span><br><span class="line">		leftSum = std::<span class="built_in">max</span>(leftSum, sum);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//中点往右的最大子数组的值</span></span><br><span class="line">	sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = mid + <span class="number">1</span>; i &lt; high; i++) &#123;</span><br><span class="line">		sum += A[i];</span><br><span class="line">		rightSum = std::<span class="built_in">max</span>(rightSum, sum);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> leftSum + rightSum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">findMaxSubArray</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> high)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//终止条件</span></span><br><span class="line">	<span class="keyword">if</span> (low &gt;= high)<span class="keyword">return</span> A[low];</span><br><span class="line">	<span class="comment">//int mid = (low + high) / 2;</span></span><br><span class="line">	<span class="type">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//寻找中点左侧，右侧和跨越中点的最大子数组的值</span></span><br><span class="line">	<span class="type">int</span> leftMax = <span class="built_in">findMaxSubArray</span>(A, low, mid);</span><br><span class="line">	<span class="type">int</span> rightMax = <span class="built_in">findMaxSubArray</span>(A, mid + <span class="number">1</span>, high);</span><br><span class="line">	<span class="type">int</span> crossMax = <span class="built_in">findCross</span>(A, low, mid, high);</span><br><span class="line">	<span class="comment">//返回三者中最大的那个</span></span><br><span class="line">	<span class="keyword">if</span> (leftMax &gt;= rightMax &amp;&amp; leftMax &gt;= crossMax)<span class="keyword">return</span> leftMax;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (rightMax &gt;= leftMax &amp;&amp; rightMax &gt;= crossMax)<span class="keyword">return</span> rightMax;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> crossMax;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="解法2：线性时间"><a href="#解法2：线性时间" class="headerlink" title="解法2：线性时间"></a>解法2：线性时间</h4><h4 id="解法3：动态规划"><a href="#解法3：动态规划" class="headerlink" title="解法3：动态规划"></a>解法3：动态规划</h4>
             </div>
 
             
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Recursive</li>
+        <li>Post title：分治法</li>
         <li>Post author：萧</li>
-        <li>Create time：2023-01-20 13:28:48</li>
+        <li>Create time：2023-04-29 20:10:48</li>
         <li>
-            Post link：https://redefine.ohevan.com/2023/01/20/数据结构笔记/Recursive/
+            Post link：https://redefine.ohevan.com/2023/04/29/算法笔记/分治法/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -375,13 +383,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2023/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/Queue/"
+                            href="/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Queue</span>
+                                    <span class="post-nav-title-item">动态规划理论</span>
                                     <span class="post-nav-item">Prev posts</span>
                                 </span>
                             </a>
@@ -391,10 +399,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/Graph/"
+                            href="/2023/04/01/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/MybatisPlus/MybatisPlus/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Graph</span>
+                                    <span class="post-nav-title-item">MybatisPlus简单使用</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -414,7 +422,7 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE"><span class="nav-text">前置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%83%B3%E6%B3%95"><span class="nav-text">递归的想法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%86%99%E9%80%92%E5%BD%92"><span class="nav-text">如何写递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E6%97%B6%E7%94%A8%E9%80%92%E5%BD%92"><span class="nav-text">何时用递归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-text">回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-text">N皇后问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E9%80%92%E5%BD%92%E5%AE%9A%E4%B9%89%E7%9A%84"><span class="nav-text">数据结构是递归定义的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91"><span class="nav-text">树</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95"><span class="nav-text">分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">如何分析复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84"><span class="nav-text">最大子数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E5%88%86%E6%B2%BB%E6%B3%95"><span class="nav-text">解法一：分治法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%952%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4"><span class="nav-text">解法2：线性时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%953%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">解法3：动态规划</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
             </div>
