@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/05/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            二分查找 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">二分查找</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-05-10 20:10:48</span>
+        <span class="mobile">2023-05-10 20:10</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA/">算法理论</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="统一模板"><a href="#统一模板" class="headerlink" title="统一模板"></a>统一模板</h1><p>以升序的数组进行讨论</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%A8%A1%E6%9D%BF.png"
+                     
+                ></p>
+<p>采用第一种模板：左开右开区间，左右指针相邻时结束(l+1&#x3D;&#x3D;r)</p>
+<p>好处：</p>
+<ul>
+<li>l,u指针变化规律统一（都是移到mid），好记</li>
+<li>可行区的指针最后一定会指向答案</li>
+<li>开区间可以正确处理边界</li>
+</ul>
+<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><p><strong>可行区：满足条件的区域称为可行区</strong></p>
+<p>例如：求最后一个&lt;&#x3D;5的数的下标，条件是&lt;&#x3D;5。显然，满足这个条件的区域是左侧区域，因此可行区在左侧，左指针指向答案</p>
+<p><strong>满足条件，则答案指针移动到mid，否则另一侧指针移动到mid</strong></p>
+<p>继续沿用上述例子：</p>
+<ul>
+<li>a[mid]&lt;&#x3D;5成立，说明满足条件，那么答案指针l&#x3D;mid</li>
+<li>a[mid]&lt;&#x3D;5不成立，说明不满足条件，那么另一侧指针r&#x3D;mid</li>
+</ul>
+<hr>
+<p>例：数组a[i]&#x3D;{1,2,3,5,5,5,7,8}(i&#x3D;1….8)</p>
+<p>最大化查找：求最后一个&lt;&#x3D;5的数的下标</p>
+<p>最小化查找：求第一个&gt;&#x3D;5的数的下标</p>
+<p><strong>最大化查找：可行区在左侧，左指针指向答案</strong></p>
+<p>返回答案：6</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> q)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> l = <span class="number">0</span>， r = n + <span class="number">1</span>;<span class="comment">//左开右开区间</span></span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;<span class="comment">//结束条件是l+1=r</span></span><br><span class="line">		<span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (a[mid] &lt;= q)l = mid;<span class="comment">//满足条件，移动答案指针</span></span><br><span class="line">		<span class="keyword">else</span> r = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;<span class="comment">//可行区在左侧，左指针指向答案</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>最小化查找：可行区在右侧，右指针指向答案</strong></p>
+<p>返回答案：4</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> q)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> l = <span class="number">0</span>， r = n + <span class="number">1</span>;<span class="comment">//左开右开区间</span></span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;<span class="comment">//结束条件是l+1=r</span></span><br><span class="line">		<span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (a[mid] &gt;= q)r = mid;<span class="comment">//满足条件，移动答案指针</span></span><br><span class="line">		<span class="keyword">else</span> l = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> r;<span class="comment">//可行区在右侧，右指针指向答案</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>如果是<strong>浮点数二分</strong></p>
+<ul>
+<li>结束条件改为 r - l&gt;1e-5(具体是大于几，要依据答案要求的精度)</li>
+<li>mid也要是double类型，要用(l+r)&#x2F;2,不能用&gt;&gt;1（移位操作只能用于整形）</li>
+</ul>
+<p><strong>两个例题</strong></p>
+<p>整数二分：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2249" >https://www.luogu.com.cn/problem/P2249 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>浮点数二分：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1024" >https://www.luogu.com.cn/problem/P1024 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h1 id="二分答案"><a href="#二分答案" class="headerlink" title="二分答案"></a>二分答案</h1><p>与二分查找相对应的，二分答案的题型分为最大化答案和最小化答案</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/img/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%E6%9D%BF%E5%AD%90.png"
+                     
+                ></p>
+<p>其实就是套用二分查找的模板，把查找条件改为一个check(int x)函数</p>
+<p><strong>最大化答案</strong></p>
+<p>套用最大化查找的板子</p>
+<p>如果x在可行区（满足条件），则check()函数为真，答案指针l右移（l &#x3D; mid）；否则check()函数为假，另一侧指针r左移（r &#x3D; mid）</p>
+<p><em>check(int x)函数何时返回true？</em></p>
+<p>设条件为C</p>
+<ul>
+<li>y是x的增函数时：return y&lt;&#x3D;C<br>由于另check()为true是要让左指针右移（让x变大），因此为true的时候，应当是y&lt;&#x3D;C的时候。这时让左指针右移使得讨论的x变大，y增加。</li>
+<li>y是x的减函数时：return y&gt;&#x3D;C<br>由于另check()为true是要让左指针右移（让x变大），因此为true的时候，应当是y&gt;&#x3D;C的时候。这时让左指针右移使得讨论的x变大，y减小。</li>
+</ul>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	...<span class="comment">//计算y</span></span><br><span class="line">	<span class="keyword">return</span> y &lt;= C;<span class="comment">//当y是x的增函数时</span></span><br><span class="line">	<span class="keyword">return</span> y &gt;= C;<span class="comment">//当y是x的减函数时</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> l = 下界 <span class="number">-1</span>, r = 上界 + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;</span><br><span class="line">		<span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(mid))l = mid;</span><br><span class="line">		<span class="keyword">else</span> r = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>最小化答案</strong></p>
+<p>套用最小化查找的板子</p>
+<p>如果x在可行区（满足条件），则check()函数为真，答案指针r左移（r &#x3D; mid）；否则check()函数为假，另一侧指针l右移（l &#x3D; mid）</p>
+<p><em>check(int x)函数何时返回true？</em></p>
+<p>设条件为C</p>
+<ul>
+<li>y是x的增函数时：return y&gt;&#x3D;C<br>由于另check()为true是要让右指针左移（让x变小），因此为true的时候，应当是y&gt;&#x3D;C的时候。这时让右指针左移使得讨论的x变小，y减小。</li>
+<li>y是x的减函数时：return y&lt;&#x3D;C<br>由于另check()为true是要让右指针左移（让x变小），因此为true的时候，应当是y&lt;&#x3D;C的时候。这时让右指针左移使得讨论的x变小，y增大。</li>
+</ul>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	...<span class="comment">//计算y</span></span><br><span class="line">	<span class="keyword">return</span> y &gt;= C;<span class="comment">//当y是x的增函数时</span></span><br><span class="line">	<span class="keyword">return</span> y &lt;= C;<span class="comment">//当y是x的减函数时</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> l = 下界 <span class="number">-1</span>, r = 上界 + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;</span><br><span class="line">		<span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(mid))r = mid;</span><br><span class="line">		<span class="keyword">else</span> l = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="题目列表"><a href="#题目列表" class="headerlink" title="题目列表"></a>题目列表</h2><h3 id="垦田计划"><a href="#垦田计划" class="headerlink" title="垦田计划"></a>垦田计划</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="http://118.190.20.162/view.page?gpid=T164" >http://118.190.20.162/view.page?gpid=T164 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>题解：在CCF前三题做题记录里有</p>
+<h3 id="木材加工"><a href="#木材加工" class="headerlink" title="木材加工"></a>木材加工</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2440" >https://www.luogu.com.cn/problem/P2440 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>最大化，减函数</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">求切割段长的最大值--&gt;切割段长就是x，需要二分x最大化找答案</span></span><br><span class="line"><span class="comment">那么切的总段数就是y</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">切割成k段长度相等的小木头蕴含的不等式：总段数y&gt;=k</span></span><br><span class="line"><span class="comment">段数y随着段长的增加而减少（减函数），计算公式为：y=L[i]/x, i=0...n</span></span><br><span class="line"><span class="comment">综上，可行区在左侧</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">此题的x，y的函数关系是离散函数，有以下两个特点：</span></span><br><span class="line"><span class="comment">1、x取连续的整数，y的值可能不变</span></span><br><span class="line"><span class="comment">2、x取连续的整数，y的值可能是跃变的</span></span><br><span class="line"><span class="comment">因此y的条件不一定是取等号的时候，x有最值，而是满足在这范围内。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> L[<span class="number">100005</span>];</span><br><span class="line"><span class="type">int</span> k;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> sumK = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> Li : L)</span><br><span class="line">		sumK += Li / x;</span><br><span class="line">	<span class="keyword">return</span> sumK &gt;= k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>), cin.<span class="built_in">tie</span>(<span class="literal">NULL</span>), cout.<span class="built_in">tie</span>(<span class="literal">NULL</span>);</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	<span class="type">int</span> maxL = <span class="number">0</span>;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		cin &gt;&gt; L[i];</span><br><span class="line">		maxL = <span class="built_in">max</span>(maxL, L[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> l = <span class="number">0</span>, r = maxL + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;</span><br><span class="line">		<span class="type">int</span> mid = (l + r )&gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(mid))l = mid;</span><br><span class="line">		<span class="keyword">else</span> r = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; l;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="跳石头"><a href="#跳石头" class="headerlink" title="跳石头"></a>跳石头</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2678" >https://www.luogu.com.cn/problem/P2678 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>最大化，增函数，贪心</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">求最短跳跃距离的最大值，将它设为x</span></span><br><span class="line"><span class="comment">y：移走岩石的块数，条件是y&lt;=M</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">二分枚举x，对于某个x：移走一定的石头，剩余石头的间距应当&gt;=x</span></span><br><span class="line"><span class="comment">如何移走岩石（贪心）：</span></span><br><span class="line"><span class="comment">	从头开始跳，若下一跳距离&lt;x,就把下一跳岩石移走，直到下一跳距离&gt;=x才跳过去</span></span><br><span class="line"><span class="comment">	特别的：如果最后一块石头距离终点&lt;x,则移走的是最后一块石头</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">最短跳跃距离越大，说明移走的次数越多（增函数）</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">对x进行最大化二分：看在y&lt;=M的条件下，能否满足x</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> s[<span class="number">500005</span>];</span><br><span class="line"><span class="type">int</span> L, N, M;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> last = <span class="number">0</span>;<span class="comment">//上一跳的石头下标（起点是0，终点是N+1）</span></span><br><span class="line">	<span class="type">int</span> move = <span class="number">0</span>;<span class="comment">//记录移走石头的块数</span></span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N + <span class="number">1</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (s[i] - s[last] &lt; x)move++;<span class="comment">//移走石头，起跳点不变</span></span><br><span class="line">		<span class="keyword">else</span> last = i;<span class="comment">//不移动石头，继续往下跳</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> move &lt;= M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>), cin.<span class="built_in">tie</span>(<span class="literal">NULL</span>), cout.<span class="built_in">tie</span>(<span class="literal">NULL</span>);</span><br><span class="line">	cin &gt;&gt; L &gt;&gt; N &gt;&gt; M;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">		cin &gt;&gt; s[i];</span><br><span class="line">	s[N + <span class="number">1</span>] = L;</span><br><span class="line">	<span class="type">int</span> l = <span class="number">0</span>, r = L + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(mid))l = mid;</span><br><span class="line">		<span class="keyword">else</span> r = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; l;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="聪明的质检员"><a href="#聪明的质检员" class="headerlink" title="聪明的质检员"></a>聪明的质检员</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1314" >https://www.luogu.com.cn/problem/P1314 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>最大&#x2F;最小化答案（选其一），减函数，前缀和</p>
+<p>注：不用前缀和的话，算一个yi需要O(n)的复杂度，会超时</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">调整参数W是本题中的x，y就是题目说的校验结果y</span></span><br><span class="line"><span class="comment">y和x是减函数关系：W越大，y越小（条件越难满足，y当然就小了）</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">yi公式释义：第i个区间中，所有重量&gt;=W的矿石的总价值*这些矿石的数量</span></span><br><span class="line"><span class="comment">这里可以用前缀和的技巧，预处理好当前W下，满足重量&gt;=W的总价值和矿石数目的前缀和数组，</span></span><br><span class="line"><span class="comment">运用s[i,j]=A[j]-A[i-1]就可以在O(1)时间内求出指定区间段中的yi</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">算的是y与s的差，题目没有限定y要大于s还是小于s：</span></span><br><span class="line"><span class="comment">这里假设y&lt;=s，返回真。那么在这种情况下，可行区在右边，最小化板子</span></span><br><span class="line"><span class="comment">也可以假设y&gt;=s,返回真。在这种情况下，可行区在左侧，最大化板子</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">200005</span>;</span><br><span class="line"><span class="type">int</span> n, m, w[N],v[N];</span><br><span class="line">ll s, sn[N], sv[N];</span><br><span class="line">ll ans = <span class="number">1e12</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">range</span> &#123;</span><br><span class="line">	<span class="type">int</span> li;</span><br><span class="line">	<span class="type">int</span> ri;</span><br><span class="line">&#125;;</span><br><span class="line">range ran[N];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	ll y = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">/*前缀和优化：</span></span><br><span class="line"><span class="comment">	  sn[i]:前i个矿石中，满足重量&gt;=W的矿石数</span></span><br><span class="line"><span class="comment">	  sv[i]:前i个矿石中，满足重量&gt;=W的矿石的价值总和</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="built_in">memset</span>(sn, <span class="number">0</span>, <span class="keyword">sizeof</span> sn);</span><br><span class="line">	<span class="built_in">memset</span>(sv, <span class="number">0</span>, <span class="keyword">sizeof</span> sv);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (w[i] &gt;= x) &#123;</span><br><span class="line">			sn[i] = sn[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">			sv[i] = sv[i - <span class="number">1</span>] + v[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			sn[i] = sn[i - <span class="number">1</span>];</span><br><span class="line">			sv[i] = sv[i - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//有了前缀和数组，计算yi的复杂度就从O(n)降到O(1)了</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++) </span><br><span class="line">		y += (sn[ran[i].ri]-sn[ran[i].li - <span class="number">1</span>])*(sv[ran[i].ri]-sv[ran[i].li - <span class="number">1</span>]);</span><br><span class="line">	ans = <span class="built_in">min</span>(ans, <span class="built_in">llabs</span>(y - s));</span><br><span class="line">	<span class="keyword">return</span> y &lt;= s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>), cin.<span class="built_in">tie</span>(<span class="literal">NULL</span>), cout.<span class="built_in">tie</span>(<span class="literal">NULL</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		cin &gt;&gt; w[i] &gt;&gt; v[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		cin &gt;&gt; ran[i].li &gt;&gt; ran[i].ri;</span><br><span class="line">	<span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">1e6</span> + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (l + <span class="number">1</span> &lt; r) &#123;</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(mid))r = mid;</span><br><span class="line">		<span class="keyword">else</span> l = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="借教室"><a href="#借教室" class="headerlink" title="借教室"></a>借教室</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1083" >https://www.luogu.com.cn/problem/P1083 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="刺杀大使"><a href="#刺杀大使" class="headerlink" title="刺杀大使"></a>刺杀大使</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1902" >https://www.luogu.com.cn/problem/P1902 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="银行贷款"><a href="#银行贷款" class="headerlink" title="银行贷款"></a>银行贷款</h3><p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1163" >https://www.luogu.com.cn/problem/P1163 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>做二分答案题目思考方式：</p>
+<ol>
+<li>在脑海里要有一个函数意识：x和y</li>
+<li>先确定x：x就是题目需要的答案，对x进行二分枚举。再根据题目要求确定这是一道最小化答案还是最大化答案，确定总体模板。</li>
+<li>然后确定y，需要分析两方面：<ul>
+<li>x和y的函数关系：如何根据x求y，是增&#x2F;减函数</li>
+<li>题目中对y的限制</li>
+</ul>
+</li>
+<li>定义check()函数返回值的判断表达式，考虑以下三方面<ul>
+<li>最大&#x2F;小化答案</li>
+<li>函数关系增减性</li>
+<li>y的限制</li>
+</ul>
+</li>
+</ol>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：二分查找</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-05-10 20:10:48</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/05/10/算法笔记/二分查找/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/04/29/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/CCF%E5%89%8D%E4%B8%89%E9%A2%98%E8%AE%AD%E7%BB%83/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">CCF前三题训练</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E6%A8%A1%E6%9D%BF"><span class="nav-text">统一模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88"><span class="nav-text">二分答案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%88%97%E8%A1%A8"><span class="nav-text">题目列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%A6%E7%94%B0%E8%AE%A1%E5%88%92"><span class="nav-text">垦田计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5"><span class="nav-text">木材加工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E7%9F%B3%E5%A4%B4"><span class="nav-text">跳石头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%AA%E6%98%8E%E7%9A%84%E8%B4%A8%E6%A3%80%E5%91%98"><span class="nav-text">聪明的质检员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E6%95%99%E5%AE%A4"><span class="nav-text">借教室</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%BA%E6%9D%80%E5%A4%A7%E4%BD%BF"><span class="nav-text">刺杀大使</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%B6%E8%A1%8C%E8%B4%B7%E6%AC%BE"><span class="nav-text">银行贷款</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
