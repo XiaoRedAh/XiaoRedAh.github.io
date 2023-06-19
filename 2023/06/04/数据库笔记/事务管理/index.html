@@ -362,12 +362,7 @@
 <li>input(B)将X从磁盘的B数据块输入到全局缓冲区，T1，T2分别read(X)将全局缓冲区的X读入到自己事务的私有缓冲区。</li>
 <li>T1用write(x)将事务T1的私有缓冲区中的X写回全局缓冲区，全局缓冲区通过output(B)将这个X输出到磁盘中的数据块B位置</li>
 </ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/pic/%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%AF%BB%E5%92%8C%E5%86%99.png"
-                     
-                ></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230619214480381.png" alt="pic/事务读和写"></p>
 <p>综上，事务的读写分别用read(X)，write(X)表示，是在事务自己的主存缓冲区上操作。write(X)并不一定立即更新磁盘上的数据</p>
 <p><strong>事务状态</strong></p>
 <ul>
@@ -394,12 +389,7 @@
 </ul>
 </li>
 </ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/pic/%E4%BA%8B%E5%8A%A1%E7%8A%B6%E6%80%81.png"
-                     
-                ></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230619219555881.png" alt="pic/事务状态"></p>
 <p>执行一个事务可能经过的状态：</p>
 <ul>
 <li>活动状态 → 部分提交状态 → 提交状态</li>
@@ -924,6 +914,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/06/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/DBS%E6%A6%82%E8%BF%B0/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">DBS概述</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
