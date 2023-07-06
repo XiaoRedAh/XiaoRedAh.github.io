@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/07/02/%E8%BF%90%E7%BB%B4/%E6%9C%80%E5%8E%9F%E5%A7%8B%E7%9A%84%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E6%96%B9%E6%B3%95/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            最原始的部署项目方法 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">最原始的部署项目方法</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-07-02 16:29:48</span>
+        <span class="mobile">2023-07-02 16:29</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">项目部署</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p>最原始的项目部署：买服务器 -&gt; 装系统 -&gt; 装环境（Java、Nginx、Nodejs）-&gt; 上传项目 -&gt; 编写命令运行项目 -&gt; 服务器重启 -&gt; 重复命令</p>
+<h1 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h1><p>很多学生优惠，可以去看看</p>
+<h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p>阿里云，腾讯云，雨云（便宜点，但性能没有前两家好）</p>
+<p>包年包月</p>
+<p><strong>选地区（香港最方便）</strong></p>
+<ul>
+<li>大陆地区：最快，但需要备案</li>
+<li>香港：不用备案，但上防御比较麻烦</li>
+<li>国外：相对国内较慢（中东，德国就别买了，延迟太高），有时候也可能被墙</li>
+</ul>
+<p>网络及可用区：vpc即可</p>
+<p><strong>选cpu：</strong></p>
+<p>只做代理，展示个静态页面：1核就行</p>
+<p>有后端的：2核</p>
+<p>内存：0.5GiB就够了</p>
+<p>架构：X86计算（比较成熟，问题好解决）</p>
+<p>弹性裸金属服务器是啥意思：一台真正的物理机，不是虚拟划分来的（贵，买不起）</p>
+<p>突发性能实例和共享基本型的选择无所谓，挑便宜的（学习用途不用讲究那么多）</p>
+<p><strong>镜像</strong></p>
+<p>安装到服务器上的系统：</p>
+<ul>
+<li>选Linux（Ubuntu，CentOS Stream这些比较流行的就可以），别选Windows（臃肿，不方便）</li>
+<li>最好不要选最新的（有问题都找不到解答）</li>
+</ul>
+<p><strong>系统盘：</strong></p>
+<p>高效云盘：其实就是机械硬盘，虽然慢点，但学习来说够用了</p>
+<p>SSD云盘：更快，但贵</p>
+<p>容量：20Gib就够用了</p>
+<p>IOPS：读写性能</p>
+<p>数据盘，快照服务：学习阶段用不到，不用管</p>
+<p><strong>宽带</strong></p>
+<p>公网IP：必须要有</p>
+<p>线路类型：按便宜的选就行</p>
+<p>宽带计费模式：<strong>选择按固定宽带，千万不要按流量计费（虽然配置费用低，但如果有人恶意刷流量，会产生极大的费用）</strong></p>
+<p>宽带值：要挂前端需要5Mbps以上，只是挂后端的话1Mbps就可以</p>
+<h2 id="轻量级应用服务器"><a href="#轻量级应用服务器" class="headerlink" title="轻量级应用服务器"></a>轻量级应用服务器</h2><p>更方便，很多都已经捆绑配置好了，而且价格比云服务器低</p>
+<p><strong>需要注意：它是按流量计费的</strong></p>
+<p>配置参照云服务器就可以</p>
+<h1 id="服务器基础配置"><a href="#服务器基础配置" class="headerlink" title="服务器基础配置"></a>服务器基础配置</h1><p>公网IP：访问网站用的IP</p>
+<p>内网IP：同一地区两台服务器之间通信（比如说分布式项目），不计流量，速度快</p>
+<h2 id="本地连接服务器"><a href="#本地连接服务器" class="headerlink" title="本地连接服务器"></a>本地连接服务器</h2><p>步骤如下：</p>
+<p>① 服务器那边，通过控制台，远程连接</p>
+<p>为了本地能够连上，需要创建一个用户（用户名test为例）</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//创建<span class="built_in">test</span>用户</span><br><span class="line">sudo useradd <span class="built_in">test</span> -m -s /bin/bash</span><br><span class="line">//给<span class="built_in">test</span>用户设置密码</span><br><span class="line">sudo passwd <span class="built_in">test</span></span><br></pre></td></tr></table></figure></div>
+
+<p>然后给这个用户授予超级管理员的权限</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sudoers</span><br></pre></td></tr></table></figure></div>
+
+<p>② 本地cmd中，用ssh连接到服务器（用服务器的公网IP）</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="built_in">test</span>@服务器公网ip</span><br></pre></td></tr></table></figure></div>
+
+<p>本地成功连接上服务器后，就可以在本地操作服务器了，远程连接没用了，关掉</p>
+<h2 id="给服务器装环境"><a href="#给服务器装环境" class="headerlink" title="给服务器装环境"></a>给服务器装环境</h2><p>将前后端分离项目放在服务器上一般采用的方案：</p>
+<ul>
+<li>服务器上跑一个java环境</li>
+<li>用一个反向代理的服务器挂前端（这里使用nginx反向代理）</li>
+</ul>
+<p>装环境：</p>
+<p>① 本地成功连接上服务器后，更新软件源</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure></div>
+
+<p>② 给服务器安装java环境</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//看一下有哪些版本可以选</span><br><span class="line">sudo apt install openjdk-</span><br><span class="line">//因为不用在服务器上开发，只是跑项目而已，所以下载jre就可以了</span><br><span class="line">sudo apt install openjdk-17-jre</span><br><span class="line">//查看下载的版本</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure></div>
+
+<p>③ 安装nginx</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br><span class="line">//查看nginx服务有没有启动</span><br><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure></div>
+
+<p>安装nginx后，就可以在浏览器通过服务器的公网ip访问到了</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//可以去编辑访问的页面</span><br><span class="line">sudo vim /var/www/html/index.nginx-debian.html</span><br><span class="line">//重新加载nginx服务</span><br><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="前端项目代理"><a href="#前端项目代理" class="headerlink" title="前端项目代理"></a>前端项目代理</h1><p><strong>前端项目</strong></p>
+<p>① 修改前端请求地址</p>
+<p>main.js中修改</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;http://服务器公网ip:8080&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>② package.json文件运行build（用的是vite），会编译出一堆文件放在dist目录下</p>
+<p>③ 将前端项目上传到服务器</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//先切换到前端项目位置</span><br><span class="line"><span class="built_in">cd</span> study-ptoject-frontend </span><br><span class="line">//复制dist目录，上传到远端服务器的指定目录，</span><br><span class="line">//这里上传到远端的<span class="built_in">test</span>用户，:后面接上传到的地方，~是远端的home目录</span><br><span class="line">scp -r dist <span class="built_in">test</span>@服务器公网ip:~ </span><br></pre></td></tr></table></figure></div>
+
+<p><strong>本地连接服务器test用户</strong></p>
+<p>本地连接服务器test用户后，ls可以看到dist目录已经上传到远端服务器上了。但是现在访问nginx只能访问到nginx的默认页面</p>
+<p>④ 配置nginx</p>
+<p>打开编辑配置文件</p>
+<p>注意：不要直接在nginx.config文件中配置，会被这个default覆盖掉，相当于没配</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure></div>
+
+<p>修改配置文件，把默认的代理路径改为刚刚上传的dist目录</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root /home/test/dist</span><br></pre></td></tr></table></figure></div>
+
+<p>修改并保存好，重启nginx。<br>这时访问nginx，展示的就是刚刚上传的前端项目了</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure></div>
+
+<p>但是如果进行页面跳转，刷新一下，就会404。<br>这是因为前端项目使用了vue router，vue项目默认单页面，靠router跳转。刷新后就找不到文件了（nginx以为是多页面），就会提示404</p>
+<p>实际上一律访问index.html才对（单页面应用），因此还需要配置一下nginx</p>
+<p>先把默认自带的index删掉<br>然后在location &#x2F; 中添加：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location \ &#123;</span><br><span class="line">    # .....</span><br><span class="line">    # .....</span><br><span class="line">    index /index.html;</span><br><span class="line">    try_files $uri $uri/ /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>保存修改，重启nginx服务器，发现可以正常访问了。</p>
+<h1 id="后端项目代理"><a href="#后端项目代理" class="headerlink" title="后端项目代理"></a>后端项目代理</h1><p><strong>后端项目</strong></p>
+<p>① 用Maven的package命令打包后端项目，在target中生成该项目的jar包</p>
+<p>② 将后端项目上传到服务器</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//先切换到后端项目target目录所在位置</span><br><span class="line"><span class="built_in">cd</span> ../study-project-backend/target</span><br><span class="line">//复制jar包，上传到远端服务器（这里还是传到hone目录）</span><br><span class="line">//scp 包名.jar 服务器用户名@服务器公网IP:上传到的位置</span><br><span class="line">scp stu-project-backend-0.0.1-SNAPSHOT.jar <span class="built_in">test</span>@服务器公网IP:~</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>本地连接服务器test用户</strong></p>
+<p>③ 安装java运行环境（jre即可，不需要jdk）</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//看一下有哪些版本可以选</span><br><span class="line">sudo apt install openjdk-</span><br><span class="line">//因为不用在服务器上开发，只是跑项目而已，所以下载jre就可以了</span><br><span class="line">sudo apt install openjdk-17-jre</span><br></pre></td></tr></table></figure></div>
+
+<p>④ 安装redis</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install redis</span><br></pre></td></tr></table></figure></div>
+
+<p>⑤ 安装mysql</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//查看有什么下载选项</span><br><span class="line">sudo apt install mysql-</span><br><span class="line">//安装</span><br><span class="line">sudo apt install mysql-server-8.0</span><br></pre></td></tr></table></figure></div>
+
+<p>⑥ 配置mysql</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//打开配置</span><br><span class="line">sudo mysql -u root -p</span><br><span class="line">//</span><br><span class="line">update user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">//修改root用户的密码</span><br><span class="line">alter user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified with my_sql_native_password by <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">//刷新</span><br><span class="line">flush privileges;</span><br><span class="line">//退出</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//进入编辑，把文件中的bind-address注释掉</span><br><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line">//重启mysql</span><br><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure></div>
+
+<p>⑦ 本地navicat连接远端服务器</p>
+<p>navicat新建一个mysql连接。连接名随意，主机填服务器的公网ip，端口是mysql的3306，用户名和密码就是上一步配置的那个。</p>
+<p>连接成功后，在该连接中创建一个数据库（名称与后端项目application.yml配置的一致），然后在这个数据库中导入编写项目时准备好的sql文件</p>
+<p>给该连接创建一个用户：用户名及密码与后端项目application.yml配置的一样就行。主机可以写localhost也可以不写。</p>
+<p>创建用户后，给这个用户配置对象权限：存放后端项目的各个表的数据库的所有权限</p>
+<p>⑧ 服务器防火墙添加3306端口（mysql）和8080端口（后端项目的端口）</p>
+<hr>
+<p>经过上面的步骤，后端也部署完成了，输入<code>java -jar 包名.jar</code>即可运行后端项目。但这样启动属于前台启动，整个终端都在显示这个进程，无法进行其他操作。</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//只需加个&amp;，就能实现后台启动，终端正常使用</span><br><span class="line">java -jar 包名.jar &amp;</span><br></pre></td></tr></table></figure></div>
+
+<p>如果想要把后端服务器关掉，如下操作：</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//通过grep模糊匹配找到后端项目(jar包)对应的进程号</span><br><span class="line">ps aux | grep jar包的一些字符</span><br><span class="line">//杀死后端服务器进程</span><br><span class="line"><span class="built_in">kill</span> -9 后端项目进程号</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="安全注意事项"><a href="#安全注意事项" class="headerlink" title="安全注意事项"></a>安全注意事项</h1><p><strong>尽可能减少对外暴露的端口</strong></p>
+<p>如果网站上线后，不需要再用SSH远程连接了【服务器的控制台也可以远程连接，不一定非得本地SSH连接服务器】，可以把防火墙里的SSH端口关掉（防止别人通过SSH远程连接）</p>
+<p>如果后续不用navicat操控数据库了，可以把防火墙里mysql的3306端口关掉</p>
+<p>如果后续使用https，也可以把防火墙里http的80端口关掉</p>
+<h1 id="实现域名访问"><a href="#实现域名访问" class="headerlink" title="实现域名访问"></a>实现域名访问</h1><p>在这之前，网站已经部署成功了，可以通过服务器的公网IP访问网站。但用公网IP访问还是太麻烦了，现在给网站上个域名。</p>
+<h2 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h2><p>阿里云搜索“域名”进入相关页面，然后就可以查询心怡的域名进行购买</p>
+<p>购买后在域名控制台的域名列表中可以看到买到的域名，需要等待审核完后，才能使用。</p>
+<h2 id="域名备案"><a href="#域名备案" class="headerlink" title="域名备案"></a>域名备案</h2><p>使用国内服务器不备案的话，后面的域名访问可能会被拦，用不了</p>
+<p>如果怕隐私泄露，就不要备案，用国外的服务器（但会慢很多）</p>
+<p>如果要备案，建议通过大厂的ICP备案</p>
+<p>根据提示填写相应内容，域名填的是二级域名</p>
+<h2 id="域名解析配置"><a href="#域名解析配置" class="headerlink" title="域名解析配置"></a>域名解析配置</h2><p>① 给域名添加域名解析</p>
+<p>添加记录</p>
+<ul>
+<li>记录类型：指向IPV4地址</li>
+<li>主机记录：可填可不填（www，@，…）</li>
+<li>解析请求来源：默认即可</li>
+<li>记录值：填服务器公网IP</li>
+<li>TTL：默认即可</li>
+</ul>
+<p>② 前端项目的main.js将前端请求地址改为域名</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = <span class="string">&#x27;http://域名:8080&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>然后重新编译，将前端项目重传到服务器上。</p>
+<p><strong>本地远程连接服务器test用户</strong></p>
+<p>③ 为nginx添加域名</p>
+<p>打开配置文件</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure></div>
+
+<p>找到server_name，将其配置为刚刚添加的域名</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server_name 域名;</span><br></pre></td></tr></table></figure></div>
+
+<p>保存后，重启nginx服务</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx.service</span><br></pre></td></tr></table></figure></div>
+
+<p>等待域名解析生效，就可以正常访问了。</p>
+<hr>
+<p>访问域名等价于访问IP地址，现在可以用域名远程连接服务器</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="built_in">test</span>@域名</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h2 id="使用https协议"><a href="#使用https协议" class="headerlink" title="使用https协议"></a>使用https协议</h2><p>在这之前，通过域名已经可以正常访问到网站了。但是，访问用的是http，浏览器显示不安全，现在需要给网站上https加密协议</p>
+<p>在具体配置之前，先把SSL证书申请到：</p>
+<p>创建证书“SSL”证书，根据提示填写内容<br>证书绑定域名填写网站的域名，然后完善相关信息，提交审核即可。</p>
+<h3 id="前端SSL配置"><a href="#前端SSL配置" class="headerlink" title="前端SSL配置"></a>前端SSL配置</h3><p>① 证书申请到后，下载Nginx类型的SSL证书</p>
+<p>下载后会得到一个xxx文件夹，文件夹下有xxx.key和xxx.pem两个文件</p>
+<p>② 将下载好的证书上传到服务器</p>
+<p>在证书文件夹位置敲命令如下：</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx % scp * <span class="built_in">test</span>@服务器公网IP:~</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>本地连接服务器test用户</strong></p>
+<p>ls就可以看到刚刚上传的证书</p>
+<p>③ 把两个文件放到一个统一的文件夹中，为了方便，改下名</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ssl</span><br><span class="line">//一次性把xxx.key和xxx.pem移到ssl文件夹下</span><br><span class="line"><span class="built_in">mv</span> xxx.* ssl/</span><br><span class="line">//原来的文件名太长，改一下</span><br><span class="line"><span class="built_in">mv</span> xxx.key ca.key</span><br><span class="line"><span class="built_in">mv</span> xxx.pem ca.pem</span><br></pre></td></tr></table></figure></div>
+
+<p>④ 配置nginx，使其支持ssl</p>
+<p>打开编辑配置文件</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure></div>
+
+<p>把80端口注释掉，将ssl的443端口的注释去掉，然后随便找个地方添加证书：</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">把80端口注释掉，将ssl的443端口的注释去掉</span><br><span class="line">...</span><br><span class="line">ssl_certificate  /home/test/ssl/ca.pem；</span><br><span class="line">ssl_certificate_key /home/test/ssl/ca.key;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>保存修改，重启nginx</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure></div>
+
+<p>现在用http就访问不了了，用https可以正常访问（国内服务器可能不行，需要备案）</p>
+<h3 id="后端SSL配置"><a href="#后端SSL配置" class="headerlink" title="后端SSL配置"></a>后端SSL配置</h3><p>① 证书申请下来后，下载JKS类型的SSL证书</p>
+<p>② 把下载的jks文件移动到后端项目的resources目录下。为了方便，改名为ca.jks</p>
+<p>③ 后端项目的application.yaml添加如下配置：</p>
+<div class="highlight-container" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">4433</span> <span class="comment"># 配置后端服务器端口，找个没被占用的即可</span></span><br><span class="line">  <span class="attr">ssl:</span></span><br><span class="line">    <span class="attr">key-store:</span> <span class="string">classpath:ca.jks</span></span><br><span class="line">    <span class="attr">key-store-password:</span> <span class="string">xxxx</span> <span class="comment"># 证书的密钥存放在证书下载携带的jks-password.txt文件中</span></span><br><span class="line">    <span class="attr">key-store-type:</span> <span class="string">JKS</span></span><br></pre></td></tr></table></figure></div>
+
+<p>④ 前端项目main.js文件中修改请求地址</p>
+<p>改成https，端口改为刚刚配置的那个端口</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = &#x27;https://域名:4433&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>前端，后端项目重新打包，重传到服务器上。</p>
+<p>⑤ 服务器防火墙添加后端项目的4433端口</p>
+<hr>
+<p>由于前后端都部署在一个服务器上，443端口给到前端项目占用，因此后端需要另外配置一个4433端口。</p>
+<p>如果有两台服务器，一台部署前端，一台部署后端，那就没有这样的问题，后端也可以使用到默认的443端口，不用另外配置。</p>
+<p>或者nginx做个分流，根据路径&#x2F;域名判断走哪里</p>
+<hr>
+<h1 id="套CDN防御"><a href="#套CDN防御" class="headerlink" title="套CDN防御"></a>套CDN防御</h1><p>DDOS防御比较贵，对于学习来说成本上划不来。<br>挂cloudflare比较经济实惠</p>
+<p>注册一个cf账号，即可免费提供添加站点保护，按照它的提示操作就行</p>
+<p>通过套一层CDN来保护网站：相当于在别人访问我搭建的网站时，先走这个cf，然后再由它转发给我的网站</p>
+<p>这个防御还是比较高的，但由于它部署在国外，国内的服务器套一层cf后速度会慢很多</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：最原始的部署项目方法</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-07-02 16:29:48</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/07/02/运维/最原始的部署项目方法/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">#项目部署</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/07/06/%E8%BF%90%E7%BB%B4/Docker%20%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%20/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Docker容器技术</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/06/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/SQL%E8%AF%AD%E8%A8%80/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">SQL语言</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%89%E8%B4%AD"><span class="nav-text">服务器选购</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">云服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">轻量级应用服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-text">服务器基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">本地连接服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="nav-text">给服务器装环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%90%86"><span class="nav-text">前端项目代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%90%86"><span class="nav-text">后端项目代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">安全注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE"><span class="nav-text">实现域名访问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E6%B3%A8%E5%86%8C"><span class="nav-text">域名注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88"><span class="nav-text">域名备案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E9%85%8D%E7%BD%AE"><span class="nav-text">域名解析配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8https%E5%8D%8F%E8%AE%AE"><span class="nav-text">使用https协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AFSSL%E9%85%8D%E7%BD%AE"><span class="nav-text">前端SSL配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%AB%AFSSL%E9%85%8D%E7%BD%AE"><span class="nav-text">后端SSL配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%97CDN%E9%98%B2%E5%BE%A1"><span class="nav-text">套CDN防御</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
