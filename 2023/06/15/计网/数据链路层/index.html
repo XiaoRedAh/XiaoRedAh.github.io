@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/06/15/%E8%AE%A1%E7%BD%91/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            数据链路层 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">数据链路层</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-06-15 08:13:24</span>
+        <span class="mobile">2023-06-15 08:13</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p><strong>数据链路层</strong></p>
+<ul>
+<li><strong>作用范围</strong>：同一局域网</li>
+<li><strong>任务</strong>：封装成帧，透明传输，差错检测</li>
+<li><strong>如何完成任务</strong><ul>
+<li>点对点信道——<strong>PPP协议</strong></li>
+<li>广播信道：共享式以太网（半双工下采用<strong>CSMA&#x2F;CD协议</strong>），交换式以太网</li>
+<li><strong>硬件</strong>：网络适配器（网卡），网桥，以太网交换机（也称交换式集线器&#x2F;第二层交换机，实质上是一个多端口网桥）</li>
+</ul>
+</li>
+<li><strong>层间关系</strong>：提供给上层<strong>无差错的传输</strong>服务，屏蔽下层的差异（信源编码，信道复用技术，PCM系统体制）</li>
+</ul>
+<hr>
+<h1 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h1><p><strong>定义</strong>：一段数据的前后分别加上首部和尾部，就构成了数据链路层的帧<br>首部和尾部有主要有两个功能：① 帧定界(SOH，EOT) ② 包含许多必要的控制信息</p>
+<p><strong>最大传送单元MTU</strong>：帧的<strong>数据部分</strong>长度上限，一般规定为1500字节</p>
+<p>封装成帧使分组交换的必然要求（比如一个IP数据包最大可以达到65535个字节，远超帧的MTU，此时就要对IP数据包进行分片）</p>
+<h1 id="透明传输"><a href="#透明传输" class="headerlink" title="透明传输"></a>透明传输</h1><p><strong>定义</strong>：处理歧义(传输的数据中出现和控制字符一样的文本)，使得无论传送什么样的数据，都能按照原样无差错地通过数据链路层。</p>
+<p><strong>字节(符)填充</strong>：数据中出现控制字符“SOH”或“EOT”的前面插入<strong>转义字符“ESC”</strong>。如果转义字符也在数据中，则在转义字符前插入一个转义字符，接收端收到连续两个转义字符时，就删除前面的一个</p>
+<h1 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h1><p><strong>比特差错</strong>：传输时产生差错，0变成了1或1变成了0</p>
+<p><strong>误码率BER</strong>：一段时间内，传输错误的比特占所传输比特总数的比率。<strong>提升信噪比可以减小误码率</strong>。</p>
+<p>差错检验的方法：<strong>循环冗余检验CRC</strong></p>
+<p><strong>CRC工作流程</strong>：假设发送端需要发送k位数据<br><strong>发送端</strong><br>① 计算<strong>n位冗余码</strong>，成为帧检验序列<strong>FCS</strong><br>k位数据末尾添加n位0，与<strong>n+1位除数P</strong>进行<strong>模2除法</strong>【每一步做异或，同为0】，得出的余数就是n位冗余码<br>② 将n位冗余码拼接到k位数据末尾，发送数据<br><strong>接收端</strong><br>收到拼接了冗余码的数据，与n+1位除数P进行<strong>模2除法</strong><br>如果余数为0，说明传输过程中无差错；如果不为0，说明传输出现差错，丢弃这个帧。</p>
+<blockquote>
+<p>CRC中的生成多项式P(X)<br>比如P(X) &#x3D; X^3^+X^2^+1，则除数P&#x3D;1101</p>
+</blockquote>
+<p><strong>注意点</strong><br>① 出现误码但求出的余数仍等于0是有可能的，但概率特别小，几乎可以忽略<br>② 循环冗余检验使用硬件完成，速度很快。<br>③ 循环冗余检验<strong>只能识别比特差错</strong>，无法识别帧丢失、帧重复、帧失序，因此<strong>不是可靠传输</strong>，只能做到<strong>凡是接收端数据链路层接收到的帧，都能以接近于1的概率认为这些帧在传输过程中没有产生差错</strong>。</p>
+<h1 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><p>点对点协议 PPP 是目前点对点链路中应用最广泛的数据链路层协议，是<strong>用户和ISP通信时使用的数据链路层协议</strong>。<br>PPP 只支持点对点的链路通信，且只支持全双工链路<br>PPP 协议<strong>不是纯粹的数据链路层协议</strong>，还包含了物理层和网络层的内容。</p>
+<p><strong>PPP协议应满足的需求</strong><br>简单：这是首要的需求。互联网体系结构中最复杂的部分在 TCP 协议中，网际协议 IP 和数据链路层协议都不是可靠传输（<strong>只检错，不纠错</strong>）。<br>封装成帧：PPP 协议规定使用特殊的字符作为帧定界符。<br>透明传输：<strong>异步传输时用字节填充，同步传输时用零比特填充</strong><br>支持多种网络层协议：PPP 协议要能够在同一条物理链路上同时支持多种网络层协议。<br>支持多种类型链路：包括串行的或并行的、同步的或异步的等。<br>差错检测：如果收到有错的帧就丢弃。<br>最大传送单元MTU：要为每一种类型的点对点链路设置最大传送单元MTU。注意 MTU 是数据部分的最大长度。<br>网络层地址协商：PPP 协议要提供一种机制使通信的两个网络层的实体能通过协商知道彼此的网络层地址。<br>数据压缩协商：PPP 协议要提供一种方法来协商使用数据压缩算法。</p>
+<p>PPP协议<strong>三个组成部分</strong>：<br>① 一个将 IP 数据报封装到串行链路(异步，同步都支持)的方法。<br>② 一个用来建立、配置和测试数据链路连接的<strong>链路控制协议LCP</strong>。<br>③ 一套<strong>网络控制协议NCP</strong>，其中的每一个协议支持不同的网络层协议。</p>
+<h2 id="PPP协议的帧格式"><a href="#PPP协议的帧格式" class="headerlink" title="PPP协议的帧格式"></a>PPP协议的帧格式</h2><p>首部4字节，尾部3字节，共8字节。数据部分不超过MTU，即1500字节。因此PPP帧大小&lt;&#x3D;1508字节</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230614224646942.png" alt="替代：pic/PPP协议的帧格式"></p>
+<p>首部的第一个字段和尾部的第二个字段都是标志字段 F，规定为 0x7E，标志着一个帧的开始或结束。<br>两个连续的帧之间只需要一个F，如果连续出现两个标志字段，表示这是一个空帧，应该丢弃。</p>
+<p>首部的第二个和第三个字段 目前都没有实际含义。</p>
+<p>第四个字段是 2 字节的协议字段（<strong>体现“语义”</strong>），它表明了信息部分的数据类型（可能是IP数据报也可能是其他类型的数据）。</p>
+<p>尾部的第一个字段是帧检验序列 FCS。</p>
+<h2 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h2><p>课堂上不讲，留个坑</p>
+<h1 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h1><h2 id="网络适配器"><a href="#网络适配器" class="headerlink" title="网络适配器"></a>网络适配器</h2><p><strong>计算机与外界局域网的连接</strong>是通过适配器进行的，又称网卡。</p>
+<p>适配器实现的功能<strong>包含了数据链路层和物理层两个层次的功能</strong>。</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230615133442924.png" alt="pic/网卡.png"></p>
+<p>适配器和外部局域网之间的通信通过电缆或双绞线以串行传输方式进行的，而适配器与计算机CPU之间的通信是通过 I&#x2F;O 总线并行传输的，因此适配器的一个重要功能就是<strong>进行数据串行传输和并行传输的转换</strong>。</p>
+<p>适配器收到正确的帧后，使用中断来通知计算机，并把数据交付给协议栈中的网络层。当计算机要发送 IP 数据报时，就由协议栈把分组交给适配器，适配器将其组装成帧后发送到局域网。（<strong>封装成帧、透明传输、差错检错等功能都是由适配器完成的</strong>）</p>
+<p>网卡地址固化在自己的ROM中，称为<strong>物理地址（MAC地址）</strong>。<br>而软件地址——IP地址存储在计算机中。</p>
+<h2 id="以太网的MAC层"><a href="#以太网的MAC层" class="headerlink" title="以太网的MAC层"></a>以太网的MAC层</h2><h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><p><strong>MAC地址</strong>：实际上就是网络适配器地址或适配器标识符EUI-48。网卡的地址固化在ROM中，所以将网卡地址称为物理地址。而Ethernet物理地址用于IEEE 802.3协议的介质访问控制(MAC)子层的帧中，它又被称为MAC地址。</p>
+<p>MAC地址共48位，6个字节，必须保证生产出的适配器没有重复地址。</p>
+<ul>
+<li>前3个字节由IEEE分配，称为组织唯一标识符OUI</li>
+<li>后3个字节由厂家自行指派，称为扩展标识符EUI</li>
+</ul>
+<p><img src="https://image.itbaima.net/images/253/image-20230615148707166.png" alt="pic/MAC地址格式.png"></p>
+<h3 id="MAC帧"><a href="#MAC帧" class="headerlink" title="MAC帧"></a>MAC帧</h3><p>常用的有DIX Ethernet V2标准和IEEE的802.3标准。这里介绍使用最多的以太网V2的MAC帧格式</p>
+<p>MAC帧有5个部分：目的地址(6字节)，源地址(6字节)，类型(2字节)，数据(46~1500字节)，FCS(4字节)</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230615149885236.png" alt="pic/MAC帧格式"></p>
+<p>注意<br>① 除去数据部分，其余部分共占18字节。由于MAC帧必须大于等于64字节才会被认为是正确的帧，因此对于数据字段长度小于46字节的，MAC层会在数据的后面加一个整数字节的填充字节</p>
+<p>② 以太网上的数据以帧为单位传输，<strong>各帧间有间隙</strong>。因此接收端只要找到帧开始界限符，后面连续到达的比特流就是属于同一个MAC帧。因此<strong>以太网不需要帧结束定界符，也不需要使用字节填充来保证透明传输</strong></p>
+<h2 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h2><p>以太网是局域网的一种，绝大多数局域网都是以太网。双绞线是局域网中的主流传输媒体。</p>
+<p><strong>实现共享信道</strong>有两种方法：<br>(1) <strong>静态划分信道</strong>：如频分复用、时分复用、码分复用等，但不适合局域网。<br>(2) <strong>动态媒体接入控制</strong>，又称多点接入MA。特点是信道并非在用户通信时固定分配给用户。</p>
+<ul>
+<li>随机接入：特点是用户可以随机地发送消息。如果有两个或更多用户同时发送，在共享媒体上就会产生碰撞，都会发送失败。这时就需要解决碰撞的网络协议，即 CSMA&#x2F;CD 协议。</li>
+<li>受控接入：特点是用户不能随机发送信息而必须服从一定的控制。</li>
+</ul>
+<p>以太网应用的主要是随机接入。</p>
+<h2 id="发展历程概览"><a href="#发展历程概览" class="headerlink" title="发展历程概览"></a>发展历程概览</h2><p><strong>以太网已经从传统的共享式以太网，发展到现在的交换式以太网</strong></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230615173489292.png" alt="pic/以太网发展"></p>
+<p>传统以太网：最早流行的10Mbit&#x2F;s速率以太网，最初用的是粗同轴电缆，总线型拓扑结构【后来集线器的出现可将拓扑结构变成星形】</p>
+<p>10BASE-T以太网：标准802.3i，10代表10Mbit&#x2F;s的数据率，BASE表示连接线上的信号是基带信号，T代表双绞线</p>
+<p>除了100BASE-T外，100Mbit&#x2F;s的以太网还有其他三种物理层标准</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>媒体</th>
+<th>网段最大长度</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100BASE-TX</td>
+<td>铜缆</td>
+<td>100m</td>
+<td>两对UTP5类线或屏蔽双绞线STP</td>
+</tr>
+<tr>
+<td>100BASE-T4</td>
+<td>铜缆</td>
+<td>100m</td>
+<td>4对UTP3类线或5类线</td>
+</tr>
+<tr>
+<td>100BASE-FX</td>
+<td>光缆</td>
+<td>2000m</td>
+<td>两根光纤</td>
+</tr>
+</tbody></table>
+<p>星形的中心增加一个集线器</p>
+<p>使用集线器的以太网在物理上是星形的，但逻辑上是总线型的，使用CSMA&#x2F;CD协议，同一时刻至多只允许一个站发送数据</p>
+<p>集线器工作在物理层，每个端口仅仅简单地转发比特，而且是广播。不进行碰撞检测。</p>
+<h2 id="共享式以太网"><a href="#共享式以太网" class="headerlink" title="共享式以太网"></a>共享式以太网</h2><h3 id="CSMA-x2F-CD协议"><a href="#CSMA-x2F-CD协议" class="headerlink" title="CSMA&#x2F;CD协议"></a>CSMA&#x2F;CD协议</h3><p>为了通信的简便，以太网采取了以下两种措施：<br>① 采用较为灵活的无连接的工作方式。适配器对发送的数据帧不编号，也不要求对方发回确认。它提供的是尽最大努力的交付，是不可靠的交付。<br>总线上主要有一台计算机在发送数据，总线的传输资源就会被占用，因此同一时间只能有一台计算机发送数据，如果发生冲突，就使用 CSMA&#x2F;CD 协议来协调。<br>② 以太网发送的数据使用的是曼彻斯特编码。</p>
+<p><strong>适用范围</strong>：该协议针对<strong>共享式半双工通信</strong>的以太网</p>
+<p><strong>碰撞</strong>：半双工通信方式要求总线上同时只能有一个站发送数据，如果有两个或多个站同时发送数据，即发生碰撞，也称冲突。</p>
+<p><strong>CSMA&#x2F;CD 协议工作流程</strong><br><strong>先听后发，边听边发，冲突停止，延迟重发</strong><br>① 适配器从网络层获得一个分组，加上首部和尾部组成以太网帧，放入适配器缓存中。</p>
+<p>② 发送前先检测信道。<br>若检测到信道忙，则不停地检测直到信道空闲。若检测到空闲，并在9.6μs（对于10Mbit&#x2F;s的以太网，相当于96比特时间）内保持空闲（帧间最小间隔），就发送这个帧。</p>
+<p>③ 发送过程中仍不停地检测，即适配器要边发送边监听。这时有两种情况</p>
+<ul>
+<li>发送成功：争用期内一直未检测到碰撞。发送成功后回到①</li>
+<li>发送失败：争用期内检测到碰撞，立即停止发送，并按规定发送人为干扰信号【强化碰撞】。适配器接着执行指数退避算法，等待足够时间后回到②。若重传 16 次仍不成功，就停止重传并向上报错。</li>
+</ul>
+<p>以太网发送完一帧后要把已发送的帧保留一下。如果争用期检测到碰撞，推迟一段时间后还要重传。</p>
+<p><strong>争用期</strong>：最迟经过多长时间才知道自己发送的数据和其他站发送的数据有无碰撞？这个最坏情况【A第一个发送的数据刚到达B的前一刻，B向A发送数据】就是<strong>端到端的往返传播时延，即51.2μs</strong>，也成为争用期。<strong>争用期内没有检测到碰撞，则这次发送必然无碰撞</strong></p>
+<blockquote>
+<p>以10Mbit&#x2F;s数据率的以太网为例<br>在争用期51.2μs中内，可以发送512比特，即64字节，对于这样速率的以太网，也可以说争用期是512比特时间</p>
+</blockquote>
+<p><strong>指数退避算法</strong>：从{0,1,…,2^k^ - 1}中随机取出一个数r，推迟r倍争用期后，再尝试重传。<br>其中k &#x3D; min{重传时间，10}，当重传次数达到16，则丢弃该帧，向上层报告错误。</p>
+<p><strong>强化碰撞</strong>：发生碰撞后，除了立即停止发送数据外，还要发送32比特或48比特的人为干扰信号，让所有用户都知道发生了碰撞</p>
+<blockquote>
+<p>对于10Mbit&#x2F;s的以太网，发送32&#x2F;48比特只需3.2μs或4.8μs</p>
+</blockquote>
+<p><strong>帧间最小间隔9.6μs</strong>：为了使刚刚接收到帧的站的接收缓存来得及清理，做好接收下一个帧的准备</p>
+<p>以太网规定<strong>最小帧长为64字节</strong>，如果小于，则需要加入填充字节。接收端只要接收到小于64字节的帧，都认为是由于冲突或异常终止的无效帧，直接丢弃，</p>
+<h3 id="使用集线器"><a href="#使用集线器" class="headerlink" title="使用集线器"></a>使用集线器</h3><p>传统以太网：最早流行的10Mbit&#x2F;s速率以太网，最初用的是粗同轴电缆，总线型拓扑结构</p>
+<p>10BASE-T【标准802.3i，10代表10Mbit&#x2F;s的数据率，BASE表示连接线上的信号是基带信号，T代表双绞线】<strong>双绞线以太网</strong>的出现，是局域网发展史的一个重要里程碑，从此以太网的拓扑结构从<strong>总线型转变为星形网络</strong>。星形的中心增加一个集线器。</p>
+<p><strong>集线器的特点</strong><br>① 使用集线器的以太网，<strong>物理拓扑是星型的，但在逻辑上仍是总线网</strong>。总线上的各站点共享总线资源，使用的还是CSMA&#x2F;CD协议。<br>② 集线器只<strong>工作在物理层</strong>，它的每个接口仅简单地转发比特(而且是广播)，并不进行碰撞检测。碰撞检测的任务由各站点中的网卡负责<br>③ 集线器一般都有少量的容错能力和网络管理功能</p>
+<h3 id="扩展以太网"><a href="#扩展以太网" class="headerlink" title="扩展以太网"></a>扩展以太网</h3><p>距离限制是局域网设计要考虑的一个基本因素。在设计一种局域网技术时，工程人员要在给定费用的情况下，选择一种网络容量、最大延迟和连接距离等诸因素的组合。</p>
+<p>为了使LAN跨越更远距离，目前有多种方式来扩展LAN。一般的规则，扩展机制不是要增加发送信号的强度，也不仅仅只是延长线缆，大部分扩展机制都使用标准的接口，并插入附加硬件，这些附加硬件使得信号能够实现更远距离的中继。</p>
+<hr>
+<p><strong>在物理层扩展</strong></p>
+<p>方法一：使用光纤(通常是一对)和一对光纤调制解调器进行扩展</p>
+<p>方法二：将多个以太网通过主干集线器连接成一个更大的以太网。</p>
+<ul>
+<li>优点：使原来属于不同碰撞域的局域网上的计算机能够进行跨碰撞域的通信，扩大了局域网覆盖的地理范围。</li>
+<li>缺点：<ul>
+<li><strong>广播域，碰撞域增大</strong>，但总的吞吐量并未提高。</li>
+<li>碰撞可能性增大：集线器上互相通讯的端口越多，冲突越严重，传送数据所需的时间越久。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://image.itbaima.net/images/253/image-20230615151310014.png" alt="pic/集线器扩展1"><br><img src="https://image.itbaima.net/images/253/image-20230615157304206.png" alt="pic/集线器扩展2"></p>
+<hr>
+<p><strong>在数据链路层扩展</strong></p>
+<p>最初用的网桥，后来用以太网交换机（第二层交换机）【实质是多端口网桥】。使用了以太网交换机，就不再是共享式以太网了。</p>
+<p>使得<strong>广播域增大，碰撞域隔离</strong></p>
+<p>网桥和交换机都有<strong>转发</strong>和<strong>过滤</strong>功能。收到一个帧后，并不会向所有端口进行转发，而是查交换表，确定往哪个端口转发&#x2F;丢弃</p>
+<h2 id="交换式以太网"><a href="#交换式以太网" class="headerlink" title="交换式以太网"></a>交换式以太网</h2><p><strong>什么是交换式以太网</strong>：仅使用交换机，而不使用集线器的以太网就是交换式以太网</p>
+<h3 id="以太网交换机"><a href="#以太网交换机" class="headerlink" title="以太网交换机"></a>以太网交换机</h3><p><strong>本质是多端口网桥</strong><br>以太网交换机的每个接口都直接与主机相连，并且一般都工作在全双工方式。交换机能同时连通许多对的接口，使每一对相互通信的主机都能像独占通信媒体那样，进行无碰撞地传输数据。也就是说，每个端口和连接在这一端口上的主机构成一个碰撞域，<strong>N端口交换机具有N个碰撞域</strong>。</p>
+<p><strong>自学习算法建立交换表</strong>：无→有→维护</p>
+<blockquote>
+<p>假如A向B发送了一帧（A对应1接口，B对应2接口）<br>交换机收到这一帧之后会先查找交换表，刚开始表是空的，交换机查不到应该从哪个接口转发这个帧（就是找不到目的地址为B的表项）。<br>那么接下来，交换机就会把这个帧的源地址A和接口1写入交换表中，并<strong>向除了接口1之外的所有接口广播这个帧</strong>。<br>这样一来，不论交换机的哪个接口收到目的地址是A的帧，都只要把这个帧转发到接口1，因为既然A发送的帧能从接口1进入交换机，那么交换机自然也能从接口1找到A。<br>C跟D收到之后将会丢弃这个帧，因为目的地址与他们的MAC地址不符，只有B会收下这一帧。这种机制也称为<strong>过滤</strong>。 然后B会把地址B和接口2写入交换表<br>那么经过一段时间，交换机会把所有发送过数据的主机的MAC地址与对应接口号记录下来，这样交换表中的表项就齐全了，要转发给任何一台主机的帧都能很快的在交换表中找到相对应的转发接口。</p>
+</blockquote>
+<p><strong>生成树STP协议</strong>：由于冗余链路的存在，自学习的过程中可能导致帧在网络的某个环路<strong>无限制兜圈子</strong>。该协议在不改变网络的实际拓扑前提下，逻辑上切断某些链路，使得每个路径是无环路的树状结构，消除兜圈子现象。</p>
+<p><strong>交换机工作方式的切换</strong><br>① 交换机的每个接口可以连接计算机，也可以连接集线器或另一个交换机<br>② 当交换机的<strong>接口与计算机或交换机连接</strong>时，可以工作在<strong>全双工方式</strong>，并能在自身内部同时连通多对接口，使每一对相互通信的计算机都能像独占传输媒体那样，无碰撞地传输数据，这样就<strong>不需要使用CSMA&#x2F;CD协议了</strong>。<br>③ 当交换机的<strong>接口连接的是集线器</strong>时，<strong>该接口就只能使用CSMA&#x2F;CD协议并只能工作在半双工方式</strong></p>
+<blockquote>
+<p>注：现在的交换机和计算机中的网卡都能自动识别上述两种情况，并自动切换到相应的工作方式</p>
+</blockquote>
+<h3 id="共享式与交换式对比"><a href="#共享式与交换式对比" class="headerlink" title="共享式与交换式对比"></a>共享式与交换式对比</h3><p><img src="https://image.itbaima.net/images/253/image-20230615152537330.png" alt="pic/共享式以太网和交换式以太网"></p>
+<h3 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h3><p>使用以太网交换机可以方便地实现虚拟局域网VLAN。</p>
+<p><strong>问题</strong><br>① 一个主机数量很大的局域网，如果网络的配置出现错误，广播帧就可能会在网络中无限制地兜圈子，形成<strong>广播风暴</strong>，造成网络瘫痪<br>② 对于需要<strong>信息保密</strong>的实际场景中，比如一个单位有许多部门，让它们共享一个局域网对信息安全不利。</p>
+<p><strong>解决思路</strong>：把一个较大的局域网分隔成一些较小的局域网，而每一个局域网是一个较小的广播域</p>
+<p><strong>虚拟局域网VLAN</strong>：它是由一些局域网网段构成的与物理位置无关的逻辑组，这些网段具有某些共同的需求。每一个 VLAN 的帧都有一个明确的标识符，指明发送这个帧的计算机属于哪一个 VLAN。</p>
+<p>虚拟局域网是局域网给用户提供的一种服务，不是一种新型局域网。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：数据链路层</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-06-15 08:13:24</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/06/15/计网/数据链路层/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/06/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/DBS%E6%A6%82%E8%BF%B0/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">DBS概述</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/06/13/%E8%AE%A1%E7%BD%91/%E7%89%A9%E7%90%86%E5%B1%82/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">物理层</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="nav-text">封装成帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93"><span class="nav-text">透明传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-text">差错检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AEPPP"><span class="nav-text">点对点协议PPP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="nav-text">PPP协议的帧格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%8A%B6%E6%80%81"><span class="nav-text">PPP协议的工作状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B9%BF%E6%92%AD%E4%BF%A1%E9%81%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">使用广播信道的数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-text">网络适配器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84MAC%E5%B1%82"><span class="nav-text">以太网的MAC层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%B8%A7"><span class="nav-text">MAC帧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E6%A6%82%E8%A7%88"><span class="nav-text">发展历程概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%BC%8F%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">共享式以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSMA-x2F-CD%E5%8D%8F%E8%AE%AE"><span class="nav-text">CSMA&#x2F;CD协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%86%E7%BA%BF%E5%99%A8"><span class="nav-text">使用集线器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">扩展以太网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%BC%8F%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">交换式以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-text">以太网交换机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%BC%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2%E5%BC%8F%E5%AF%B9%E6%AF%94"><span class="nav-text">共享式与交换式对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-text">虚拟局域网</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

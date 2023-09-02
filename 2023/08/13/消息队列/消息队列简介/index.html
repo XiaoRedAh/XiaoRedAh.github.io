@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/08/13/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%AE%80%E4%BB%8B/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            消息队列简介 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">消息队列简介</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-08-13 08:13:24</span>
+        <span class="mobile">2023-08-13 08:13</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>消息队列（Message Queue）是一种使用队列（Queue）作为底层存储数据结构，可以用于解决不同进程与应用程序之间通讯的分布式消息容器，也可以称为消息中间件。</p>
+<p>比较常见的消息队列有 RabbitMQ、RocketMQ、ActiveMQ、Kafka、ZeroMQ、MetaMQ 等，而部分数据库 如 Redis、MySQL 以及 phxsql 也可实现消息队列的功能。</p>
+<p>消息队列与普通队列的区别在于，入队列的时候称为生产者，出队列的时候称为消费者。</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230902172339263.png" alt="img/消息队列概述.png"></p>
+<h1 id="消息队列应用场景"><a href="#消息队列应用场景" class="headerlink" title="消息队列应用场景"></a>消息队列应用场景</h1><h2 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h2><p>需求：完成订单业务的编写，由以下三个服务构成</p>
+<ul>
+<li>用户提交订单服务，50ms</li>
+<li>订单完成后，增加积分服务，50ms</li>
+<li>发生积分变动的短信通知服务，50ms</li>
+</ul>
+<p><strong>同步执行</strong><br>依次执行以上三个服务，完成后再将响应返回给用户<br>响应时间 &#x3D; 150ms<br><img src="https://image.itbaima.net/images/253/image-20230902177785536.png" alt="img/同步执行.png"></p>
+<p><strong>多线程异步处理</strong><br>在订单服务里开两个线程，分别同时处理积分服务和短信服务，这样，响应时间可以缩短为100ms<br><img src="https://image.itbaima.net/images/253/image-20230902176934631.png" alt="img/多线程实现异步处理.png"></p>
+<p>但是由于积分服务和短信服务都需要在订单服务里面开启线程，开启的线程多了，会导致客户端访问订单服务的并发量降低，可能导致客户端提交订单的实际时间会超过100ms</p>
+<p><strong>消息队列异步处理</strong><br>增加一个消息队列。首先由客户端提交订单，然后把订单写入到消息队列，积分服务和短信服务同时去消费消息队列里面的消息<br>写入消息队列耗时很短，假设是5ms。实际上写入后，就可以返回响应给客户端了，剩下两个服务交给消息队列去处理<br>这样的话，响应时间缩短为55ms<br><img src="https://image.itbaima.net/images/253/image-20230902171646559.png" alt="img/消息队列实现异步处理.png"></p>
+<p>而且这种方式不需要订单服务额外开启异步线程</p>
+<h2 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h2><p><strong>高耦合</strong><br>订单服务涉及到两个系统：订单系统和库存系统。客户端发起订单请求后，要先去订单系统创建订单，然后去库存系统获取库存消息，接下来去扣减库存<br>这样一来，订单系统和库存系统就形成了非常紧密的依赖关系。假如库存系统发生了宕机，由于订单系统依赖于库存系统，订单系统也将不能使用<br><img src="https://image.itbaima.net/images/253/image-2023090217475443.png" alt="img/应用存在依赖.png"></p>
+<p><strong>利用消息队列解耦</strong><br>加入消息队列。首先客户端发起创建订单的请求，订单的消息写入到消息队列里面，然后库存系统去消息队列里面订阅消息，最后异步的去更新库存系统。<br><img src="https://image.itbaima.net/images/253/image-20230902172829646.png" alt="img/应用解耦.png"></p>
+<p>如果此时库存系统发生了宕机，由于订单系统不直接依赖于库存系统，所以订单系统可以正常的响应客户端的请求。这样就实现了应用解耦。</p>
+<h2 id="削峰填谷"><a href="#削峰填谷" class="headerlink" title="削峰填谷"></a>削峰填谷</h2><p>对于高并发的系统来说，在访问高峰时，突发的流量就像洪水般涌向应用系统，尤其是一些高并发写操作，随时会导致数据库服务器瘫痪，无法继续提供服务。【双十一，秒杀活动，春运，演唱会，…】</p>
+<p>而引入消息队列则可以减少突发流量对应用系统的冲击。消费队列就像“水库”一样，拦截上游的洪水，削减进入下游河道的洪峰流量，从而达到减免洪水灾害的目的。</p>
+<hr>
+<p>拿秒杀活动为例</p>
+<p>秒杀服务称为上游服务，订单服务、库存服务、余额服务统称为下游服务。<br>客户端发起秒杀的请求，秒杀服务收到客户端发送的请求以后，创建订单，修改库存，扣减余额<br><img src="https://image.itbaima.net/images/253/image-2023090217845947.png" alt="img/秒杀活动.png"></p>
+<p>假如下游服务只能同时处理1000个并发请求，上游服务可以处理10000个并发请求，而客户端发起了10000个请求，超出了下游服务可以处理的并发量，所以会导致下游服务发生宕机。<br>这时就可以加入消息队列来解决宕机的问题：<br>秒杀服务接收到客户端发送的10000个请求以后，把所有的请求都写入到消息队列中，然后下游服务去订阅消息队列里面的秒杀请求，然后在去执行自己的业务逻辑操作。<br><img src="https://image.itbaima.net/images/253/image-20230902179547610.png" alt="img/消息队列削峰.png"></p>
+<p>由于下游服务只能处理1000个并发请求，所以消息队列里面设置只允许存1000个请求，多余的秒杀请求全部返回客户端提示“系统繁忙，请稍后！”<br>这样就保证了下游服务的正常响应，不会导致下游服务发生宕机，提高了系统的可用性。</p>
+<h2 id="优化日志传输"><a href="#优化日志传输" class="headerlink" title="优化日志传输"></a>优化日志传输</h2><p><strong>同步记录日志</strong><br>使用同步记录日志的流程，会使得整个流程花费的时间增多，而且也会容易造成业务系统宕机（如果数据库损坏了，向数据库记录日志的操作将会产生错误）<br><img src="https://image.itbaima.net/images/253/image-20230902172761994.png" alt="img/同步记录日志.png"></p>
+<p><strong>使用消息队列优化日志的传输</strong><br>加入了消息队列以后，可以缩短系统花费的时间，而且也可以达到应用系统解耦的功能<br><img src="https://image.itbaima.net/images/253/image-20230902176137558.png" alt="img/消息队列优化日志传输.png"></p>
+<h2 id="消息通讯"><a href="#消息通讯" class="headerlink" title="消息通讯"></a>消息通讯</h2><p>消息队列最主要功能是收发消息，其内部有高效的通讯机制，因此非常适合用于消息通讯。</p>
+<p>基于消息队列，可以开发点对点的聊天系统，也可以开发广播系统，用于将消息广播给大量接收者。</p>
+<h1 id="主流产品对比"><a href="#主流产品对比" class="headerlink" title="主流产品对比"></a>主流产品对比</h1><p><a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1448278" >https://cloud.tencent.com/developer/article/1448278 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1944357" >https://cloud.tencent.com/developer/article/1944357 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>ActiveMQ</th>
+<th>RabbitMQ</th>
+<th>RocketMQ</th>
+<th>kafka</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发语言</td>
+<td>java</td>
+<td>erlang</td>
+<td>java</td>
+<td>scala</td>
+</tr>
+<tr>
+<td>客户端支持语言</td>
+<td>Java、C、C++、Python、PHP、Perl、.net 等</td>
+<td>官方支持ErlangJava,Ruby等,社区产出多种语言API，几乎支持所有常用语言</td>
+<td>Java，C++(不成熟)</td>
+<td>官方支持Java,开源社区有多语言版本,如PHP,Python,Go,C&#x2F;C++,RubyNodeJS等编程语言,详见Kafka 客户端列表</td>
+</tr>
+<tr>
+<td>协议支持</td>
+<td>OpenWire、STOMP、REST、XMPP、AMQP</td>
+<td>多协议支持:AMQP，XMPP,SMTP，STOMP</td>
+<td>自己定义的一套(社区提供JMS–不成熟)</td>
+<td>自有协议，社区封装了HTTP协议支持</td>
+</tr>
+<tr>
+<td>单机吞吐量</td>
+<td>万级</td>
+<td>万级</td>
+<td>10万级</td>
+<td>10万级</td>
+</tr>
+<tr>
+<td>时效性</td>
+<td>ms级</td>
+<td>us级</td>
+<td>ms级</td>
+<td>ms级以内</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>高(主从架构)</td>
+<td>高(主从架构)</td>
+<td>非常高(分布式架构)</td>
+<td>非常高(分布式架构)</td>
+</tr>
+<tr>
+<td>功能特性</td>
+<td>成熟的产品，在很多公司得到应用；有较多的文档；各种协议支持较好</td>
+<td>基于erlang开发，所以并发能力很强，性能极其好，延时很低;管理界面较丰富</td>
+<td>MQ功能比较完备，扩展性佳</td>
+<td>只支持主要的MQ功能，像一些消息查询，消息回溯等功能没有提供，毕竟是为大数据准备的，在大数据领域应用广</td>
+</tr>
+</tbody></table>
+<h1 id="核心模型"><a href="#核心模型" class="headerlink" title="核心模型"></a>核心模型</h1><p>参考：<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/401416746" >https://zhuanlan.zhihu.com/p/401416746 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>对于一个消息队列而言，从数据流向的维度，可以拆解为三大部分：生产者、消息队列集群、消费者<br>数据从生产者流向消息队列集群，最终再从消息队列集群流向消费者<br><img src="https://image.itbaima.net/images/253/image-20230902179857879.png" alt="img/消息队列核心模型.png"></p>
+<hr>
+<p><strong>生产者</strong><br>指生产数据的服务，通常也称为数据的输入提供方。</p>
+<p>生产者通常是作为客户端的方式存在，但在支持事务消息的消息队列中，生产者也被设计为服务端，实现事务消息这一特性。</p>
+<p>生产者通常会有多个，消息队列集群内部也会有多个分区队列。所以在生产者发送数据时，通常会存在负载均衡的一些策略，常见的有按 key hash、轮询、随机等方式。其本质是一条数据，被消息队列封装后也被称为一条消息，该条消息只能发送到其消息队列集群内部的一个分区队列中。因此只需按照一定的策略从多个队列中选择一个队列即可。</p>
+<hr>
+<p><strong>消息队列集群</strong><br>消息队列集群是消息队列实现中最核心的部分，它的主要功能是存储消息、过滤消息、分发消息。</p>
+<p><code>存储消息</code>：主要指生产者生产的数据需要存储到消息队列内部</p>
+<p><code>过滤消息</code>：指消息队列可以通过一定的规则或者策略进行消息的过滤，该项能力通常也被称为消息路由</p>
+<p><code>分发消息</code>：指消息队列通常需要将消息分发给处理同一逻辑的多个消费者处理或者处理不同逻辑的不同消费者处理。</p>
+<p>绝大部分的消息队列都支持对消息进行分类，分类的标签称为topic(主题)，一个 topic 中存放的是同一类消息。</p>
+<hr>
+<p><strong>消费者</strong><br>最终消息队列存储的消息会被消费者消费使用，消费者也可以看做消息队列中数据的输出方。</p>
+<p>消费者通常有两种方式从消息队列中获取数据：推送(push)数据、拉取(pull)数据</p>
+<h1 id="简述相关协议"><a href="#简述相关协议" class="headerlink" title="简述相关协议"></a>简述相关协议</h1><p>分布式系统中常用通讯模型主要是“请求-应答”模型和“发布-订阅”模型。前者常见如RPC通讯，常用HTTP REST或Thrift等协议；后者多指消息队列MQ通讯。</p>
+<p>RPC大多属于“请求-应答”模型，也包括越来越多响应式范式，对于需要点对点交互、强事务保证和延迟敏感的服务&#x2F;应用之间的通信，RPC是优于消息队列的。</p>
+<p>消息队列大多采用“发布-订阅”模型，可以看做是一种异步RPC，把一次RPC变为两次或多次，进行内容转存，再在合适的时机投递出去。消息队列中间件往往是一个分布式系统，内部组件间的通信仍然会用到RPC。  </p>
+<p>常见消息队列协议<br>消息队列场景中producer、consumer和broker通信的协议，包括AMQP、STOMP、MQTT、HTTP、OpenWire（ActiveMQ）、XMPP、自定义等等</p>
+<hr>
+<p><strong>STOMP</strong>（Streaming Text Oriented Messaging Protocol）<br>面向流文本的消息传输协议，是 WebSocket 通信标准。在通常的发布－订阅语义之上，它通过 begin&#x2F;publish&#x2F;commit 序列以及 acknowledgement 机制来提供消息可靠投递。</p>
+<p>特点：协议简单且易于实现，几乎所有的编程语言都有 STOMP 的客户端实现。但是在消息大小和处理速度方面并无优势。由于在许多发布－订阅式的架构中，信息交换是基于文本的，所以许多协议选择简单地将整个信息转化为文本，从而降低复杂性并提高了可读性，当然带来的代价就是需要在消息接受后执行额外的计算任务。</p>
+<p>应用场景：信息交换基于文本，要求简单的场景。</p>
+<p>典型实现：ActiveMQ以及它的下一代实现Apache Apollo</p>
+<hr>
+<p><strong>AMQP</strong><br>比较全面和复杂的一个协议，包括协议本身以及模型（broker、exchange、routing key等概念）。</p>
+<p>特点：AMQP 十分可靠且功能强大。当然它及它的实现并不是足够轻量级。</p>
+<p>应用场景：当简单的发布－订阅模型不能满足使用要求。</p>
+<p>典型实现：RabbitMQ是AMQP消息队列最有名的开源实现。RabbitMQ同时还可以通过插件支持STOMP、MQTT等协议接入。Kafka、RocketMQ均使用自定义的协议。</p>
+<hr>
+<p><strong>MQTT</strong>（Message Queue Telemerty Transport）<br>它是一种二进制协议，主要用于服务器和那些低功耗的物联网设备（IoT）之间的通信。 它位于 TCP 协议的上层，除了提供发布－订阅这一基本功能外，也提供一些其它特性：不同的消息投递保障（delivery guarantee），“至少一次”和“最多一次”。通过存储最后一个被确认接受的消息来实现重连后的消息恢复。</p>
+<p>特点：它非常轻量级，并且从设计和实现层面都适合用于不稳定的网络环境中。</p>
+<p>应用场景：物联网（IoT）场景中更适合，支持几乎所有语言进行开发，并且浏览器也可通过 WebSocket 来发送和接收 MQTT 消息。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：消息队列简介</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-08-13 08:13:24</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/08/13/消息队列/消息队列简介/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/08/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">RabbitMQ学习笔记</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/08/01/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%9D%83%E9%99%90%E6%A0%A1%E9%AA%8C/JWT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">JWT学习笔记</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">消息队列应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="nav-text">异步处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6"><span class="nav-text">应用解耦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8A%E5%B3%B0%E5%A1%AB%E8%B0%B7"><span class="nav-text">削峰填谷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%97%A5%E5%BF%97%E4%BC%A0%E8%BE%93"><span class="nav-text">优化日志传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%80%9A%E8%AE%AF"><span class="nav-text">消息通讯</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E4%BA%A7%E5%93%81%E5%AF%B9%E6%AF%94"><span class="nav-text">主流产品对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9E%8B"><span class="nav-text">核心模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%9B%B8%E5%85%B3%E5%8D%8F%E8%AE%AE"><span class="nav-text">简述相关协议</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/07/10/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Redis%E7%AC%94%E8%AE%B0/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            Redis笔记 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Redis笔记</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-07-10 08:13:24</span>
+        <span class="mobile">2023-07-10 08:13</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/java/">java</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/java/redis/">redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p>Redis数据库</p>
+<p>之前学习的MySQL数据库是一种传统的关系型数据库，在小型Web应用下，只需要一个MySQL+Mybatis自带的缓存系统就可以胜任大部分的数据存储工作。</p>
+<p>但是MySQL的数据始终是存储在硬盘上的，对于像用户信息这种不需要经常发生修改的内容，使用MySQL存储确实可以。</p>
+<p>但如果是<strong>快速更新或是频繁使用的数据</strong>（比如微博热搜、双十一秒杀），这些数据不仅要求服务器需要提供更高的响应速度，而且还需要面对短时间内上百万甚至上千万次访问，那么MySQL的磁盘IO读写性能就完全不能满足上面的需求。</p>
+<p>能够满足上述需求的只有内存，因为<strong>内存读写</strong>的速度远高于磁盘IO。</p>
+<h1 id="NoSQL概论"><a href="#NoSQL概论" class="headerlink" title="NoSQL概论"></a>NoSQL概论</h1><p>NoSQL全称是Not Only SQL（不仅仅是SQL），它是一种非关系型数据库，相比传统SQL关系型数据库，它：</p>
+<ul>
+<li>不保证关系数据的ACID特性</li>
+<li>并不遵循SQL标准</li>
+<li>消除数据之间关联性</li>
+</ul>
+<p>它的优势：</p>
+<ul>
+<li>远超传统关系型数据库的性能</li>
+<li>非常易于扩展</li>
+<li>数据模型更加灵活</li>
+<li>高可用</li>
+</ul>
+<p>因此它就是<strong>面对高并发海量数据的解决方案</strong></p>
+<p>NoSQL数据库分为以下几种：</p>
+<ul>
+<li><strong>键值存储数据库</strong>：所有的数据都是以键值方式存储的，类似于HashMap，使用起来非常简单方便，性能也非常高。</li>
+<li><strong>列存储数据库</strong>：这部分数据库通常是用来应对分布式存储的海量数据。键仍然存在，但是它们的特点是指向了多个列。</li>
+<li><strong>文档型数据库</strong>：它是以一种特定的文档格式存储数据，比如JSON格式，在处理网页等复杂数据时，文档型数据库比传统键值数据库的查询效率更高。</li>
+<li><strong>图形数据库</strong>：利用类似于图的数据结构存储数据，结合图相关算法实现高速访问。</li>
+</ul>
+<p>Redis数据库是一个开源的<strong>键值存储数据库</strong>，<strong>所有的数据全部存放在内存中</strong>，它的性能远远高于磁盘IO，并且在支持数据持久化之外，还支持横向扩展、主从复制等。</p>
+<p>实际生产中，配合使用Redis和MySQL以发挥它们各自的优势，取长补短。</p>
+<h1 id="Redis安装和部署"><a href="#Redis安装和部署" class="headerlink" title="Redis安装和部署"></a>Redis安装和部署</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p><strong>安装</strong><br>安装 Redis 服务器<br>官方并不提供 Windows 的二进制格式，甚至不提供 Windows 版本能直接编译的源码</p>
+<p>只能去 github 找一些第三方的库<br>有预构建二进制的仓库：<a class="link"   target="_blank" rel="noopener" href="https://github.com/tporadowski/redis/releases" >https://github.com/tporadowski/redis/releases <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>虽然版本只有 5.0，但是够用了</p>
+<p>进入后选择最新的构建下载，注意选zip不是 msi</p>
+<p>下载完成后解压到一个目录，直接双击 redis-server.exe 运行<br>如果弹出一个新窗口，而且打印了 redis 的 logo 和一些信息，并且没有报错，那么就是启动成功了</p>
+<p><strong>Shift + 右键空白处</strong>打开 powershell</p>
+<p>输入如下命令验证是否能够直接连接上：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\redis-cli.exe</span><br></pre></td></tr></table></figure></div>
+
+<p>如果命令行工具可以正常连接并操作 Redis 数据库，那么就可以正常使用了</p>
+<hr>
+<p><strong>开启外网访问</strong></p>
+<p>默认情况下 Redis 服务器开启保护模式，只能内网访问。如果需要在其他服务器访问，那么需要开启外网访问。</p>
+<p>编写配置文件redis.windows.conf：<br>① 注释掉本地 IP 端口绑定(bind)<br>② 关闭保护模式：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected-mode no</span><br></pre></td></tr></table></figure></div>
+
+<p>保存配置文件，然后重新启动 Redis</p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p><strong>安装</strong><br>Ubuntu软件源中默认已经自带Redis环境，直接下载安装</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//先更新一下</span><br><span class="line">apt update</span><br><span class="line">//然后直接安装Redis即可</span><br><span class="line">apt install redis</span><br><span class="line">//如果命令行工具可以正常连接并操作Redis数据库，那么就可以正常使用了</span><br><span class="line">redis-cli</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p><strong>开启外网访问</strong><br>默认情况下 Redis 服务器开启保护模式，只能内网访问。如果需要在其他服务器访问，那么需要开启外网访问。</p>
+<p>编写配置文件<code>vim /etc/redis/redis.conf</code><br>① 注释掉本地 IP 端口绑定(bind)<br>② 关闭保护模式：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected-mode no</span><br></pre></td></tr></table></figure></div>
+
+<p>保存配置文件，然后重启Redis服务：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><p><strong>CentOS 7安装redis</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//先更新</span><br><span class="line">sudo yum update</span><br><span class="line">//更新完成后安装 EPEL 存储库</span><br><span class="line">sudo yum install epel-release</span><br><span class="line">//安装redis</span><br><span class="line">sudo yum install redis</span><br><span class="line">//如果命令行工具可以正常连接并操作 Redis 数据库，那么就可以正常使用了。</span><br><span class="line">redis-cli</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>CentOS 8 &#x2F; stream安装redis</strong><br>centos 8 &#x2F; stream 使用的是 dnf 包管理工具</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//先更新</span><br><span class="line">sudo dnf update</span><br><span class="line">//安装redis</span><br><span class="line">sudo dnf module install redis</span><br><span class="line">//如果命令行工具可以正常连接并操作 Redis 数据库，那么就可以正常使用了。</span><br><span class="line">redis-cli</span><br></pre></td></tr></table></figure></div>
+<hr>
+<p><strong>开启外网访问</strong><br>默认情况下 Redis 服务器开启保护模式，只能内网访问。如果需要在其他服务器访问，那么需要开启外网访问。</p>
+<p>编写配置文件<code>sudo vim /etc/redis/redis.conf</code>【如果上述文件不存在，则<code>sudo vim /etc/redis.conf</code>】<br>① 注释掉本地 IP 端口绑定(bind)<br>② 关闭保护模式：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected-mode no</span><br></pre></td></tr></table></figure></div>
+
+<p>保存配置文件，然后重启Redis服务：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Redis数据库"><a href="#Redis数据库" class="headerlink" title="Redis数据库"></a>Redis数据库</h1><p>Redis并不具有MySQL那样的严格的表结构，作为键值数据库，Redis有着和Map一样的操作方式，<strong>通过键值对向Redis数据库中添加数据</strong>（操作起来类似于向一个HashMap中存放数据）</p>
+<p>在Redis下，<strong>数据库由一个整数索引标识</strong>，而不是由一个数据库名称。 默认情况下，连接Redis数据库之后，会使用0号数据库，可以通过Redis配置文件中的参数来修改数据库总数，默认为16个。</p>
+<p>通过<code>select</code>语句切换数据库：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 序号;</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="数据类型介绍"><a href="#数据类型介绍" class="headerlink" title="数据类型介绍"></a>数据类型介绍</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/32b9fe8c20e1" >https://www.jianshu.com/p/32b9fe8c20e1 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><blockquote>
+<p>所有存入的数据默认会以<strong>字符串</strong>的形式保存</p>
+</blockquote>
+<p><strong>向Redis数据库中添加数据</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>添加一个键值对</span><br><span class="line"><span class="keyword">set</span> <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>一次性添加多个</span><br><span class="line">mset [<span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span>]...</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>可以使用冒号来进行板块分割</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>比如下面表示用户XXX的信息中的name属性，值为lbw</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">user</span>:info:用户ID:name lbw</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>通过键值获取存入的值</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>设定数据的过期时间</strong><br>当数据到达指定时间时，会被自动删除。</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>创建时顺便设置</span><br><span class="line"><span class="keyword">set</span> <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> EX 秒</span><br><span class="line"><span class="keyword">set</span> <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> PX 毫秒</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>单独为键值对设置过期时间</span><br><span class="line">expire <span class="operator">&lt;</span>key<span class="operator">&gt;</span> 秒</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>查询某个键值对的过期时间还剩多少</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>查询某个键值对的过期时间还剩多少</span><br><span class="line">ttl <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>毫秒显示</span><br><span class="line">pttl <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>转换为永久</span><br><span class="line">persist <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>删除数据</strong><br>删除命令可以同时拼接多个键值一起删除。</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del <span class="operator">&lt;</span>key<span class="operator">&gt;</span>...</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>查看数据库的键</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>查看所有键</span><br><span class="line">keys <span class="operator">*</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>查找以me结尾的键</span><br><span class="line">keys <span class="operator">*</span>me</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>查询某个键是否存在</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exists</span> <span class="operator">&lt;</span>key<span class="operator">&gt;</span>...</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>随机拿一个键</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">randomkey</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>将一个数据库中的内容移动到另一个数据库中</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move <span class="operator">&lt;</span>key<span class="operator">&gt;</span> 数据库序号</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>修改一个键为另一个键</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>新的名称<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 下面这个会检查新的名称是否已经存在</span></span><br><span class="line">renamex <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>新的名称<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>如果存放的数据是一个数字，则可以对其进行自增自减操作</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 等价于a = a + 1</span></span><br><span class="line">incr <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 等价于a = a + b</span></span><br><span class="line">incrby <span class="operator">&lt;</span>key<span class="operator">&gt;</span> b</span><br><span class="line"><span class="comment">-- 等价于a = a - 1</span></span><br><span class="line">decr <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>查看值的数据类型</strong><br>Redis数据库支持多种数据类型，但是它更偏向于在Java中认识的那些数据类型。</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>这种类型本质上就是一个HashMap，也就是嵌套了一个HashMap罢了，在Java中就像这样：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Redis默认存String类似于这样：</span><br><span class="line">Map&lt;String, String&gt; hash = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">#Redis存Hash类型的数据类似于这样：</span><br><span class="line">Map&lt;String, Map&lt;String, String&gt;&gt; hash = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br></pre></td></tr></table></figure></div>
+
+<p>它比较适合存储<code>类</code>这样的数据，由于值本身又是一个Map，因此可以在此Map中放入类的各种属性和值，以实现一个Hash数据类型存储一个类的数据。</p>
+<blockquote>
+<p>在操作一个Hash时，实际上就是普通操作命令前面添加一个<code>h</code>，这样就能以同样的方式去操作Hash里面存放的键值对了。</p>
+</blockquote>
+<p>添加一个Hash类型的数据：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hset <span class="operator">&lt;</span>key<span class="operator">&gt;</span> [<span class="operator">&lt;</span>字段<span class="operator">&gt;</span> <span class="operator">&lt;</span>值<span class="operator">&gt;</span>]...</span><br></pre></td></tr></table></figure></div>
+
+<p>直接获取：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hget <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>字段<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 如果想要一次性获取所有的字段和值</span></span><br><span class="line">hgetall <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>判断某个字段是否存在：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexists <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>字段<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>删除Hash中的某个字段：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdel <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>几个比较特殊的。</p>
+<p>想要知道Hash中一共存了多少个键值对：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hlen <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>一次性获取所有字段的值：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hvals <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><em>注意：Hash中只能存放字符串值，不允许出现嵌套的的情况。</em></p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List类型就是一个列表，而列表中存放一系列的字符串，它支持随机访问，支持双端操作，就像Java中的LinkedList一样。</p>
+<p>直接向一个已存在或是不存在的List中添加数据，如果不存在，会自动创建：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 向列表头部添加元素</span></span><br><span class="line">lpush <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>element<span class="operator">&gt;</span>...</span><br><span class="line"><span class="comment">-- 向列表尾部添加元素</span></span><br><span class="line">rpush <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>element<span class="operator">&gt;</span>...</span><br><span class="line"><span class="comment">-- 在指定元素前面/后面插入元素</span></span><br><span class="line">linsert <span class="operator">&lt;</span>key<span class="operator">&gt;</span> before<span class="operator">/</span>after <span class="operator">&lt;</span>指定元素<span class="operator">&gt;</span> <span class="operator">&lt;</span>element<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>获取元素</strong></p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 根据下标获取元素</span></span><br><span class="line">lindex <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span>下标<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 获取并移除头部元素</span></span><br><span class="line">lpop <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 获取并移除尾部元素</span></span><br><span class="line">rpop <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 获取指定范围内的</span></span><br><span class="line">lrange <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="keyword">start</span> stop</span><br></pre></td></tr></table></figure></div>
+
+<p>注意下标可以使用负数来表示从后到前数的数字（Python的语法）</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取列表a中的全部元素</span></span><br><span class="line">lrange a <span class="number">0</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure></div>
+
+<p>push和pop可以连着用</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 从前一个数组的最后取一个数出来放到另一个数组的头部，并返回元素</span></span><br><span class="line">rpoplpush 当前数组 目标数组</span><br></pre></td></tr></table></figure></div>
+
+<p>支持阻塞操作，类似于生产者和消费者<br>比如想要等待列表中有了数据后再进行pop操作：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 如果列表中没有元素，那么就等待，如果指定时间（秒）内被添加了数据，那么就执行pop操作，如果超时就作废，支持同时等待多个列表，只要其中一个列表有元素了，那么就能执行</span></span><br><span class="line">blpop <span class="operator">&lt;</span>key<span class="operator">&gt;</span>... timeout</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Set和SortedSet"><a href="#Set和SortedSet" class="headerlink" title="Set和SortedSet"></a>Set和SortedSet</h2><p>Set集合就像Java中的HashSet一样（HashSet本质上就是利用了一个HashMap，但是Value都是固定对象，仅仅是Key不同），它不允许出现重复元素，不支持随机访问，但是能够利用Hash表提供极高的查找效率。</p>
+<p>向Set中添加一个或多个值：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sadd <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span>...</span><br></pre></td></tr></table></figure></div>
+
+<p>查看Set集合中有多少个值：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scard <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>判断集合中是否包含：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 是否包含指定值</span></span><br><span class="line">sismember <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 列出所有值</span></span><br><span class="line">smembers <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>集合之间的运算：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 集合之间的差集</span></span><br><span class="line">sdiff <span class="operator">&lt;</span>key1<span class="operator">&gt;</span> <span class="operator">&lt;</span>key2<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 集合之间的交集</span></span><br><span class="line">sinter <span class="operator">&lt;</span>key1<span class="operator">&gt;</span> <span class="operator">&lt;</span>key2<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 求并集</span></span><br><span class="line">sunion <span class="operator">&lt;</span>key1<span class="operator">&gt;</span> <span class="operator">&lt;</span>key2<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 将集合之间的差集存到目标集合中</span></span><br><span class="line">sdiffstore 目标 <span class="operator">&lt;</span>key1<span class="operator">&gt;</span> <span class="operator">&lt;</span>key2<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 同上</span></span><br><span class="line">sinterstore 目标 <span class="operator">&lt;</span>key1<span class="operator">&gt;</span> <span class="operator">&lt;</span>key2<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 同上</span></span><br><span class="line">sunionstore 目标 <span class="operator">&lt;</span>key1<span class="operator">&gt;</span> <span class="operator">&lt;</span>key2<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>移动指定值到另一个集合中：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smove <span class="operator">&lt;</span>key<span class="operator">&gt;</span> 目标 <span class="keyword">value</span> </span><br></pre></td></tr></table></figure></div>
+
+<p>移除操作：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 随机移除一个幸运儿</span></span><br><span class="line">spop <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 移除指定</span></span><br><span class="line">srem <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span>...</span><br></pre></td></tr></table></figure></div>
+
+<p>如果要求Set集合中的数据按照指定的顺序进行排列，就要使用到SortedSet。它支持我们为每个值设定一个分数，分数的大小决定了值的位置，所以它是有序的。</p>
+<p>添加一个带分数的值：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zadd <span class="operator">&lt;</span>key<span class="operator">&gt;</span> [<span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>score<span class="operator">&gt;</span>]...</span><br></pre></td></tr></table></figure></div>
+
+<p>同样的：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询有多少个值</span></span><br><span class="line">zcard <span class="operator">&lt;</span>key<span class="operator">&gt;</span></span><br><span class="line"><span class="comment">-- 移除</span></span><br><span class="line">zrem <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span>...</span><br><span class="line"><span class="comment">-- 获取区间内的所有</span></span><br><span class="line">zrange <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="keyword">start</span> stop</span><br></pre></td></tr></table></figure></div>
+
+<p>由于所有的值都有一个分数，因此可以根据分数段来获取：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 通过分数段查看</span></span><br><span class="line">zrangebyscore <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="keyword">start</span> stop [withscores] [limit]</span><br><span class="line"><span class="comment">-- 统计分数段内的数量</span></span><br><span class="line">zcount <span class="operator">&lt;</span>key<span class="operator">&gt;</span>  <span class="keyword">start</span> stop</span><br><span class="line"><span class="comment">-- 根据分数获取指定值的排名</span></span><br><span class="line">zrank <span class="operator">&lt;</span>key<span class="operator">&gt;</span> <span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>更多数据类型：Bitmap、HyperLogLog、Geospatial…</p>
+<h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>Redis数据库中的数据都是存放在内存中，虽然很高效，但是存放在内存中的数据是易失的，不安全（比如一停电就无了）</p>
+<p>这个时候就需要持久化，也就是将数据备份到硬盘上，防止断电或是机器故障导致的数据丢失。</p>
+<p>持久化的实现方式有两种方案：</p>
+<ol>
+<li><strong>直接保存当前已经存储的数据</strong>，相当于复制内存中的数据到硬盘上，需要恢复数据时直接读取即可【相当于数据库中学的数据转储】</li>
+<li><strong>保存存放数据的所有过程</strong>，需要恢复数据时，只需要将整个过程完整地重演一遍就能保证与之前数据库中的内容一致。【相当于数据库中学的日志记录】</li>
+</ol>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>RDB就是第一种解决方案，直接保存当前已经存储的数据</p>
+<p>使用以下命令将数据保存到本地：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save</span><br><span class="line"><span class="comment">-- 注意上面这个命令是直接保存，会占用一定的时间，也可以单独开一个子进程后台执行保存</span></span><br><span class="line">bgsave</span><br></pre></td></tr></table></figure></div>
+
+<p>执行后，会在服务端目录下生成一个dump.rdb文件，而这个文件中就保存了内存中存放的数据，当服务器重启后，会自动加载里面的内容到对应数据库中。</p>
+<p>保存后关闭服务器：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown</span><br></pre></td></tr></table></figure></div>
+
+<p>重启后可以看到数据依然存在。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqe2.com%2Fjava%2Fzb_users%2Fupload%2F2020%2F04%2F202004281588086055367603.png&refer=http%3A%2F%2Fqqe2.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1644843952&t=ec4cd6eb2c6d47a10aff5b9f264d2f16"
+                      alt="点击查看图片来源"
+                ></p>
+<p>虽然这种方式非常方便，但是由于会完整复制所有的数据，如果数据库中的数据量比较大，那么复制一次可能就需要花费大量的时间。</p>
+<p>优化：</p>
+<ol>
+<li>每隔一段时间自动进行保存</li>
+<li>如果基本上都是在进行读操作，而没有进行写操作，实际上只需要偶尔保存一次即可（因为数据几乎没有怎么变化，可能两次保存的都是一样的数据）</li>
+</ol>
+<p>在配置文件中设置自动保存，并设定在一段时间内写入多少数据时，执行一次保存操作：</p>
+<p>配置的save使用的都是bgsave后台执行。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">save 300 10 # 300秒（5分钟）内有10个写入</span><br><span class="line">save 60 10000 # 60秒（1分钟）内有10000个写入</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>RDB的缺点很明显：每次都需要去完整地保存整个数据库中的数据，同时后台保存过程中也会产生额外的内存开销。最严重的是它并不是实时保存的，如果在自动保存触发之前服务器崩溃，那么依然会导致少量数据的丢失。</p>
+<p>而AOF就是另一种方式，它会<strong>以日志的形式将每次执行的命令都进行保存</strong>，服务器重启时会将所有命令依次执行，通过这种重演的方式将数据恢复，这样就能很好解决实时性存储问题。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://qqe2.com/java/zb_users/upload/2020/04/202004281588086068660716.png"
+                      alt="rdb和aof区别"
+                ></p>
+<p>有三种保存策略（多久写一次日志）：</p>
+<ul>
+<li>always：每次执行写操作都会保存一次</li>
+<li>everysec：每秒保存一次（默认配置），这样就算丢失数据也只会丢一秒以内的数据</li>
+<li>no：看系统心情保存</li>
+</ul>
+<p>可以在配置文件中配置：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 注意得改成yes</span><br><span class="line">appendonly yes</span><br><span class="line"></span><br><span class="line"># appendfsync always</span><br><span class="line">appendfsync everysec</span><br><span class="line"># appendfsync <span class="keyword">no</span></span><br></pre></td></tr></table></figure></div>
+
+<p>重启服务器后，可以看到服务器目录下多了一个<code>appendonly.aof</code>文件，存储的就是我们执行的命令。</p>
+<p><em>AOF的缺点也很明显</em>：每次服务器启动都需要进行过程重演，相比RDB更加耗费时间，并且随着当操作变多，不断累计，可能到最后的aof文件会变得无比巨大</p>
+<p>优化：</p>
+<p>只要能够保证最终的重演结果和原有语句的结果一致，无论语句如何修改都可以。所以可以通过以下方式将多条语句进行压缩。</p>
+<p>比如执行了这样的语句：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lpush test 666</span><br><span class="line">lpush test 777</span><br><span class="line">lpush test 888</span><br></pre></td></tr></table></figure></div>
+
+<p>实际上用一条语句也可以实现：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpush test 666 777 888</span><br></pre></td></tr></table></figure></div>
+
+<p>可以输入命令来手动执行重写操作：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bgrewriteaof</span><br></pre></td></tr></table></figure></div>
+
+<p>或是在配置文件中配置自动重写：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 百分比计算，这里不多介绍</span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line"># 当达到这个大小时，触发自动重写</span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>RDB：<ul>
+<li>优点：加载速度快、数据体积小</li>
+<li>缺点：存储速度慢大量消耗资源、会发生数据丢失</li>
+</ul>
+</li>
+<li>AOF：<ul>
+<li>优点：存储速度快、消耗资源少、支持实时存储</li>
+<li>缺点：加载速度慢、数据体积大</li>
+</ul>
+</li>
+</ul>
+<h1 id="事务和锁机制"><a href="#事务和锁机制" class="headerlink" title="事务和锁机制"></a>事务和锁机制</h1><p><strong>Redis中的事务</strong></p>
+<p>和MySQL一样，在Redis中也有事务机制</p>
+<p>开启事务：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multi</span><br></pre></td></tr></table></figure></div>
+
+<p>输入完所有要执行的命令后，使用命令来立即执行事务：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span></span><br></pre></td></tr></table></figure></div>
+
+<p>中途取消事务：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">discard</span><br></pre></td></tr></table></figure></div>
+
+<p>实际上整个事务是创建了一个命令队列，它不像MySQL那种在事务中也能单独得到结果，而是要提前将所有的命令装在队列中，但是并不会执行，而是等提交事务的时候再统一执行。</p>
+<hr>
+<p><strong>Redis的锁机制</strong></p>
+<p>实际上在Redis中也会出现多个命令同时竞争同一个数据的情况，比如现在有两条命令同时执行，他们都要去修改a的值，那么这个时候就只能动用锁机制来保证同一时间只能有一个命令操作。</p>
+<p>虽然Redis中也有锁机制，但是它是一种乐观锁，MySQL中的锁是悲观锁</p>
+<ul>
+<li>悲观锁：时刻认为别人会来抢占资源，禁止一切外来访问，直到释放锁，具有强烈的排他性质。</li>
+<li>乐观锁：并不认为会有人来抢占资源，所以会直接对数据进行操作，在操作时再去验证是否有其他人抢占资源。</li>
+</ul>
+<p>Redis中可以使用watch来监视一个目标，如果执行事务之前，被监视目标发生了修改，则取消本次事务：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch</span><br></pre></td></tr></table></figure></div>
+
+<p>取消监视可以使用：</p>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unwatch</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Java与Redis交互"><a href="#Java与Redis交互" class="headerlink" title="Java与Redis交互"></a>Java与Redis交互</h1><p>在本机电脑或者服务器上安装一个redis的服务器，通过java客户端在程序中进行集成，然后通过客户端完成对redis的增删改查操作。</p>
+<p>redis的Java客户端类型很多的，最受欢迎的是Redission，Jedis, Lettuce这三个</p>
+<p>Jedis和Lettuce侧重于单例redis数据库的CRUD，Redisson侧重于分布式开发。</p>
+<p>springBoot项目中一般使用spring-data-redis这个starter，它的底层用的是Lettuce</p>
+<h2 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h2><p>依赖</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>连接Redis数据库：只需创建个对象即可</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//创建Jedis对象</span></span><br><span class="line">    <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;localhost&quot;</span>, <span class="number">6379</span>);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">//使用之后关闭连接</span></span><br><span class="line">    jedis.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过Jedis对象，<strong>直接调用命令的同名方法</strong>即可执行Redis命令，比如：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//直接使用try-with-resouse，省去close</span></span><br><span class="line">    <span class="keyword">try</span>(<span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.10.3&quot;</span>, <span class="number">6379</span>))&#123;</span><br><span class="line">        jedis.set(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;lbwnb&quot;</span>);   <span class="comment">//等同于 set test lbwnb 命令</span></span><br><span class="line">        System.out.println(jedis.get(<span class="string">&quot;test&quot;</span>));  <span class="comment">//等同于 get test 命令</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>Hash类型的数据也是这样：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span>(<span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.10.3&quot;</span>, <span class="number">6379</span>))&#123;</span><br><span class="line">        jedis.hset(<span class="string">&quot;hhh&quot;</span>, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;sxc&quot;</span>);   <span class="comment">//等同于 hset hhh name sxc</span></span><br><span class="line">        jedis.hset(<span class="string">&quot;hhh&quot;</span>, <span class="string">&quot;sex&quot;</span>, <span class="string">&quot;19&quot;</span>);    <span class="comment">//等同于 hset hhh age 19</span></span><br><span class="line">        jedis.hgetAll(<span class="string">&quot;hhh&quot;</span>).forEach((k, v) -&gt; System.out.println(k+<span class="string">&quot;: &quot;</span>+v));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>列表操作：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span>(<span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.10.3&quot;</span>, <span class="number">6379</span>))&#123;</span><br><span class="line">        jedis.lpush(<span class="string">&quot;mylist&quot;</span>, <span class="string">&quot;111&quot;</span>, <span class="string">&quot;222&quot;</span>, <span class="string">&quot;333&quot;</span>);  <span class="comment">//等同于 lpush mylist 111 222 333 命令</span></span><br><span class="line">        jedis.lrange(<span class="string">&quot;mylist&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">                .forEach(System.out::println);    <span class="comment">//等同于 lrange mylist 0 -1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Lettuce"><a href="#Lettuce" class="headerlink" title="Lettuce"></a>Lettuce</h2><p>SpringBoot整合Redis只需导入redis的starter即可【底层没有用Jedis，而是Lettuce】</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>starter提供的默认配置会去连接本地的Redis服务器，并使用0号数据库。可以手动进行修改：</p>
+<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="comment">#Redis服务器地址</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">192.168</span><span class="number">.10</span><span class="number">.3</span></span><br><span class="line">    <span class="comment">#端口</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">    <span class="comment">#使用几号数据库</span></span><br><span class="line">    <span class="attr">database:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
+
+<p>starter提供了两个默认的模板类：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration(</span></span><br><span class="line"><span class="meta">    proxyBeanMethods = false</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(&#123;RedisOperations.class&#125;)</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(&#123;RedisProperties.class&#125;)</span></span><br><span class="line"><span class="meta">@Import(&#123;LettuceConnectionConfiguration.class, JedisConnectionConfiguration.class&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisAutoConfiguration</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RedisAutoConfiguration</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean(</span></span><br><span class="line"><span class="meta">        name = &#123;&quot;redisTemplate&quot;&#125;</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    <span class="meta">@ConditionalOnSingleCandidate(RedisConnectionFactory.class)</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate&lt;Object, Object&gt; <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory redisConnectionFactory)</span> &#123;</span><br><span class="line">        RedisTemplate&lt;Object, Object&gt; template = <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>();</span><br><span class="line">        template.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="meta">@ConditionalOnSingleCandidate(RedisConnectionFactory.class)</span></span><br><span class="line">    <span class="keyword">public</span> StringRedisTemplate <span class="title function_">stringRedisTemplate</span><span class="params">(RedisConnectionFactory redisConnectionFactory)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StringRedisTemplate</span>(redisConnectionFactory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>直接注入<code>StringRedisTemplate</code>来使用模板：</p>
+<blockquote>
+<p>所有的值的操作都被封装到了<code>ValueOperations</code>对象中，而普通的键操作直接通过模板对象就可以使用了，大致使用方式其实和Jedis一致。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SpringBootTestApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    StringRedisTemplate template;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        ValueOperations&lt;String, String&gt; operations = template.opsForValue();</span><br><span class="line">        operations.set(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;xxxxx&quot;</span>);   <span class="comment">//设置值</span></span><br><span class="line">        System.out.println(operations.get(<span class="string">&quot;c&quot;</span>));   <span class="comment">//获取值</span></span><br><span class="line">      	</span><br><span class="line">        template.delete(<span class="string">&quot;c&quot;</span>);    <span class="comment">//删除键</span></span><br><span class="line">        System.out.println(template.hasKey(<span class="string">&quot;c&quot;</span>));   <span class="comment">//判断是否包含键</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>事务操作</p>
+<p>由于Spring没有专门的Redis事务管理器，所以只能借用JDBC提供的</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    StringRedisTemplate template;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>&#123;</span><br><span class="line">        template.setEnableTransactionSupport(<span class="literal">true</span>);   <span class="comment">//需要开启事务</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional</span>    <span class="comment">//需要添加此注解</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        template.multi();</span><br><span class="line">        template.opsForValue().set(<span class="string">&quot;d&quot;</span>, <span class="string">&quot;xxxxx&quot;</span>);</span><br><span class="line">        template.exec();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以为RedisTemplate对象配置一个Serializer来实现对象的JSON存储：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">contextLoad2</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//注意Student需要实现序列化接口才能存入Redis</span></span><br><span class="line">    template.opsForValue().set(<span class="string">&quot;student&quot;</span>, <span class="keyword">new</span> <span class="title class_">Student</span>());</span><br><span class="line">    System.out.println(template.opsForValue().get(<span class="string">&quot;student&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="使用Redis做缓存"><a href="#使用Redis做缓存" class="headerlink" title="使用Redis做缓存"></a>使用Redis做缓存</h1><p>使用Redis来实现一些框架的缓存和其他存储。</p>
+<h2 id="Mybatis二级缓存"><a href="#Mybatis二级缓存" class="headerlink" title="Mybatis二级缓存"></a>Mybatis二级缓存</h2><p>Mybatis的二级缓存是Mapper级别的缓存，能够作用于所有会话。</p>
+<p>但由于Mybatis的默认二级缓存只能是单机的，如果存在多台服务器访问同一个数据库，实际上二级缓存只会在各自的服务器上生效</p>
+<p>现在希望的是多台服务器都能使用同一个二级缓存，这样就不会造成过多的资源浪费。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/img_convert/5afd7713f9a97615dc3a0b1d3bc7db27.png"
+                      alt="img"
+                ></p>
+<p>此时就可以将Redis作为Mybatis的二级缓存，从而实现多台服务器使用同一个二级缓存。因为它们只需要连接同一个Redis服务器即可，所有的缓存数据全部存储在Redis服务器上。</p>
+<p><strong>具体实现</strong></p>
+<p>手动实现Mybatis提供的Cache接口：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现Mybatis的Cache接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisMybatisCache</span> <span class="keyword">implements</span> <span class="title class_">Cache</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RedisTemplate&lt;Object, Object&gt; template;</span><br><span class="line"></span><br><span class="line">   	<span class="comment">//注意构造方法必须带一个String类型的参数接收id</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RedisMybatisCache</span><span class="params">(String id)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//初始化时通过配置类将RedisTemplate给过来</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setTemplate</span><span class="params">(RedisTemplate&lt;Object, Object&gt; template)</span> &#123;</span><br><span class="line">        RedisMybatisCache.template = template;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">putObject</span><span class="params">(Object o, Object o1)</span> &#123;</span><br><span class="line">      	<span class="comment">//这里直接向Redis数据库中丢数据即可，o就是Key，o1就是Value，60秒为过期时间</span></span><br><span class="line">        template.opsForValue().set(o, o1, <span class="number">60</span>, TimeUnit.SECONDS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">getObject</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">      	<span class="comment">//这里根据Key直接从Redis数据库中获取值即可</span></span><br><span class="line">        <span class="keyword">return</span> template.opsForValue().get(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">removeObject</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">      	<span class="comment">//根据Key删除</span></span><br><span class="line">        <span class="keyword">return</span> template.delete(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">      	<span class="comment">//由于template中没封装清除操作，只能通过connection来执行</span></span><br><span class="line">				template.execute((RedisCallback&lt;Void&gt;) connection -&gt; &#123;</span><br><span class="line">          	<span class="comment">//通过connection对象执行清空操作</span></span><br><span class="line">            connection.flushDb();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getSize</span><span class="params">()</span> &#123;</span><br><span class="line">      	<span class="comment">//这里也是使用connection对象来获取当前的Key数量</span></span><br><span class="line">        <span class="keyword">return</span> template.execute(RedisServerCommands::dbSize).intValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>缓存类编写完成后，编写配置类：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    RedisTemplate&lt;Object, Object&gt; template;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>&#123;</span><br><span class="line">      	<span class="comment">//把RedisTemplate给到RedisMybatisCache</span></span><br><span class="line">        RedisMybatisCache.setTemplate(template);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在Mapper上启用此缓存即可：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只需要修改缓存实现类implementation为我们的RedisMybatisCache即可</span></span><br><span class="line"><span class="meta">@CacheNamespace(implementation = RedisMybatisCache.class)</span></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MainMapper</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select(&quot;select name from student where sid = 1&quot;)</span></span><br><span class="line">    String <span class="title function_">getSid</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>测试用例查看当前的二级缓存是否生效：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SpringBootTestApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    MainMapper mapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(mapper.getSid());</span><br><span class="line">        System.out.println(mapper.getSid());</span><br><span class="line">        System.out.println(mapper.getSid());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>手动使用客户端查看Redis数据库，可以看到已经有一条Mybatis生成的缓存数据了。</p>
+<h2 id="Token持久化存储"><a href="#Token持久化存储" class="headerlink" title="Token持久化存储"></a>Token持久化存储</h2><p>之前使用SpringSecurity时，remember-me的Token是支持持久化存储的，当时是存储在数据库中</p>
+<p>实际上，Token信息还可以存储在缓存中</p>
+<p><strong>具体实现</strong></p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现PersistentTokenRepository接口</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTokenRepository</span> <span class="keyword">implements</span> <span class="title class_">PersistentTokenRepository</span> &#123;</span><br><span class="line">  	<span class="comment">//Key名称前缀，用于区分</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">REMEMBER_ME_KEY</span> <span class="operator">=</span> <span class="string">&quot;spring:security:rememberMe:&quot;</span>;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    RedisTemplate&lt;Object, Object&gt; template;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createNewToken</span><span class="params">(PersistentRememberMeToken token)</span> &#123;</span><br><span class="line">      	<span class="comment">//这里要放两个，一个存seriesId-&gt;Token，一个存username-&gt;seriesId，因为删除时是通过username删除</span></span><br><span class="line">        template.opsForValue().set(REMEMBER_ME_KEY+<span class="string">&quot;username:&quot;</span>+token.getUsername(), token.getSeries());</span><br><span class="line">        template.expire(REMEMBER_ME_KEY+<span class="string">&quot;username:&quot;</span>+token.getUsername(), <span class="number">1</span>, TimeUnit.DAYS);</span><br><span class="line">        <span class="built_in">this</span>.setToken(token);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//先获取，然后修改创建一个新的，再放入</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateToken</span><span class="params">(String series, String tokenValue, Date lastUsed)</span> &#123;</span><br><span class="line">        <span class="type">PersistentRememberMeToken</span> <span class="variable">token</span> <span class="operator">=</span> <span class="built_in">this</span>.getToken(series);</span><br><span class="line">        <span class="keyword">if</span>(token != <span class="literal">null</span>)</span><br><span class="line">           <span class="built_in">this</span>.setToken(<span class="keyword">new</span> <span class="title class_">PersistentRememberMeToken</span>(token.getUsername(), series, tokenValue, lastUsed));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> PersistentRememberMeToken <span class="title function_">getTokenForSeries</span><span class="params">(String seriesId)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.getToken(seriesId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//通过username找seriesId直接删除这两个</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">removeUserTokens</span><span class="params">(String username)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">series</span> <span class="operator">=</span> (String) template.opsForValue().get(REMEMBER_ME_KEY+<span class="string">&quot;username:&quot;</span>+username);</span><br><span class="line">        template.delete(REMEMBER_ME_KEY+series);</span><br><span class="line">        template.delete(REMEMBER_ME_KEY+<span class="string">&quot;username:&quot;</span>+username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  	<span class="comment">//由于PersistentRememberMeToken没实现序列化接口，这里只能用Hash来存储了，所以单独编写一个set和get操作</span></span><br><span class="line">    <span class="keyword">private</span> PersistentRememberMeToken <span class="title function_">getToken</span><span class="params">(String series)</span>&#123;</span><br><span class="line">        Map&lt;Object, Object&gt; map = template.opsForHash().entries(REMEMBER_ME_KEY+series);</span><br><span class="line">        <span class="keyword">if</span>(map.isEmpty()) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">PersistentRememberMeToken</span>(</span><br><span class="line">                (String) map.get(<span class="string">&quot;username&quot;</span>),</span><br><span class="line">                (String) map.get(<span class="string">&quot;series&quot;</span>),</span><br><span class="line">                (String) map.get(<span class="string">&quot;tokenValue&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Date</span>(Long.parseLong((String) map.get(<span class="string">&quot;date&quot;</span>))));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">setToken</span><span class="params">(PersistentRememberMeToken token)</span>&#123;</span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;username&quot;</span>, token.getUsername());</span><br><span class="line">        map.put(<span class="string">&quot;series&quot;</span>, token.getSeries());</span><br><span class="line">        map.put(<span class="string">&quot;tokenValue&quot;</span>, token.getTokenValue());</span><br><span class="line">        map.put(<span class="string">&quot;date&quot;</span>, <span class="string">&quot;&quot;</span>+token.getDate().getTime());</span><br><span class="line">        template.opsForHash().putAll(REMEMBER_ME_KEY+token.getSeries(), map);</span><br><span class="line">        template.expire(REMEMBER_ME_KEY+token.getSeries(), <span class="number">1</span>, TimeUnit.DAYS);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>实现验证Service：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AuthService</span> <span class="keyword">implements</span> <span class="title class_">UserDetailsService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    UserMapper mapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> UserDetails <span class="title function_">loadUserByUsername</span><span class="params">(String username)</span> <span class="keyword">throws</span> UsernameNotFoundException &#123;</span><br><span class="line">        <span class="type">Account</span> <span class="variable">account</span> <span class="operator">=</span> mapper.getAccountByUsername(username);</span><br><span class="line">        <span class="keyword">if</span>(account == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UsernameNotFoundException</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> User</span><br><span class="line">                .withUsername(username)</span><br><span class="line">                .password(account.getPassword())</span><br><span class="line">                .roles(account.getRole())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>Mapper：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Account</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    String username;</span><br><span class="line">    String password;</span><br><span class="line">    String role;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CacheNamespace(implementation = MybatisRedisCache.class)</span></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select(&quot;select * from users where username = #&#123;username&#125;&quot;)</span></span><br><span class="line">    Account <span class="title function_">getAccountByUsername</span><span class="params">(String username)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>配置文件：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    http</span><br><span class="line">            .authorizeRequests()</span><br><span class="line">            .anyRequest().authenticated()</span><br><span class="line">            .and()</span><br><span class="line">            .formLogin()</span><br><span class="line">            .and()</span><br><span class="line">            .rememberMe()</span><br><span class="line">            .tokenRepository(repository);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    auth</span><br><span class="line">            .userDetailsService(service)</span><br><span class="line">            .passwordEncoder(<span class="keyword">new</span> <span class="title class_">BCryptPasswordEncoder</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="三大缓存问题"><a href="#三大缓存问题" class="headerlink" title="三大缓存问题"></a>三大缓存问题</h1><p>虽然利用缓存可以大幅度提升程序的数据获取效率，但是使用缓存也存在着一些潜在的问题。</p>
+<h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://mydlq-club.oss-cn-beijing.aliyuncs.com/images/springboot-cache-redis-1004.png?x-oss-process=style/shuiyin"
+                      alt="img"
+                ></p>
+<p>当查询一个一定不存在的数据时，比如Mybatis在缓存是未命中的情况下需要从数据库查询，查不到数据则不写入缓存，这将导致这个<strong>不存在的数据每次请求都要到数据库去查询，造成缓存穿透</strong>。</p>
+<p>这显然是很浪费资源的。<br>希望的是，如果这个数据不存在，就让缓存这一层直接返回空，不必再去查数据库了。但是这也有个问题：缓存不去查数据库怎么知道数据库里面到底有没有这个数据呢？</p>
+<p>这时就可以使用<strong>布隆过滤器</strong>来进行判断。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.bubuko.com%2Finfo%2F201903%2F20190321142642446276.png&refer=http%3A%2F%2Fimage.bubuko.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1644902390&t=4f0440b0357965ead1fa34fb27513927"
+                      alt="点击查看图片来源"
+                ></p>
+<p>使用布隆过滤器，能够告诉你某样东西一定不存在或是某样东西可能存在。</p>
+<p>布隆过滤器本质是一个存放二进制位的bit数组。<br>如果要添加一个值到布隆过滤器中，需要使用N个不同的哈希函数来生成N个哈希值，并对每个生成的哈希值指向的bit位置1，如上图所示，一共添加了三个值abc。</p>
+<p>接着给一个d，那么这时就可以进行判断，如果说d计算的N个哈希值的位置上都是1，那么就说明d可能存在；这时候又来了个e，计算后发现有一个位置上的值是0，这时就可以直接断定e一定不存在。</p>
+<h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://mydlq-club.oss-cn-beijing.aliyuncs.com/images/springboot-cache-redis-1005.png?x-oss-process=style/shuiyin"
+                      alt="img"
+                ></p>
+<p>某个 Key 属于热点数据，访问非常频繁，同一时间很多人都在访问，在这个Key失效的瞬间，大量的请求到来，这时发现缓存中没有数据，就全都直接请求数据库，相当于击穿了缓存屏障，直接攻击整个系统核心。</p>
+<p>这种情况下，最好的解决办法就是不让Key那么快过期，如果一个Key处于高频访问，那么可以适当地延长过期时间。</p>
+<h2 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://mydlq-club.oss-cn-beijing.aliyuncs.com/images/springboot-cache-redis-1006.png?x-oss-process=style/shuiyin"
+                      alt="img"
+                ></p>
+<p>Redis服务器炸了或是大量的Key在同一时间过期，这时相当于缓存直接GG了，那么如果这时又有很多的请求来访问不同的数据，同一时间内缓存服务器就得向数据库大量发起请求来重新建立缓存，很容易把数据库也搞GG。</p>
+<p>解决这种问题最好的办法就是设置高可用，也就是<strong>搭建Redis集群</strong>，当然也可以采取一些<strong>服务熔断降级机制</strong></p>
+<h1 id="Redis与分布式"><a href="#Redis与分布式" class="headerlink" title="Redis与分布式"></a>Redis与分布式</h1><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>在分布式场景下，可以考虑让Redis实现主从模式：</p>
+<p>主从复制，是指将一台Redis服务器的数据，复制到其他的Redis服务器。前者称为主节点(Master)，后者称为从节点(Slave)，数据的复制是单向的，只能由主节点到从节点。Master以写为主，Slave 以读为主。</p>
+<p>好处：</p>
+<ul>
+<li>实现了读写分离，提高了性能。</li>
+<li>在写少读多的场景下，安排很多个从节点，就能够大幅度的分担压力，并且就算挂掉一个，其他的也能使用。</li>
+</ul>
+<hr>
+<p><strong>实现一下</strong>，在Windows下进行测试</p>
+<p>开启两个Redis服务器，修改配置文件<code>redis.windows.conf</code>：<br>一个服务器的端口设定为6001，复制一份，另一个的端口为6002</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Accept connections on the specified port, default is 6379 (IANA #815344).</span><br><span class="line"># If port 0 is specified Redis will not listen on a TCP socket.</span><br><span class="line">port 6001</span><br></pre></td></tr></table></figure></div>
+
+<p>打开cmd，指定配置文件分别启动两个服务器：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/Si54lok9eqtKPf1.png"
+                      alt="image-20230307000143566"
+                ></p>
+<p>打开客户端，输入<code>info replication</code>命令来查看当前的主从状态：<br>可以看到默认的角色为：master，也就是说所有的服务器在启动之后都是主节点的状态。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/2TbMQeZknSOzFpy.png"
+                      alt="image-20230307000151282"
+                ></p>
+<p>在6002节点，输入<code>replicaof 127.0.0.1 6001</code>命令，将6001服务器设置为主节点，当前结点(6002)的角色变成slave</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/XqpNcihJ5jsZRoI.png"
+                      alt="image-20230307000200296"
+                ></p>
+<p>此时6001的情况：<br>从节点信息中已经出现了6002服务器，现在6001和6002形成了主从关系（还包含一个偏移量，这个偏移量反映的是从节点的同步情况）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/YABKJDsbQkE1UM5.png"
+                      alt="image-20230307000208687"
+                ></p>
+<blockquote>
+<p>主服务器和从服务器都会维护一个复制偏移量，主服务器每次向从服务器中传递 N 个字节的时候，会将自己的复制偏移量加上 N。从服务器中收到主服务器的 N 个字节的数据，就会将自己额复制偏移量加上 N，通过主从服务器的偏移量对比可以很清楚的知道主从服务器的数据是否处于一致，如果不一致就需要进行增量同步了。</p>
+</blockquote>
+<p>在主节点新增数据：<br>在6001服务器插入的<code>a</code>，可以在从节点6002读取到</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/taxoisA8Tpg2DWM.png"
+                      alt="image-20230307000216155"
+                ></p>
+<p>在从节点新增的数据：<br>结果发现，从节点压根就没办法进行数据插入，节点的模式为只读模式<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/dS2V8xafPj6lKND.png"
+                      alt="image-20230307000224291"
+                ></p>
+<p>在6002中输入<code>replicaof no one</code>后，6002就不再是6001的从节点了，变回Master角色。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/dV7Rxov6pblW2g5.png"
+                      alt="image-20230307000234718"
+                ></p>
+<p>再启动一台6003服务器，流程是一样的：<br>可以看到，在连接之后，也会直接同步主节点的数据。因此无论是已经处于从节点状态还是刚刚启动完成的服务器，都会从主节点同步数据，</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/TC7z2mt3EGMPWfq.png"
+                      alt="image-20230307000406674"
+                ></p>
+<hr>
+<p>实际上整个同步流程为：</p>
+<ol>
+<li>从节点执行replicaof ip port命令后，从节点会保存主节点相关的地址信息。</li>
+<li>从节点通过每秒运行的定时任务发现配置了新的主节点后，会尝试与该节点建立网络连接，专门用于接收主节点发送的复制命令。</li>
+<li>连接成功后，第一次会将主节点的数据进行全量复制，之后采用增量复制，持续将新来的写命令同步给从节点。</li>
+</ol>
+<hr>
+<p>当主节点关闭后，从节点依然可以读取数据：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/MmNshyQxa2ijSRT.png"
+                      alt="image-20230307000415001"
+                ></p>
+<p>但是从节点会疯狂报错：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/pEIo93MQXShrsZD.png"
+                      alt="image-20230307000424822"
+                ></p>
+<hr>
+<p>每次都敲命令配置主从太麻烦了，可以直接在配置文件中配置：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replicaof 127.0.0.1 6001</span><br></pre></td></tr></table></figure></div>
+
+<p>给6002和6003服务器都配置一下，然后重启三个服务器。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/GpAa5kfyC3zVRZK.png"
+                      alt="image-20230307000432434"
+                ></p>
+<hr>
+<p>除了作为Master节点的从节点外，还可以将其作为从节点的从节点，比如现在让6003作为6002的从节点：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/OdAs1weYgkDrQvf.png"
+                      alt="image-20230307000444990"
+                ></p>
+<p>也就是说，现在差不多是这样的的一个情况：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/2ADSR8LtpMhCFfK.png"
+                      alt="image-20230307000459161"
+                ></p>
+<p>采用这种方式，优点肯定是显而易见的，但是缺点也很明显，整个传播链路一旦中途出现问题，那么就会导致后面的从节点无法及时同步。</p>
+<h2 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h2><p>主从复制中，最关键的是主节点，一旦主节点出现问题，那么整个主从系统将无法写入。</p>
+<p>因此，处理主节点故障的情况是重中之重。<br>参考服务治理模式，比如Nacos和Eureka，所有的服务都会被实时监控，只要出现问题，都是可以及时发现的，并且能够采取相应的补救措施——Redis哨兵模式</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/YGq8MDZbRK6E7Po.png"
+                      alt="image-20230307000508084"
+                ></p>
+<p>这里的哨兵不是SpringCloud Alibaba的那个，而是专用于Redis的。</p>
+<p>哨兵会对所有的节点进行监控，如果发现主节点出现问题，那么会立即让从节点进行投票，选举一个新的主节点出来，这样就不会由于主节点的故障导致整个系统不可写（要实现这样的功能最小的系统必须是一主一从，再小的话就没有意义了）</p>
+<p>选举规则</p>
+<ol>
+<li>首先会根据优先级进行选择，可以在配置文件中进行配置，添加<code>replica-priority</code>配置项（默认是100），越小表示优先级越高。</li>
+<li>如果优先级一样，那就选择偏移量最大的</li>
+<li>要是还选不出来，那就选择runid（启动时随机生成的）最小的。</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/WhkUqfxcHn4CApP.png"
+                      alt="image-20230307000516875"
+                ></p>
+<hr>
+<p><strong>大致运用</strong></p>
+<p>启动一个哨兵：<br>修改配置文件即可，直接删除全部内容，添加：<br>第一个和第二个是固定；第三个是为监控对象名称，随意；后面就是主节点的相关信息，包括IP地址和端口；最后的1表示当有1个哨兵认为主节点挂掉时，就判断主节点真的挂掉了</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sentinel monitor lbwnb 127.0.0.1 6001 1</span><br></pre></td></tr></table></figure></div>
+
+<p>使用此配置文件启动服务器：<br>可以看到以哨兵模式启动后，会自动监控主节点，然后还会显示哪些节点是作为从节点存在的。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/xB78t53RgykXvo9.png"
+                      alt="image-20230307000534399"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/STh2RgjW7ycPCNB.png"
+                      alt="image-20230307000542878"
+                ></p>
+<p>现在直接把主节点关闭：<br>可以看到从节点还是正常的在报错，一开始的时候不会直接重新进行选举而是继续尝试重连（因为有可能只是网络小卡一下，没必要这么敏感）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/97HnwfuNjUK5qx4.png"
+                      alt="image-20230307000627807"
+                ></p>
+<p>但是经过一段时间之后，依然无法连接，哨兵输出了以下内容：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/GWt8Q6mfSv7TgCb.png"
+                      alt="image-20230307000646050"
+                ></p>
+<p>可以看到哨兵发现主节点已经有一段时间不可用了，那么就会开始进行重新选举，6003节点被选为了新的主节点，并且之前的主节点6001变成了新的主节点的从节点：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/4WzTVZ15dMiQ3f8.png"
+                      alt="image-20230307000653822"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/gGHVvOhBKe9wSEz.png"
+                      alt="image-20230307000703587"
+                ></p>
+<p>当再次启动6001时，它自动变成了6003的从节点，并且会将数据同步过来：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/eqLycu8s1rSRtFa.png"
+                      alt="image-20230307000717002"
+                ></p>
+<hr>
+<p>多安排几个哨兵【只需要把哨兵的配置复制一下，然后修改端口】，同时启动多个哨兵，就可以很好地应对哨兵挂掉地隐患</p>
+<p>这里启动3个哨兵（一主二从三哨兵），把最后一个值改为<code>2</code>：<br>这个值实际上代表的是当有几个哨兵认为主节点挂掉时，就判断主节点真的挂掉了</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sentinel monitor lbwnb 192.168.0.8 6001 2</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/48MNiLJXqmUtvWc.png"
+                      alt="image-20230307000731297"
+                ></p>
+<p>现在把6001节点挂掉，可以看到都显示将master切换为6002节点了：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/ajSAhqb5L9Yuorg.png"
+                      alt="image-20230307000741214"
+                ></p>
+<hr>
+<p>在哨兵重新选举新的主节点之后，Java中的Redis的客户端如何感知到呢？</p>
+<p>导入依赖：</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//这里我们直接使用JedisSentinelPool来获取Master节点</span></span><br><span class="line">        <span class="comment">//需要把三个哨兵的地址都填入</span></span><br><span class="line">        <span class="keyword">try</span> (<span class="type">JedisSentinelPool</span> <span class="variable">pool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisSentinelPool</span>(<span class="string">&quot;lbwnb&quot;</span>,</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(Arrays.asList(<span class="string">&quot;192.168.0.8:26741&quot;</span>, <span class="string">&quot;192.168.0.8:26740&quot;</span>, <span class="string">&quot;192.168.0.8:26739&quot;</span>)))) &#123;</span><br><span class="line">            <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> pool.getResource();   <span class="comment">//直接询问并得到Jedis对象，这就是连接的Master节点</span></span><br><span class="line">            jedis.set(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;114514&quot;</span>);    <span class="comment">//直接写入即可，实际上就是向Master节点写入</span></span><br><span class="line"></span><br><span class="line">            <span class="type">Jedis</span> <span class="variable">jedis2</span> <span class="operator">=</span> pool.getResource();   <span class="comment">//再次获取</span></span><br><span class="line">            System.out.println(jedis2.get(<span class="string">&quot;test&quot;</span>));   <span class="comment">//读取操作</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这样，Jedis对象就可以通过哨兵来获取，当Master节点更新后，也能得到最新的。</p>
+<h2 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h2><p>服务器的内存不够用，但是Redis又需要继续存储内容，那么这个时候就可以利用集群来实现扩容。</p>
+<p>因为单机的内存容量最大就那么多，已经没办法再继续扩展了，但是现在又需要存储更多的内容，这时就可以让N台机器上的Redis来分别存储各个部分的数据（每个Redis可以存储1&#x2F;N的数据量），这样就实现了容量的横向扩展。同时每台Redis还可以配一个从节点，这样就可以更好地保证数据的安全性。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/TjCw8DLi1VqYvpZ.png"
+                      alt="image-20230307000754039"
+                ></p>
+<p>用户来了一个写入的请求，数据该写到哪个节点上呢？<br>首先，一个Redis集群包含16384个插槽，集群中的每个Redis 实例负责维护一部分插槽以及插槽所映射的键值数据<br>实际上，插槽就是键的Hash计算后的一个结果，注意这里使用了<code>计算机网络</code>中的CRC循环冗余校验，这里采用CRC16，能得到16个bit位的数据，也就是说算出来之后结果是0-65535之间，再进行取模，得到最终结果：<br><strong>Redis key的路由计算公式：slot &#x3D; CRC16（key） % 16384</strong></p>
+<p>结果的值是多少，就应该存放到对应维护的Redis下，比如Redis节点1负责0-25565的插槽，而这时客户端插入了一个新的数据<code>a=10</code>，a在Hash计算后结果为666，那么a就应该存放到1号Redis节点中。</p>
+<p>简而言之，本质上就是<strong>通过哈希算法将插入的数据分摊到各个节点</strong></p>
+<hr>
+<p><strong>搭建集群</strong><br>创建6个配置，开启集群模式：<br>记得把所有的持久化文件全部删除，所有的节点内容必须是空的。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Normal Redis instances can&#x27;t be part of a Redis Cluster; only nodes that are</span><br><span class="line"># started as cluster nodes can. In order to start a Redis instance as a</span><br><span class="line"># cluster node enable the cluster support uncommenting the following:</span><br><span class="line">#</span><br><span class="line">cluster-enabled yes</span><br></pre></td></tr></table></figure></div>
+
+<p>输入<code>redis-cli.exe --cluster create --cluster-replicas 1 127.0.0.1:6001 127.0.0.1:6002 127.0.0.1:6003 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003</code>，这里的<code>--cluster-replicas 1</code>指的是每个节点配一个从节点：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/7DikHoxKJPve9qa.png"
+                      alt="image-20230307000805968"
+                ></p>
+<p>输入之后，会展示客户端默认分配的方案，并且询问当前的方案是否合理。可以看到6001&#x2F;6002&#x2F;6003都被选为主节点，其他的为从节点。<br>直接输入yes即可：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/yxZhjouXB79qfDd.png"
+                      alt="image-20230307000814076"
+                ></p>
+<p>分配成功，可以看到插槽的分配情况：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/8kg9TbadF2qyHJW.png"
+                      alt="image-20230307000830886"
+                ></p>
+<p>随便连接一个节点，尝试插入一个值：<br>插入时，出现了一个错误。这是因为a计算出来的哈希值（插槽），不归当前节点管</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/YMf8DtlkCsqBpO1.png"
+                      alt="image-20230307000840119"
+                ></p>
+<p>必须去管这个插槽的节点执行，通过上面的分配情况，可以得到15495属于节点6003管理：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/EZmR2bLFudSskIf.png"
+                      alt="image-20230307000849127"
+                ></p>
+<hr>
+<p>也可以使用集群方式连接，这样无论在哪个节点都可以插入，只需要添加<code>-c</code>表示以集群模式访问：</p>
+<p>可以看到，在6001节点成功对a的值进行了更新，只不过还是被重定向到了6003节点进行插入。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/mVw7EXFJQOcinIb.png"
+                      alt="image-20230307000907196"
+                ></p>
+<hr>
+<p>输入<code>cluster nodes</code>命令来查看当前所有节点的信息：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/pEJdI2UWTcNZFqu.png"
+                      alt="image-20230307000914746"
+                ></p>
+<p>现在把6001挂掉：<br>可以看到，6001挂掉后，原本6001的从节点7001，晋升为了新的主节点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/zd6L3WosVE8JUqf.png"
+                      alt="image-20230307000922277"
+                ></p>
+<p>将6001重启：<br>可以看到，6001变成了7001的从节点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/eUfYJS8yhVijvaw.png"
+                      alt="image-20230307000933812"
+                ></p>
+<p>同时挂掉6001和7001</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/9W2BQtMXrUCnySV.png"
+                      alt="image-20230307000944827"
+                ></p>
+<p>尝试插入新的数据：<br>可以看到，当存在节点不可用时，会无法插入新的数据</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/S8r5TE7gJ3M6iDW.png"
+                      alt="image-20230307000953377"
+                ></p>
+<p>将6001和7001恢复：<br>可以看到，恢复之后又可以继续正常使用了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/03/07/2RL4GNqSWJXFuME.png"
+                      alt="image-20230307001001435"
+                ></p>
+<hr>
+<p>Java连接到集群模式下的Redis</p>
+<p>用到JedisCluster对象，操作基本和Jedis对象一样</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//和客户端一样，随便连一个就行，也可以多写几个，构造方法有很多种可以选择</span></span><br><span class="line">        <span class="keyword">try</span>(<span class="type">JedisCluster</span> <span class="variable">cluster</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisCluster</span>(<span class="keyword">new</span> <span class="title class_">HostAndPort</span>(<span class="string">&quot;192.168.0.8&quot;</span>, <span class="number">6003</span>)))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;集群实例数量：&quot;</span>+cluster.getClusterNodes().size());</span><br><span class="line">            cluster.set(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;yyds&quot;</span>);</span><br><span class="line">            System.out.println(cluster.get(<span class="string">&quot;a&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Redis笔记</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-07-10 08:13:24</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/07/10/Java后端开发/Redis笔记/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/07/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/OO%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">OO设计原则</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/07/06/%E8%BF%90%E7%BB%B4/Nginx%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Nginx基本使用</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL%E6%A6%82%E8%AE%BA"><span class="nav-text">NoSQL概论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2"><span class="nav-text">Redis安装和部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu"><span class="nav-text">Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS"><span class="nav-text">CentOS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">Redis数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="nav-text">数据类型介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set%E5%92%8CSortedSet"><span class="nav-text">Set和SortedSet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81%E6%9C%BA%E5%88%B6"><span class="nav-text">事务和锁机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E4%B8%8ERedis%E4%BA%A4%E4%BA%92"><span class="nav-text">Java与Redis交互</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jedis"><span class="nav-text">Jedis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lettuce"><span class="nav-text">Lettuce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Redis%E5%81%9A%E7%BC%93%E5%AD%98"><span class="nav-text">使用Redis做缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="nav-text">Mybatis二级缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Token%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8"><span class="nav-text">Token持久化存储</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98"><span class="nav-text">三大缓存问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-text">缓存穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="nav-text">缓存击穿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="nav-text">缓存雪崩</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F"><span class="nav-text">Redis与分布式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="nav-text">主从复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="nav-text">哨兵模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="nav-text">集群搭建</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
