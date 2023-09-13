@@ -6,7 +6,7 @@
     <meta name="keywords" content="Hexo Theme Redefine">
     <meta name="description" content="Hexo Theme Redefine">
     <meta name="author" content="萧">
-    <link rel="canonical" href="http://example.com/2023/08/25/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/WebSocket%E5%8D%8F%E8%AE%AE/" />
+    <link rel="canonical" href="http://example.com/2023/09/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/(%E4%B8%80)%20%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A6%82%E8%BF%B0/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
@@ -14,7 +14,7 @@
     
     <title>
         
-            WebSocket协议 |
+            (一) 数据仓库概述 |
         
         等想好起什么名字后再来改
     </title>
@@ -275,7 +275,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">WebSocket协议</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">(一) 数据仓库概述</h1></span>
             </div>
 
             
@@ -294,8 +294,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-08-25 08:13:24</span>
-        <span class="mobile">2023-08-25 08:13</span>
+        <span class="pc">2023-09-13 19:47:24</span>
+        <span class="mobile">2023-09-13 19:47</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -303,11 +303,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/java/">java</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/java/NIO/">NIO</a>&nbsp;
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>&nbsp;
                     </li>
                 
             </ul>
@@ -331,70 +327,99 @@
             
 
             <div class="article-content markdown-body">
-                <p>参考文章：<br><a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/7020964728386093093" >https://juejin.cn/post/7020964728386093093 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/nnngu/p/9347635.html" >https://www.cnblogs.com/nnngu/p/9347635.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h1 id="对比http协议"><a href="#对比http协议" class="headerlink" title="对比http协议"></a>对比http协议</h1><p><strong>http协议：非持久化,单向通信协议</strong><br>客户端主动向服务端发起请求，服务端向客户端返回响应。服务端不能主动向客户端发送数据。<br>HTTP1.0 中，一个HTTP的生命周期就是一个 Request和 一个 Response<br>HTTP1.1有一个 keep-alive，这使得在一个 HTTP 连接中，可以发送多个 Request，接收多个 Response。但是一个 Request 依然只能有一个 对应的Response，而且这个 Response 也是被动的，不能主动发起。</p>
-<p><strong>WebSocket协议：持久化,双向通信协议</strong><br>客户端发起连接后，就会⼀直保持连接，期间客户端和服务端都可以向对⽅发送数据，直到连接关闭。</p>
-<p><img src="https://image.itbaima.net/images/253/image-2023090217962529.png" alt="img/websocket和http.png"></p>
-<p>相同点： 都是一样基于TCP的，都是可靠性传输协议。都是应用层协议。</p>
-<p>联系： WebSocket在建立握手时，数据是通过HTTP传输的。但是建立之后，在真正传输时候是不需要HTTP协议的。</p>
-<p><strong>websocket协议特点</strong>：</p>
+                <h1 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h1><p><a class="link"   target="_blank" rel="noopener" href="https://dbaplus.cn/news-73-3354-1.html" >https://dbaplus.cn/news-73-3354-1.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h1 id="从数据库到数据仓库"><a href="#从数据库到数据仓库" class="headerlink" title="从数据库到数据仓库"></a>从数据库到数据仓库</h1><p><strong>数据库DB用于事务处理</strong><br>数据库作为数据资源，用于管理业务中的事务处理。数据库中存放的数据基本上是当前数据，会随着业务的变化随时更新。<br>不同的管理业务需要建立不同的数据库。例如，银行中储蓄业务、信用卡业务分别要建立储蓄数据库和信用卡数据库。<br>对数据库的操作比较明确，操作数据量少。</p>
+<p><strong>数据仓库DW用于决策分析</strong><br>数据仓库既保存过去的数据又保存当前的数据<br>数据仓库的数据是大量数据库的集成<br>对数据仓库操作不明确，操作数据量大</p>
+<h1 id="从OLTP到OLAP"><a href="#从OLTP到OLAP" class="headerlink" title="从OLTP到OLAP"></a>从OLTP到OLAP</h1><p><strong>OLTP概念</strong><br>联机事务处理（On Line Transaction Processing，OLTP）是在网络环境下的事务处理工作，以快速的响应和频繁的数据修改为特征，使用户利用数据库能够快速地处理具体的业务。</p>
+<p>OLTP使用户的数据可以立即传送到计算中心进行处理，并在很短的时间内给出处理结果。也称为实时系统(Real time System)。</p>
+<p><strong>OLTP应用场景</strong><br>OLTP主要用于包括银行业、航空、邮购订单、超级市场和制造业等的输入数据和取回交易数据。如银行为分布在各地的自动取款机 (ATM)完成即时取款交易；机票预定系统能每秒处理的定票事务峰值可以达到20000个。<br>OLTP是事务处理从单机到网络环境地发展新阶段。 </p>
+<p><strong>OLTP特点</strong></p>
 <ul>
-<li>建立在 TCP 协议之上，服务器端的实现比较容易。</li>
-<li>与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
-<li>数据格式比较轻量，性能开销小，通信高效。</li>
-<li>可以发送文本，也可以发送二进制数据。</li>
-<li>没有同源限制，客户端可以与任意服务器通信。</li>
-<li>协议标识符是ws（如果加密，则为wss），服务器网址就是 URL。</li>
+<li>事务处理量大，应用要求多个并行处理，事务处理内容比较简单且重复率高。</li>
+<li>大量的数据操作主要涉及的是一些crud相关的操作。每次操作的数据量不大且多为当前的数据。 </li>
+<li>OLTP处理的数据是高度结构化的，数据访问路径是已知的，至少是固定的。</li>
+<li>OLTP面对的是事务处理操作人员和低层管理人员。</li>
 </ul>
-<h1 id="WebSocket握手流程"><a href="#WebSocket握手流程" class="headerlink" title="WebSocket握手流程"></a>WebSocket握手流程</h1><blockquote>
-<p>WebSocket 协议握手是依靠 HTTP 协议的，依靠于 HTTP 响应101进行协议升级转换。</p>
+<hr>
+<p>但是，为高层领导者提供决策分析时， OLTP则显得力不从心。<br>决策分析需要对多个关系数据库共同进行大量的综合计算才能得到结果。</p>
+<p>E.F.Codd在1993年提出了多维数据库和多维分析的概念，即联机分析处理（On Line Analytical Processing，OLAP）概念。</p>
+<p>关系数据库是二维数据（平面），多维数据库是空间立体数据。</p>
+<p><strong>OLAP应用场景</strong><br>OLAP专门用于支持复杂的决策分析操作，侧重对分析人员和高层管理人员的决策支持，</p>
+<p>OLAP可以应分析人员的要求快速、灵活地进行大数据量的复杂处理，并且以一种直观易懂地形式将查询结果提供给决策制定人 </p>
+<p>OLAP软件，以它先进地分析功能和以多维形式提供数据的能力，正作为一种支持企业关键商业决策的解决方案而迅速崛起。</p>
+<p>OLAP的基本思想是决策者从多方面和多角度以多维的形式来观察企业的状态和了解企业的变化。</p>
+<h1 id="数据仓库的定义及特点"><a href="#数据仓库的定义及特点" class="headerlink" title="数据仓库的定义及特点"></a>数据仓库的定义及特点</h1><p><strong>定义</strong>：数据仓库是面向主题的、集成的、稳定的，不同时间的数据集合，用于支持经营管理中决策制定过程。</p>
+<p>数据仓库的数据量很大，大型DW的数据是一个TB级数据量，一般的DW为10GB级，而一般的数据库DB是100MB</p>
+<p>数据仓库对软、硬件要求较高，需要一个巨大的硬件平台和一个并行的数据库系统</p>
+<p><strong>特点</strong><br><img src="https://image.itbaima.net/images/253/image-20230913186872990.png" alt="img/数据仓库特点.png"></p>
+<p>下面对这四大特点分别说明：</p>
+<ul>
+<li><strong>面向主题</strong>：主题是数据归类的标准，每一个主题基本对应一个宏观的分析领域。<blockquote>
+<p>例如，银行的数据仓库的主题：客户<br>  DW的客户数据来源：<br>  从银行储蓄DB、信用卡DB、贷款DB等三个DB中抽取同一客户的数据整理而成。<br>  在DW中能全面地分析客户数据，再决定是否继续给予贷款。</p>
 </blockquote>
-<p>典型的 WebSocket 握手流程：</p>
-<p><strong>客户端发送握手请求</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /chat HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==</span><br><span class="line">Sec-WebSocket-Protocol: chat, superchat</span><br><span class="line">Sec-WebSocket-Version: 13</span><br><span class="line">Origin: http://example.com</span><br></pre></td></tr></table></figure></div>
-
-<p>各部分分别说明一下：</p>
-<p>告诉Apache 、Nginx等服务器，这次发起的请求要用 WebSocket 协议</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br></pre></td></tr></table></figure></div>
-
-<p>Sec-WebSocket-Key 是一个由浏览器随机生成的Base64 encode 的值，用于验证是不是真的是 WebSocket 助理<br>Sec_WebSocket-Protocol 是一个用户定义的字符串，用来区分同 URL 下，不同的服务所需要的协议<br>Sec-WebSocket-Version 是告诉服务器所使用的 WebSocket Draft （协议版本）</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==</span><br><span class="line">Sec-WebSocket-Protocol: chat, superchat</span><br><span class="line">Sec-WebSocket-Version: 13</span><br></pre></td></tr></table></figure></div>
-
+</li>
+<li><strong>集成的</strong>：数据进入数据仓库之前，必须经过加工与集成。<blockquote>
+<p>对不同的数据来源进行统一数据结构和编码。统一原始数据中的所有矛盾之处，如字段的同名异义，异名同义，单位不统一，字长不一致等。<br>将原始数据结构做一个从面向应用到面向主题的大转变。</p>
+</blockquote>
+</li>
+<li><strong>稳定的【只读性】</strong>：数据仓库中包括了大量的历史数据。数据经集成进入数据仓库后是极少或根本不更新的。</li>
+<li><strong>随时间变化</strong>：数据随时间变化，是一个历史数据库（历史性）。数据仓库内的数据时限在5～10年，故数据的键码包含时间项，标明数据的历史时期，这适合DSS进行时间趋势分析。<br>而数据库只包含当前数据，即存取某一时间的正确的有效的数据。<br><img src="https://image.itbaima.net/images/253/image-20230913185784638.png" alt="img/数据仓库随时间变化.png"></li>
+</ul>
+<h1 id="ETL概述"><a href="#ETL概述" class="headerlink" title="ETL概述"></a>ETL概述</h1><p>ETL，是Extract-Transform-Load的缩写，用来描述将数据从来源端经过抽取（extract）、转换（transform）、加载（load）至目的端的过程。</p>
+<p>ETL一词较常用在数据仓库，但其对象并不限于数据仓库。</p>
+<h2 id="DW图示"><a href="#DW图示" class="headerlink" title="DW图示"></a>DW图示</h2><p>数据仓库逻辑分层架构<br><img src="https://image.itbaima.net/images/253/image-20230913189562599.png" alt="img/数据仓库逻辑分层架构.png"></p>
+<p>数据仓库结构<br><img src="https://image.itbaima.net/images/253/image-20230913181019482.png" alt="img/数据仓库结构.png"></p>
+<h2 id="数据抽取和转换"><a href="#数据抽取和转换" class="headerlink" title="数据抽取和转换"></a>数据抽取和转换</h2><p><strong>准备工作考虑的点</strong><br>数据是从哪几个业务系统中来？<br>各个业务系统的数据库服务器运行什么DBMS？<br>是否存在手工数据？<br>手工数据量有多大？<br>是否存在非结构化的数据？</p>
+<p><strong>case1：与DW数据系统相同的数据源</strong><br>一般情况下，DBMS（SQLServer、Oracle）都会提供数据库链接功能<br>在DW数据库服务器和原业务系统之间建立直接的链接关系就可以写Select语句直接访问</p>
+<p><strong>case2：与DW数据系统不相同的数据源</strong><br>一般情况下可以通过ODBC的方式建立数据库链接，如SQLServer和Oracle之间<br>如果不能建立数据库链接<br>一种是通过工具将源数据导出成.txt或者是.xls文件，然后再将这些源系统文件导入到ODS中。<br>另外一种方法是通过程序接口来完成</p>
+<p><strong>case3：文件类型的数据源(.txt, .xls)</strong></p>
+<ul>
+<li>人工实现：利用数据库工具将这些数据导入到指定的数据库，然后从指定的数据库中抽取</li>
+<li>工具实现：如SQL Server2005的SSIS服务的平面数据源和平面目标等组件导入ODS中去</li>
+</ul>
 <hr>
-<p><strong>服务器响应，表示已经接受到请求，成功建立 WebSocket连接</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 101 Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk= //经过服务器确认，并且加密过后的 Sec-WebSocket-Key</span><br><span class="line">Sec-WebSocket-Protocol: chat //表示最终使用的协议。</span><br></pre></td></tr></table></figure></div>
-
-<h1 id="持久通信"><a href="#持久通信" class="headerlink" title="持久通信"></a>持久通信</h1><p>由于HTTP协议单向通信的特点，服务端不能主动联系客户端，只能有客户端发起，这注定了如果服务器有连续的状态变化，客户端要获知就非常麻烦，只能使用”轮询”。常见的有ajax轮询和long pool长轮询。</p>
-<p><strong>ajax轮询</strong>：浏览器隔个几秒就发送一次请求，询问服务器是否有新信息</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">客户端：有没有新信息(Request)</span><br><span class="line">服务端：没有（Response）</span><br><span class="line">客户端：有没有新信息(Request)</span><br><span class="line">服务端：没有（Response）</span><br><span class="line">...</span><br><span class="line">客户端：有没有新信息(Request)</span><br><span class="line">服务端：没有（Response）—- loop</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>long poll长轮询</strong><br>采取阻塞模型（一直打电话，没收到就不挂电话），客户端发起请求后，如果没消息，服务端就一直不返回 Response 给客户端。直到有消息才返回，返回完之后，客户端再次建立连接，周而复始。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">客户端：有没有新信息，没有的话就等有了才返回给我吧（Request）</span><br><span class="line">服务端：终于有新消息了，这就发给你（Response）</span><br><span class="line">客户端：有没有新信息，没有的话就等有了才返回给我吧（Request） -loop</span><br></pre></td></tr></table></figure></div>
-
-
-<p>本质上，这两种轮询的方式都是在不断地建立HTTP连接，然后等待服务端处理，非常消耗资源。<br>ajax轮询 需要服务器有很快的处理速度和资源。long poll 需要有很高的并发，也就是说同时接待客户的能力。</p>
-<p>所以 ajax轮询 和 long poll 都有可能发生这种情况：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">客户端：有新信息么？</span><br><span class="line">服务端：正忙，请稍后再试（503 Server Unavailable）</span><br><span class="line">客户端：有新信息么？</span><br><span class="line">服务端：正忙，请稍后再试（503 Server Unavailable）</span><br></pre></td></tr></table></figure></div>
-
+<p><strong>什么是ODS</strong></p>
+<p>ODS数据仓库体系结构中的一个可选部分，在业务系统和数据仓库之间形成一个隔离层<br>ODS存放数据可偏向细节型的数据，转移一部分业务系统细节查询的功能，完成数据仓库中不能完成的一些功能</p>
 <hr>
-<p><strong>WebSocket协议应运而生</strong></p>
-<p>http协议本身是没有持久通信能力的，轮询的方式开销又比较大，但是实际的应用中，很需要这种能力【在应用场景那一节可以看到】</p>
-<p>所以，为了解决这些问题，WebSocket协议由此而生。</p>
-<p>当服务器完成协议升级后（HTTP-&gt;Websocket），服务端就可以主动推送信息给客户端，只需要经过一次 HTTP 请求，就可以做到源源不断的信息传送，从而实现持久通信（全双工）</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">客户端：我要建立Websocket协议，需要的服务：chat，Websocket协议版本：17（HTTP Request）</span><br><span class="line">服务端：ok，确认，已升级为Websocket协议（101 HTTP Protocols Switched）</span><br><span class="line">客户端：麻烦你有信息的时候推送给我噢。。</span><br><span class="line">服务端：ok，有的时候会告诉你的。</span><br><span class="line">服务端：balabalabalabala</span><br><span class="line">服务端：balabalabalabala</span><br></pre></td></tr></table></figure></div>
-
-<h1 id="WebSocket应用场景"><a href="#WebSocket应用场景" class="headerlink" title="WebSocket应用场景"></a>WebSocket应用场景</h1><p><strong>主要的应用场景</strong></p>
+<p><strong>为什么要ODS</strong></p>
+<p>如果将从数据源中抽取的数据直接放入数据仓库中，会有以下问题：</p>
+<ul>
+<li>不知道哪一条数据是从哪里来的</li>
+<li>出错的时候也不知道是那个数据库的</li>
+<li>会影响前端业务系统的性能<br>若直接将源系统中的数据加载到DW，所有的复杂转换都是在SS—DW这个环节来进行，这样对源系统性能的影响比较大。<br>而通过ODS，在SS—ODS环节，只是进行了一个简单的数据抽取，几乎没有涉及到转换，具体的复杂转换是在ODS—DW环节进行的。</li>
+</ul>
+<p>采用ODS的好处：<br>提供了很好的数据定位的功能，甚至精准定位到哪个表的哪个位置<br>为各分公司之间的对比分析提供了方便</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913183016435.png" alt="img/为什么用ODS.png"></p>
+<h2 id="数据移入DW"><a href="#数据移入DW" class="headerlink" title="数据移入DW"></a>数据移入DW</h2><p>主要有两种方法：</p>
+<p><strong>完全刷新</strong>：对移入DW的数据进行完全复制<br>经常变化</p>
+<p><strong>增量更新</strong>：捕获数据源中修改的数据<br>流水型增长、数据量大</p>
+<p>对两者结合的数据先考虑增量更新，再考虑完全刷新</p>
+<p><strong>增量更新的问题</strong></p>
+<ul>
+<li>一般情况下，业务系统会记录业务发生的时间，这可以用来做增量的标志。<br>每次抽取之前首先判断ODS中记录最大的时间，然后根据这个时间去业务系统取大于这个时间所有的记录。</li>
+<li>利用业务系统的时间戳，一般情况下，业务系统没有或者部分有时间戳。</li>
+</ul>
+<h1 id="DW的概念模型"><a href="#DW的概念模型" class="headerlink" title="DW的概念模型"></a>DW的概念模型</h1><p>数据仓库DW是基于一个多维数据模型的，这个数据模型将数据以data cube的组合形式【立方体】看待</p>
+<p>这里涉及到两种表</p>
+<ul>
+<li>维度表dimension table</li>
+<li>事实表fact table：包括观察的内容(measures)和关联到维度表的key</li>
+</ul>
+<h2 id="星型模型"><a href="#星型模型" class="headerlink" title="星型模型"></a>星型模型</h2><p>Star schema: A fact table in the middle connected to a set of dimension tables （一个事实表，多个维度表与其连接）</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913198931089.png" alt="img/星型模型.png"></p>
+<h2 id="雪花模型"><a href="#雪花模型" class="headerlink" title="雪花模型"></a>雪花模型</h2><p>Snowflake schema:  A refinement of star schema where some dimensional hierarchy is normalized into a set of smaller dimension tables, forming a shape similar to snowflake（在星型模型的基础上，维度表可以与更小的维度表相连接）</p>
 <blockquote>
-<p>如果需要使用通过网络传输的任何实时更新或连续数据流，则可以使用WebSocket</p>
+<p>由于现在的存储空间比较廉价，数据表在设计的时候是可以有冗余的，因此很少会有维度表还要再连接一个维度表的情况。<br>因此雪花模型的应用并不广泛</p>
 </blockquote>
-<p>即时聊天通信，多玩家游戏，在线协同编辑&#x2F;编辑，实时数据流的拉取与推送，体育&#x2F;游戏实况，实时地图位置</p>
-<p><code>即时Web应用程序</code>：使用一个Web套接字在客户端显示数据，这些数据由后端服务器连续发送。在WebSocket中，数据被连续推送&#x2F;传输到已经打开的同一连接中，这就是为什么WebSocket更快并提高了应用程序性能的原因。例如在交易网站或比特币交易中，它用于显示价格波动，数据被后端服务器使用Web套接字通道连续推送到客户端。</p>
-<p><code>游戏应用程序</code>：在游戏应用程序中，服务器会持续接收数据，而不会刷新用户界面。屏幕上的用户界面会自动刷新，而且不需要建立新的连接</p>
-<p><code>聊天应用程序</code>：聊天应用程序仅使用WebSocket建立一次连接，便能在订阅户之间交换，发布和广播消息。它重复使用相同的WebSocket连接，用于发送和接收消息以及一对一的消息传输。</p>
-<p><strong>不能使用WebSocket的场景</strong><br>如果要获取旧数据，或者只想获取一次&#x2F;少次数据给应用程序使用，则应该使用HTTP协议</p>
-<h1 id="断线重连-心跳机制"><a href="#断线重连-心跳机制" class="headerlink" title="断线重连-心跳机制"></a>断线重连-心跳机制</h1><p><strong>判断在线离线</strong>：两次请求的时间间隔小于指定时间就是在线，否则就是离线</p>
-<p><strong>解决断线问题的两种方案</strong><br>方案一：修改nginx配置信息<br>方案二：websocket客户端定时的给服务端发送心跳包，证明客户端在线的，如果超过一定的时间没有发送则就是离线了。【另一种是服务端主动发送下行心跳包】</p>
-<h1 id="客户端API"><a href="#客户端API" class="headerlink" title="客户端API"></a>客户端API</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/05/websocket.html" >https://www.ruanyifeng.com/blog/2017/05/websocket.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/html/html5-websocket.html" >https://www.runoob.com/html/html5-websocket.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913194646232.png" alt="img/雪花模型.png"></p>
+<h2 id="星座模型"><a href="#星座模型" class="headerlink" title="星座模型"></a>星座模型</h2><p>Fact constellations:  Multiple fact tables share dimension tables, viewed as a collection of stars, therefore called galaxy schema or fact constellation （多个事实表）</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913194717716.png" alt="img/星座模型.png"></p>
+<h1 id="大数据时代下的DW"><a href="#大数据时代下的DW" class="headerlink" title="大数据时代下的DW"></a>大数据时代下的DW</h1><p>Hadoop 、Spark  、Flink都可以看成数据仓库的一种实现方式<br>以及分布式系统上的一些软件，如hive</p>
+<p><strong>混合式架构</strong></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913195154900.png" alt="img/混合式架构"></p>
+<p><strong>facebook数据仓库案例</strong></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913196599620.png" alt="img/facebook1.png"></p>
+<p><img src="https://image.itbaima.net/images/253/image-20230913199883157.png" alt="img/facebook2.png"></p>
 
             </div>
 
@@ -402,11 +427,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：WebSocket协议</li>
+        <li>Post title：(一) 数据仓库概述</li>
         <li>Post author：萧</li>
-        <li>Create time：2023-08-25 08:13:24</li>
+        <li>Create time：2023-09-13 19:47:24</li>
         <li>
-            Post link：https://redefine.ohevan.com/2023/08/25/Java后端开发/java nio/WebSocket协议/
+            Post link：https://redefine.ohevan.com/2023/09/13/数据挖掘/(一) 数据仓库概述/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -422,29 +447,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/09/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/(%E4%B8%80)%20%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A6%82%E8%BF%B0/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">(一) 数据仓库概述</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/08/24/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/Netty%E6%A1%86%E6%9E%B6/"
+                            href="/2023/08/25/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/WebSocket%E5%8D%8F%E8%AE%AE/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Netty框架</span>
+                                    <span class="post-nav-title-item">WebSocket协议</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -464,7 +474,7 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94http%E5%8D%8F%E8%AE%AE"><span class="nav-text">对比http协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebSocket%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B"><span class="nav-text">WebSocket握手流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E9%80%9A%E4%BF%A1"><span class="nav-text">持久通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebSocket%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">WebSocket应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%AD%E7%BA%BF%E9%87%8D%E8%BF%9E-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6"><span class="nav-text">断线重连-心跳机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AFAPI"><span class="nav-text">客户端API</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="nav-text">相关文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93"><span class="nav-text">从数据库到数据仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8EOLTP%E5%88%B0OLAP"><span class="nav-text">从OLTP到OLAP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="nav-text">数据仓库的定义及特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ETL%E6%A6%82%E8%BF%B0"><span class="nav-text">ETL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DW%E5%9B%BE%E7%A4%BA"><span class="nav-text">DW图示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2"><span class="nav-text">数据抽取和转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%A7%BB%E5%85%A5DW"><span class="nav-text">数据移入DW</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DW%E7%9A%84%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="nav-text">DW的概念模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B"><span class="nav-text">星型模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%AA%E8%8A%B1%E6%A8%A1%E5%9E%8B"><span class="nav-text">雪花模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%9F%E5%BA%A7%E6%A8%A1%E5%9E%8B"><span class="nav-text">星座模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84DW"><span class="nav-text">大数据时代下的DW</span></a></li></ol>
     </div>
 </div>
             </div>
