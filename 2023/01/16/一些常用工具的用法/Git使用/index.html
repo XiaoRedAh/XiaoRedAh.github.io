@@ -14,7 +14,7 @@
     
     <title>
         
-            Git基本使用方法 |
+            Git版本控制 |
         
         等想好起什么名字后再来改
     </title>
@@ -275,7 +275,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Git基本使用方法</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Git版本控制</h1></span>
             </div>
 
             
@@ -303,7 +303,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E7%94%A8%E6%B3%95/">一些常用工具的用法</a>&nbsp;
+                        <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>&nbsp;
                     </li>
                 
             </ul>
@@ -341,7 +341,7 @@
 </ul>
 <p>它是一个分布式的控制系统，因此一般情况下我们每个人的电脑上都有一个本地仓库，由大家共同向远程仓库去推送版本迭代信息。</p>
 <p>通过这一系列操作，我们就可以实现每开发完一个版本或是一个功能，就提交一次新版本，这样，我们就可以很好地控制项目的版本迭代，想回退到之前的版本随时都可以回退，想查看新版本添加或是删除了什么代码，随时都可以查看。</p>
-<h1 id="本地"><a href="#本地" class="headerlink" title="本地"></a>本地</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p><strong>初始化和查询状态</strong></p>
+<h1 id="本地基本操作"><a href="#本地基本操作" class="headerlink" title="本地基本操作"></a>本地基本操作</h1><p><strong>初始化和查询状态</strong></p>
 <blockquote>
 <p><code>git init</code>—————-将当前文件夹作为一个本地仓库，会自动生成一个.git目录<br><code>git status</code>—————-查看当前状态（处于哪个分支，哪些文件没被追踪，暂存区内是否还有内容没提交到本地仓库…）</p>
 </blockquote>
@@ -370,44 +370,55 @@
 <p><code>git reset commit ID	</code>—————-工作区内容不变，将暂存区内容回退到指定的版本<br><code>git reset --hard commit ID	</code>—————-将工作区和暂存区都回退到指定版本</p>
 </blockquote>
 <p>回滚后，之后的记录都消失，如果想回去，则用<code>git reflog</code>查看操作记录，找到之前的commit ID，再reset回去</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>在某支线创建新支线，新支线会继承该支线的所有版本内容，且两条线处于同一版本A，此时对于其中一条线的改动会同步到另一条线上。但一旦有一条线commit了，处于不同版本B了，那么另一条线对于刚刚的改动全部撤销，仍然处于版本A，且由于处于不同版本，之后两条线的操作互不影响（产生分支）<br>简而言之，就是在<em>支线a中做的一切操作都不会作用于支线b</em></p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>在某支线创建新支线，新支线会继承该支线的所有版本内容，且两条线处于同一版本A，此时对于其中一条线的改动会同步到另一条线上。但一旦有一条线commit了，处于不同版本B了，那么另一条线对于刚刚的改动全部撤销，仍然处于版本A，且由于处于不同版本，之后两条线的操作互不影响（产生分支）<br>简而言之，就是在<em>支线a中做的一切操作都不会作用于支线b</em></p>
 <p><strong>查看，创建，删除，切换</strong></p>
-<blockquote>
-<p><code>git branch	</code>—————-查看当前有什么分支，绿色是当前所处的分支<br><code>git branch 分支名	</code>—————-创建分支<br><code>git branch -d 分支名	</code>—————-删除指定分支<br><code>git checkout 分支名		</code>—————-切换到指定分支</p>
-</blockquote>
-<p><strong>合并分支</strong></p>
-<blockquote>
-<p><code>git merge 分支名</code>—————-将指定分支的内容合并到当前分支（相当于把内容复制粘贴到当前分支），自动commit</p>
-</blockquote>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//查看当前有什么分支，绿色/有*标识的是当前所处的分支</span><br><span class="line">git branch</span><br><span class="line">//创建分支</span><br><span class="line">git branch 分支名</span><br><span class="line">//删除指定分支</span><br><span class="line">git branch -d 分支名</span><br><span class="line">//强制删除指定分支</span><br><span class="line">git branch -D 分支名</span><br><span class="line">//切换到指定分支</span><br><span class="line">git checkout 分支名</span><br><span class="line">//切换到指定分支（推荐用这种切换，checkout可能会有歧义）</span><br><span class="line">git switch 分支名</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>合并分支</strong><br>将指定分支的内容合并到当前分支（相当于把内容复制粘贴到当前分支），自动commit</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>解决冲突</strong><br>手动去文件解决冲突后，<code>git add</code>添加到暂存区让git知道冲突已经解决，然后再commit上去</p>
 <blockquote>
 <p><code>git diff</code>—————-查看冲突的具体情况</p>
 </blockquote>
 <p><strong>变基分支</strong></p>
-<blockquote>
-<p><code>git rebase 分支名</code></p>
-</blockquote>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase 分支名</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>优选</strong></p>
-<blockquote>
-<p><code>git cherry-pick commit ID</code></p>
-</blockquote>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><p><strong>先添加一个远程仓库</strong></p>
-<blockquote>
-<p><code>git remote add 远程仓库名（自己起一个） 远程仓库地址</code></p>
-</blockquote>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick commit ID</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="对比merge和rebase"><a href="#对比merge和rebase" class="headerlink" title="对比merge和rebase"></a>对比merge和rebase</h2><p><strong>rebase机制：嫁接</strong><br>每个分支都有一个指向当前分支最新提交记录的HEAD指针<br>rebase的机制是，先找到当前分支和目标分支的共同祖先，然后把当前分支的最新提交到共同祖先之间的所有提交记录都移动到目标分支</p>
+<p><img src="https://image.itbaima.net/images/253/image-20230914156288554.png" alt="img/rebase示例.png"></p>
+<p>比如以上示例，两条分支共同的祖先是main:3<br>在dev分支上使用<code>git rebase main</code>，则会把main:3<del>dev:2之间所有提交记录移到main分支上<br>在main分支上使用<code>git rebase dev</code>，则会把main:3</del>main:5之间所有的提交里路移到dev分支上</p>
+<hr>
+<p><strong>如何选择</strong></p>
+<p><strong>merge优缺点</strong><br>优点：不会破坏原分支的提交历史，方便回溯和查看<br>缺点：产生额外的提交分支，分支图复杂</p>
+<p><strong>reabse优缺点</strong><br>优点：不会新增额外的提交记录，形成线性，简洁直观<br>缺点：会改变提交历史，改变当前分支branch out的节点。应该避免在共享分支上使用</p>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><p>如果要想进行多人协作，就必须使用远程仓库。将本地仓库的数据同步到远程仓库，实现多人协作开发。<br>常见的Git远程仓库平台：GitHub，GitLab，Gitee</p>
+<p><strong>先添加一个远程仓库</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add 远程仓库名（自己起一个） 远程仓库地址</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>再将文件推送到远程仓库</strong><br>远程仓库和本地仓库一样，也有分支<br>如果本地分支名称和远端分支名称一致，那么不用指定远端分支名称，但是如果我们希望推送的分支和远端的分支不同名，那么需要额外指定</p>
-<blockquote>
-<p><code>git push 远程仓库名 本地分支名[:远端分支名]</code>—————-将本地仓库指定分支推送到远程仓库指定分支（如果同名就不用指定远端分支名）</p>
-</blockquote>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//将本地仓库指定分支推送到远程仓库指定分支（如果同名就不用指定远端分支名）</span><br><span class="line">git push 远程仓库名 本地分支名[:远端分支名]</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>抓取，拉取</strong><br>在多个本地仓库对应一个远程仓库的情况下，比如一个团队里面，N个人都在使用同一个远程仓库，但是他们各自只负责编写和推送自己业务部分的代码，也就是我们常说的协同工作，那么这个时候，我们就需要协调。</p>
 <p>比如程序员A完成了他的模块，那么他就可以提交代码并推送到远程仓库，这时程序员B也要开始写代码了，由于远程仓库有其他程序员的提交记录，因此程序员B的本地仓库和远程仓库不一致，这时就需要有先进行pull操作，获取远程仓库中最新的提交</p>
-<blockquote>
-<p><code>git fetch 远程仓库名	</code>—————-获取到远程仓库最新的版本信息<br><code>git pull    远程仓库名</code>—————-获取到远程仓库最新版本并与当前本地仓库进行merge</p>
-</blockquote>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//获取到远程仓库最新的版本信息</span><br><span class="line">git fetch 远程仓库名</span><br><span class="line">//获取到远程仓库最新版本并与当前本地仓库进行merge</span><br><span class="line">git pull    远程仓库名</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>从远程仓库下载项目</strong></p>
-<blockquote>
-<p><code>git clone 远程仓库地址</code></p>
-</blockquote>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 远程仓库地址</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="多人开发"><a href="#多人开发" class="headerlink" title="多人开发"></a>多人开发</h1><p><strong>大概流程</strong></p>
+<ol>
+<li>克隆项目，将远程仓库的项目拉到本地</li>
+<li>创建自己的开发分支a：不能在master分支进行代码编写，包括自己本地分支的master</li>
+<li>在自己本地分支a中编码</li>
+<li>自己本地分支a完成且无bug，则commit，然后切换到本地master分支，将自己分支代码a合并到master分支</li>
+<li>本地master分支测试无bug后，将本地master分支推送到远程仓库master分支</li>
+<li>每次编写前，先拉取远程仓库master最新代码到本地master分支</li>
+<li>切换到自己本地分支a，合并master，然后继续开发</li>
+</ol>
+<p>注意：自己本地的开发分支a也可以创一个远程仓库进行备份</p>
 
             </div>
 
@@ -415,7 +426,7 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Git基本使用方法</li>
+        <li>Post title：Git版本控制</li>
         <li>Post author：萧</li>
         <li>Create time：2023-01-16 11:25:31</li>
         <li>
@@ -477,7 +488,7 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B"><span class="nav-text">Git版本控制一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0"><span class="nav-text">本地</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-text">分支管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-text">远程仓库</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B"><span class="nav-text">Git版本控制一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">本地基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94merge%E5%92%8Crebase"><span class="nav-text">对比merge和rebase</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E4%BA%BA%E5%BC%80%E5%8F%91"><span class="nav-text">多人开发</span></a></li></ol>
     </div>
 </div>
             </div>
