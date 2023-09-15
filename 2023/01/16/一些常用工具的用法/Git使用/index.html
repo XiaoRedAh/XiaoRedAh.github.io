@@ -411,14 +411,20 @@
 <h1 id="多人开发"><a href="#多人开发" class="headerlink" title="多人开发"></a>多人开发</h1><p><strong>大概流程</strong></p>
 <ol>
 <li>克隆项目，将远程仓库的项目拉到本地</li>
-<li>创建自己的开发分支a：不能在master分支进行代码编写，包括自己本地分支的master</li>
-<li>在自己本地分支a中编码</li>
+<li>创建本地开发分支a：不能在master分支进行代码编写，包括自己本地分支的master</li>
+<li>在自己本地开发分支a中编码</li>
 <li>自己本地分支a完成且无bug，则commit，然后切换到本地master分支，将自己分支代码a合并到master分支</li>
 <li>本地master分支测试无bug后，将本地master分支推送到远程仓库master分支</li>
 <li>每次编写前，先拉取远程仓库master最新代码到本地master分支</li>
 <li>切换到自己本地分支a，合并master，然后继续开发</li>
 </ol>
-<p>注意：自己本地的开发分支a也可以创一个远程仓库进行备份</p>
+<p>注意：</p>
+<ul>
+<li>真正的开发中，master可能是最终的发行版，上面流程的master全部替换为develop</li>
+<li>可以在远程仓库中创建一个分支a，专门备份本地开发分支a</li>
+<li>每次pull&#x2F;push代码之前，可以先对本地代码进行代码硬备份，比较保险</li>
+</ul>
+<p>更加规范的开发，需要用到git分支策略，主流有Git Flow、GitHub Flow、GitLab Flow<br>相关文章：<br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/spec-dog/p/11043371.html" >https://www.cnblogs.com/spec-dog/p/11043371.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50063660" >https://zhuanlan.zhihu.com/p/50063660 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
             </div>
 
