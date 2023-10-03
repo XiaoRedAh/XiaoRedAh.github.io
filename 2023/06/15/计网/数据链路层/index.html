@@ -481,11 +481,90 @@
 <p>注：现在的交换机和计算机中的网卡都能自动识别上述两种情况，并自动切换到相应的工作方式</p>
 </blockquote>
 <h3 id="共享式与交换式对比"><a href="#共享式与交换式对比" class="headerlink" title="共享式与交换式对比"></a>共享式与交换式对比</h3><p><img src="https://image.itbaima.net/images/253/image-20230615152537330.png" alt="pic/共享式以太网和交换式以太网"></p>
-<h3 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h3><p>使用以太网交换机可以方便地实现虚拟局域网VLAN。</p>
+<h3 id="虚拟局域网"><a href="#虚拟局域网" class="headerlink" title="虚拟局域网"></a>虚拟局域网</h3><h4 id="提出背景"><a href="#提出背景" class="headerlink" title="提出背景"></a>提出背景</h4><p>使用以太网交换机可以方便地实现虚拟局域网VLAN。</p>
 <p><strong>问题</strong><br>① 一个主机数量很大的局域网，如果网络的配置出现错误，广播帧就可能会在网络中无限制地兜圈子，形成<strong>广播风暴</strong>，造成网络瘫痪<br>② 对于需要<strong>信息保密</strong>的实际场景中，比如一个单位有许多部门，让它们共享一个局域网对信息安全不利。</p>
 <p><strong>解决思路</strong>：把一个较大的局域网分隔成一些较小的局域网，而每一个局域网是一个较小的广播域</p>
+<blockquote>
+<p><strong>方案一</strong>：使用路由器将一个广播域分割【因为路由器默认情况下不会对广播数据包进行转发】<br>但是，路由器的成本较高，实现起来不太现实</p>
+<p><strong>方案二</strong>：虚拟局域网VLAN</p>
+</blockquote>
 <p><strong>虚拟局域网VLAN</strong>：它是由一些局域网网段构成的与物理位置无关的逻辑组，这些网段具有某些共同的需求。每一个 VLAN 的帧都有一个明确的标识符，指明发送这个帧的计算机属于哪一个 VLAN。</p>
 <p>虚拟局域网是局域网给用户提供的一种服务，不是一种新型局域网。</p>
+<p>在原来，一个局域网内，广播帧会发向局域网中的所有主机。而划分VLAN后，只有同一VLAN中的主机可以广播通信，不同VLAN中的主机不可以广播通信</p>
+<h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><p>采用VLAN后，有两个基本的操作</p>
+<ul>
+<li><strong>打标签</strong>：在正常的帧中插入一个<code>VLAN标记</code>，这个标签值得关注的就是后12位，称为VID，是VLAN的唯一标识，范围是0 ~ 4095。插入<code>VLAN</code>标签后的帧称为802.1Q帧</li>
+<li><strong>去标签</strong>：将802.1Q帧的<code>VLAN标记</code>去掉，还原回正常的帧。</li>
+</ul>
+<p>主机只能识别正常的帧，只有交换机可以识别802.1Q帧</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231003185787518.png"
+                      alt="802.1Q帧.png"
+                ></p>
+<p>大致流程</p>
+<blockquote>
+<p>如果广播帧是要发送给VLAN下的主机，那么在发送前需要“打标签”，交换机识别帧中的VID，将其转发给同一VLAN下的主机，由于主机无法识别802.1Q帧，因此需要先“去标签”，然后才转发</p>
+</blockquote>
+<p><strong>以太网交换机的端口有三种</strong>：</p>
+<ul>
+<li>Access端口</li>
+<li>Trunk端口</li>
+<li>Hybrid端口</li>
+</ul>
+<p><strong>交换机各端口都有一个缺省的VLAN ID</strong></p>
+<ul>
+<li>思科交换机上称为Native VLAN</li>
+<li>华为交换机上称为Port VLAN ID，简称PVID</li>
+</ul>
+<p>之后都以华为交换机为例</p>
+<h4 id="Access端口"><a href="#Access端口" class="headerlink" title="Access端口"></a>Access端口</h4><blockquote>
+<p>一般用于连接用户计算机<br>PVID值与端口所属VLAN的ID相同，默认为1</p>
+</blockquote>
+<p><strong>Access端口接收及发送</strong><br>① 一般只接收“未打标签”的普通以太网MAC帧。接收到帧后，给帧“打标签”，VID设置为该端口的PVID<br>② 找出PVID与帧中VID相同的所有端口<br>③ 上述对应的端口会对接收到的这个802.1Q帧进行“去标签”，然后转发</p>
+<p><strong>示例</strong><br>端口1，2，3，4均为Access端口<br>1和2分别与VLAN2中的A，B相连，因此属于VLAN2，PVID&#x3D;2。同理，端口3和4的PVID&#x3D;3</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-2023100318304811.png"
+                      alt="Access端口示例.png"
+                ></p>
+<p>VLAN中的主机A向端口1(Access端口)发送广播帧，端口1对其“打标签”，VID设置为2。<br>然后发现只和端口2的PVID对应上，因此端口2对该帧“去标签”后，转发给VLAN中的主机B</p>
+<p>从上面这个例子也可以看出，广播域被划分为VLAN2和VLAN3，同一VLAN下的主机可以广播通信，不同VLAN下的主机不能广播通信</p>
+<h4 id="Trunk端口"><a href="#Trunk端口" class="headerlink" title="Trunk端口"></a>Trunk端口</h4><blockquote>
+<p>一般用于交换机之间或交换机与路由器之间的互连<br>Trunk端口可以属于多个VLAN<br>用户可以手动设置Trunk端口的PVID值，默认是1</p>
+</blockquote>
+<p><strong>Trunk端口接收</strong></p>
+<ul>
+<li>接收到“未打标签”的帧，对其“打标签”，VID设置为与本端口的PVID一致</li>
+<li>直接接收“已打标签”的帧</li>
+</ul>
+<p><strong>Trunk端口发送</strong></p>
+<ul>
+<li>对于VID &#x3D; PVID的帧，先“去标签”，然后转发</li>
+<li>对于VID !&#x3D;PVID的帧，直接转发</li>
+</ul>
+<p><strong>示例</strong><br>两个交换机用Trunk端口互连，其他端口均为Access端口</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231003197236710.png"
+                      alt="Trunk端口示例.png"
+                ></p>
+<p>VLAN1中的主机A发送广播帧，端口1接收并“打标签”。<br>① 从之前①Access端口的学习中，可以知道广播帧最终会转发到同为VLAN1，且位于同一交换机的主机B<br>② 对于“已打标签”的帧，Trunk端口直接接收，由于PVID&#x3D;VID，因此先“去标签”，然后转发，给到另一交换机的Trunk端口<br>③ 交换机2的Trunk端口接收到“未打标签”的帧，对其对其“打标签”，VID设置为与本端口的PVID一致的1<br>④ 同二，帧最终会被转发给主机E，F</p>
+<p><strong>注意：相连的Trunk端口PVID值不等，可能会造成转发错误</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-2023100319523144.png"
+                      alt="Trunk端口注意点.png"
+                ></p>
+<h4 id="Hybrid端口"><a href="#Hybrid端口" class="headerlink" title="Hybrid端口"></a>Hybrid端口</h4><blockquote>
+<p>即可用于交换机之间或交换机与路由器之间的互连(同Trunk端口)，又可用于连接用户计算机(同Access端口)<br>可以属于多个VLAN<br>用户可以手动设置Hybrid端口的PVID值，默认是1</p>
+</blockquote>
+<p><strong>Hybrid端口接收</strong>：同Trunk端口</p>
+<p><strong>Hybrid端口发送</strong><br>查看帧的VID是否在端口的“去标签”列表中，若存在则先“去标签”再转发；若不在则直接转发</p>
 
             </div>
 
@@ -555,7 +634,7 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="nav-text">封装成帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93"><span class="nav-text">透明传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-text">差错检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AEPPP"><span class="nav-text">点对点协议PPP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="nav-text">PPP协议的帧格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%8A%B6%E6%80%81"><span class="nav-text">PPP协议的工作状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B9%BF%E6%92%AD%E4%BF%A1%E9%81%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">使用广播信道的数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-text">网络适配器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84MAC%E5%B1%82"><span class="nav-text">以太网的MAC层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%B8%A7"><span class="nav-text">MAC帧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E6%A6%82%E8%A7%88"><span class="nav-text">发展历程概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%BC%8F%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">共享式以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSMA-x2F-CD%E5%8D%8F%E8%AE%AE"><span class="nav-text">CSMA&#x2F;CD协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%86%E7%BA%BF%E5%99%A8"><span class="nav-text">使用集线器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">扩展以太网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%BC%8F%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">交换式以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-text">以太网交换机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%BC%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2%E5%BC%8F%E5%AF%B9%E6%AF%94"><span class="nav-text">共享式与交换式对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-text">虚拟局域网</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="nav-text">封装成帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93"><span class="nav-text">透明传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-text">差错检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AEPPP"><span class="nav-text">点对点协议PPP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="nav-text">PPP协议的帧格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%8A%B6%E6%80%81"><span class="nav-text">PPP协议的工作状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B9%BF%E6%92%AD%E4%BF%A1%E9%81%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">使用广播信道的数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-text">网络适配器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84MAC%E5%B1%82"><span class="nav-text">以太网的MAC层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%B8%A7"><span class="nav-text">MAC帧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E6%A6%82%E8%A7%88"><span class="nav-text">发展历程概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%BC%8F%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">共享式以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSMA-x2F-CD%E5%8D%8F%E8%AE%AE"><span class="nav-text">CSMA&#x2F;CD协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%86%E7%BA%BF%E5%99%A8"><span class="nav-text">使用集线器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">扩展以太网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%BC%8F%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-text">交换式以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-text">以太网交换机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%BC%8F%E4%B8%8E%E4%BA%A4%E6%8D%A2%E5%BC%8F%E5%AF%B9%E6%AF%94"><span class="nav-text">共享式与交换式对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-text">虚拟局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E5%87%BA%E8%83%8C%E6%99%AF"><span class="nav-text">提出背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-text">总体思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Access%E7%AB%AF%E5%8F%A3"><span class="nav-text">Access端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Trunk%E7%AB%AF%E5%8F%A3"><span class="nav-text">Trunk端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hybrid%E7%AB%AF%E5%8F%A3"><span class="nav-text">Hybrid端口</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
             </div>
