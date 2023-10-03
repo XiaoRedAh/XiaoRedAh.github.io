@@ -6,7 +6,7 @@
     <meta name="keywords" content="Hexo Theme Redefine">
     <meta name="description" content="Hexo Theme Redefine">
     <meta name="author" content="萧">
-    <link rel="canonical" href="http://example.com/2023/09/25/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/RESTful%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/" />
+    <link rel="canonical" href="http://example.com/2023/10/01/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringCloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E7%A1%80/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
@@ -14,7 +14,7 @@
     
     <title>
         
-            RESTful接口设计 |
+            微服务基础 |
         
         等想好起什么名字后再来改
     </title>
@@ -275,7 +275,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">RESTful接口设计</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">微服务基础</h1></span>
             </div>
 
             
@@ -294,8 +294,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-09-25 10:17:24</span>
-        <span class="mobile">2023-09-25 10:17</span>
+        <span class="pc">2023-10-01 22:17:24</span>
+        <span class="mobile">2023-10-01 22:17</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -303,11 +303,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/java/">java</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/java/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>&nbsp;
+                        <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>&nbsp;
                     </li>
                 
             </ul>
@@ -331,76 +327,197 @@
             
 
             <div class="article-content markdown-body">
-                <p>RESTful只是一种接口设计规则，建议遵循，也可以根据具体场景灵活调整</p>
-<p>常见的有RESTful框架有 SpringMVC , jersey , play,…</p>
-<p>相关的APT测试工具：Postman, Insomnia，ApiFox</p>
-<h1 id="提出背景"><a href="#提出背景" class="headerlink" title="提出背景"></a>提出背景</h1><p>web2.0阶段出现后，客户端将不仅限于PC浏览器，可能是移动APP，也可能是小程序，这就要求服务端能提供一套统一的API接口，不同类型的客户端基于相同的协议&#x2F;规则就能来调用该API接口并获取预期的数据。</p>
-<p>此时核心：如何设计一套科学的API接口？</p>
-<p>不同开发者对API接口的设计习惯不同，对于同一功能，可能设计出的api各不相同</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">新增员工:</span><br><span class="line">http://localhost/employee/save</span><br><span class="line">http://localhost/employee/add</span><br><span class="line">http://localhost/employee/new</span><br><span class="line">http://localhost/employee/xinzeng</span><br><span class="line">http://localhost/employee/append</span><br><span class="line">http://localhost/employee?cmd=add</span><br></pre></td></tr></table></figure></div>
-<p>而且发送的请求方式以及响应结果也比较可能随意</p>
-<p>为了规范化，提出了<strong>RESTful风格</strong>的接口</p>
-<blockquote>
-<p>REST是一种设计API接口规则(风格)，因其具有简单、易读、易用的特点，在web项目中非常受欢迎。在设计接口时，如果满足rest约束条件和原则的应用程序或设计就称其为RESTful 应用。</p>
-</blockquote>
-<h1 id="约束规则"><a href="#约束规则" class="headerlink" title="约束规则"></a>约束规则</h1><p>传统的web接口设计<br>以员工列表为例子。</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmployeeController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/employee/list&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">list</span><span class="params">(Model model)</span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;list&quot;</span>, employeeService.list())</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;employee/list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>设计传统web接口时考虑：</p>
+                <p>关于这方面，有比较好的电子书《凤凰架构》：<a class="link"   target="_blank" rel="noopener" href="https://jingyecn.top:18080/" >https://jingyecn.top:18080/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h1 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h1><p><strong>服务</strong>：操作系统上术语：一个程序，开发中术语：一个能对外提供功能的程序</p>
+<p><strong>微服务</strong>：小的服务，一个完整项目可以拆n个子项目，这些子项目能独立运行，独立对为提供功能。</p>
+<p><strong>节点</strong>：微观上：一个服务，宏观上：一台服务器</p>
+<p><strong>垂直扩展</strong>：垂直扩展是指增强单机硬件性能</p>
+<p><strong>水平扩展</strong>：通过增加更多的服务器或者程序实例来分散负载，从而提升存储能力和计算能力。</p>
+<p><strong>容错率</strong>：允许服务器集群错误(异常&#x2F;故障)出现的范围和概率，</p>
+<p><strong>高内聚低耦合</strong>：内聚–&gt;讲究程序功能独立   耦合—&gt;讲究程序间交互，</p>
+<p><strong>流量</strong>：有很多种说法，开发中说的是访问量(请求次数)</p>
+<p><strong>服务间依赖</strong>：项目与项目间的调用，程序与程序间的调用</p>
+<p><strong>资源调度</strong>：各种资源进行合理有效的调节和测量及分析和使用，开发中资源：服务器，内存，CPU，IO等项目运行需要各种软硬件。</p>
+<p><strong>单点</strong>：开发中的单点：唯一一个mysql数据库，唯一个服务器</p>
+<p><strong>单点故障</strong>：如果项目&#x2F;程序部署唯一一个服务器，它挂了，那就玩完了</p>
+<p><strong>宕机</strong>：服务器挂了</p>
+<h1 id="单体、分布式、集群"><a href="#单体、分布式、集群" class="headerlink" title="单体、分布式、集群"></a>单体、分布式、集群</h1><p><strong>单体</strong><br>一个系统业务量很小的时候，所有的代码都放在一个项目中，然后这个项目部署在一台服务器上就好了。<br>整个项目所有的服务都由这台服务器提供，这就是单机结构。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231001206174238.png"
+                      alt="image-20201027172014044"
+                ></p>
+<p>单体应用开发简单，部署测试简单，但是存在一些问题<br>比如：单点问题，单机处理能力有限，当业务增长到一定程度的时候，单机的硬件资源将无法满足业务需求。。。</p>
+<p><strong>分布式</strong><br>整个系统运行使用到Tomcat和MySQL，2G的内存需要分配给Tomcat和MySQL使用<br>由于单台服务器处理的能力有限，随着业务越来越复杂，请求越来越多. 内存越来越不够用。<br>这时候需要进行分布式的部署</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231001206072377.png"
+                      alt="image-20201027173909529"
+                ></p>
+<p>比如现在发起一个请求，这个请求需要依赖<strong>分布</strong>在两台不同的服务器的组件[ Tomat和MySQL]才能完成，叫做分布式系统</p>
+<p><strong>集群</strong><br>上面的图解中存在一定问题：<br>比如Tomcat存在单点故障问题，一旦Tomcat所在的服务器宕机不可用了，系统就无法提供服务了</p>
+<p>针对单点故障问题，使用集群来解决<br>把单机复制几份，构成一个“集群”，集群中每台服务器就叫做这个集群的一个“节点”，所有节点构成了一个集群。<br>每个节点都提供相同的服务，系统的处理能力相当于提升了好几倍</p>
+<p>用户的请求由哪个节点来处理呢？<br>最好能够让此时此刻负载较小的节点来处理，这样使得每个节点的压力都比较平均。要实现这个功能，就需要在所有节点之前增加一个“调度者”的角色，用户的所有请求都先交给它，然后它根据当前所有节点的负载情况，决定将这个请求交给哪个节点处理。<br>这个“调度者”就是——负载均衡服务器。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231001204966140.png"
+                      alt="image-20201027182534219"
+                ></p>
+<p>在上面的图中仅展示了Tomcat的集群，如果MySQL压力比较大的情况下，也是可以对MySQL进行集群的</p>
+<h1 id="系统架构演变"><a href="#系统架构演变" class="headerlink" title="系统架构演变"></a>系统架构演变</h1><p>​随着互联网的发展，网站应用的规模也不断的扩大，进而导致系统架构也在不断的变化。</p>
+<p>系统架构大体经历了下面几个过程:<br><strong>单体应用架构—&gt;垂直应用架构—&gt;分布式架构—&gt;SOA架构—&gt;微服务架构。</strong></p>
+<h2 id="单体应用架构"><a href="#单体应用架构" class="headerlink" title="单体应用架构"></a>单体应用架构</h2><p>一般的网站应用流量较小，只需一个应用，将所有功能代码都部署在一起就可以，这样可以减少开发、部署和维护的成本。</p>
+<p><strong>优点</strong></p>
 <ul>
-<li>请求路径：一般采用见名知意的方式，比如：&#x2F;employee&#x2F;list</li>
-<li>请求方式：不在意，@RequestMapping注解可以接受任意请求方式，包括:GET POST</li>
-<li>请求参数：根据接口的功能而定，由需求决定</li>
-<li>请求响应：由需求决定，可以是Json格式也可以页面模板</li>
+<li><p>项目架构简单，开发成本低</p>
+</li>
+<li><p>项目部署在一个节点上， 维护方便</p>
+</li>
 </ul>
-<hr>
-<p><strong>RESTful风格的接口设计与传统web接口不同</strong></p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmployeeController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/employees&quot;, method = RequestMethod.GET)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Employee&gt; <span class="title function_">list</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> employeeService.list();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="请求路径"><a href="#请求路径" class="headerlink" title="请求路径"></a>请求路径</h2><blockquote>
-<p>请求路径一般就是操作实体对象复数</p>
-</blockquote>
-<p>不再是见名知意的方式，而是<strong>由操作的资源决定</strong>，一般采用资源名称复数形式<br>比如接口操作对象(资源)是员工，路径可设计为：&#x2F;employees</p>
-<blockquote>
-<p>一切皆为资源<br>RESTful眼中，互联网上，一切皆为资源(图片，网页，请求路径,…)，并且，每个资源都有一个唯一的资源定位符（URI）。</p>
-</blockquote>
-<p>回到示例代码，<a class="link"   target="_blank" rel="noopener" href="http://localhost:8080/employee?id=1" >http://localhost:8080/employee?id=1 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>  表示查询数据库中id&#x3D;1的员工信息，这个员工信息就是restful中描述的资源。</p>
-<p>一般来说，资源不会只有一个，就像员工不仅仅只有id&#x3D;1的数据，大多都是以复数，所以RESTful 约定：针对接口要操作的资源<strong>统一使用复数</strong></p>
-<p>比如</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://www.xxx.cn/depts  部门资源</span><br><span class="line">https://api.example.com/v1/zoos：动物园资源</span><br><span class="line">https://api.example.com/v1/animals：动物资源</span><br><span class="line">https://api.example.com/v1/employees：饲养员资源</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a>请求方式</h2><p>传统接口设计方式，使用见名知意设计路径，可以从路径上看出接口对资源操作</p>
-<p>而RESTful风格接口使用资源复数作为路径，就无法从路径上看出接口对资源操作<br>RESTful风格在HTTP请求方法上做文章，约定：</p>
-<p><strong>GET</strong>（SELECT）：从服务器取出资源（一项或多项）。<br><strong>POST</strong>（CREATE）：在服务器新建一个资源。<br><strong>PUT</strong>（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。PUT更新整个对象<br><strong>PATCH</strong>（UPDATE）：在服务器更新资源（客户端提供改变的属性【补丁】）。 PATCH更新个别属性<br><strong>DELETE</strong>（DELETE）：从服务器删除资源。<br><strong>HEAD</strong>：获得一个资源的元数据，比如一个资源的hash值或者最后修改日期；<br><strong>OPTIONS</strong>：获得客户端针对一个资源能够实施的操作(获取该资源的api(能够对资源做什么操作的描述))</p>
-<hr>
-<p><strong>示例</strong></p>
-<p>传统方式</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http://www.xxx.cn/employee/list</span><br><span class="line">http://www.xxx.cn/employee/get?id=1</span><br><span class="line">http://www.xxx.cn/employee/save?name=xx</span><br><span class="line">http://www.xxx.cn/employee/update?id=1&amp;name=xx</span><br><span class="line">http://www.xxx.cn/employee/delete?id=1</span><br></pre></td></tr></table></figure></div>
-
-
-<p>RESTful方式<br><a class="link"   target="_blank" rel="noopener" href="http://www.xxx.cn/employees" >http://www.xxx.cn/employees <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>新增：POST<br>更新：PUT<br>删除：DELETE<br>查询：GET</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /zoos：列出所有动物园 </span><br><span class="line">POST /zoos：新建一个动物园</span><br><span class="line">GET /zoos/&#123;id&#125;：获取某个指定动物园的信息 </span><br><span class="line">PUT /zoos/&#123;id&#125;：更新某个指定动物园的信息（提供该动物园的全部信息）</span><br><span class="line">PATCH /zoos/&#123;id&#125;：更新某个指定动物园的信息（提供该动物园的部分信息）</span><br><span class="line">DELETE /zoos/&#123;id&#125;：删除某个动物园 </span><br><span class="line">GET /zoos/&#123;id&#125;/animals：列出某个指定动物园的所有动物 </span><br></pre></td></tr></table></figure></div>
-
-<p>获取某个部门的所有员工 </p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /employee/getByDeptId 传统</span><br><span class="line"></span><br><span class="line">GET /departments/&#123;id&#125;/employees  restful风格</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h2><p>由需求决定</p>
-<h2 id="请求响应"><a href="#请求响应" class="headerlink" title="请求响应"></a>请求响应</h2><blockquote>
-<p>一般都是返回Json格式数据，具体约束看项目规定</p>
-</blockquote>
-<p>比如<br>GET &#x2F;collection：返回资源对象的列表（数组）<br>GET &#x2F;collection&#x2F;resource：返回单个资源对象<br>POST &#x2F;collection：返回新生成的资源对象<br>PUT &#x2F;collection&#x2F;resource：返回完整的资源对象<br>PATCH &#x2F;collection&#x2F;resource：返回完整的资源对象<br>DELETE &#x2F;collection&#x2F;resource：返回一个空文档</p>
-<h1 id="HTTP响应状态码"><a href="#HTTP响应状态码" class="headerlink" title="HTTP响应状态码"></a>HTTP响应状态码</h1><p><strong>200</strong> OK - [GET]：服务器成功返回用户请求的数据。<br>201 CREATED - [POST&#x2F;PUT&#x2F;PATCH]：用户新建或修改数据成功。<br>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）<br>204 NO CONTENT - [DELETE]：用户删除数据成功。</p>
-<p><strong>400</strong> INVALID REQUEST - [POST&#x2F;PUT&#x2F;PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。<br><strong>401</strong> Unauthorized - [<em>]：表示用户没有权限（令牌、用户名、密码错误）。<br><strong>403</strong> Forbidden - [</em>] 表示用户得到授权（与401错误相对），但是访问是被禁止的。<br><strong>404</strong> NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。<br>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。<br>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。<br>422 Unprocesable entity - [POST&#x2F;PUT&#x2F;PATCH] 当创建一个对象时，发生一个验证错误。</p>
-<p><strong>500</strong> INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</p>
-<h1 id="资源表现形式"><a href="#资源表现形式" class="headerlink" title="资源表现形式"></a>资源表现形式</h1><p>文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式<br>图片可以用JPG格式表现，也可以用PNG格式表现，….</p>
-<p>资源的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现”的描述。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">accept:application/json </span><br><span class="line">content-type:application/json </span><br></pre></td></tr></table></figure></div>
-
-
-<p>1.Accept属于请求头， Content-Type属于实体头。<br>Http报头分为通用报头，请求报头，响应报头和实体报头。<br>请求方的http报头结构：通用报头|请求报头|实体报头<br>响应方的http报头结构：通用报头|响应报头|实体报头</p>
-<p>2.Accept代表发送端（客户端）希望接受的数据类型。<br>比如：Accept：application&#x2F;json;<br>代表客户端希望接受的数据类型是json类型,后台返回json数据</p>
-<p>Content-Type代表发送端（客户端|服务器）发送的实体数据的数据类型。<br>比如：Content-Type：application&#x2F;json;<br>代表发送端发送的数据格式是json, 后台就要以这种格式来接收前端发过来的数据。</p>
-<p><img src="https://image.itbaima.net/images/253/image-2023092510320392.png" alt="img/accept与content-type.png"></p>
+<p><strong>缺点</strong></p>
+<ul>
+<li><p>全部功能集成在一个工程中，对于大型项目来讲不易开发和维护</p>
+</li>
+<li><p>项目模块之间紧密耦合，单点容错率低</p>
+</li>
+<li><p>无法针对不同模块进行针对性优化和水平扩展</p>
+</li>
+</ul>
+<h2 id="垂直应用架构"><a href="#垂直应用架构" class="headerlink" title="垂直应用架构"></a>垂直应用架构</h2><p>随着访问量的逐渐增大，单一应用只能依靠增加节点来应对，但是这时候会发现并不是所有的模块都会有比较大的访问量</p>
+<p>以电商为例，用户访问量的增加可能影响的只是用户和订单模块，但是对消息模块的影响就比较小.<br>此时希望只多增加几个订单模块，而不增加消息模块，单体应用就做不到了，垂直应用应运而生</p>
+<p>所谓的垂直应用架构，就是将原来的一个应用拆成互不相干的几个应用，以提升效率。<br>比如将电商的单体应用拆分成:</p>
+<ul>
+<li><p>电商系统(用户管理 商品管理 订单管理)</p>
+</li>
+<li><p>后台系统(用户管理 订单管理 客户管理)</p>
+</li>
+<li><p>CMS系统(广告管理 营销管理)</p>
+</li>
+</ul>
+<p>一旦用户访问量变大，只需要增加电商系统的节点就可以了，而无需增加后台和CMS的节点。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231001207570474.png"
+                      alt="image-20201028095743602"
+                ></p>
+<p><strong>优点</strong></p>
+<ul>
+<li><p>系统拆分实现了流量分担，解决了并发问题，而且可以针对不同模块进行优化和水平扩展</p>
+</li>
+<li><p>一个系统的问题不会影响到其他系统，提高容错率</p>
+</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li><p>系统之间相互独立，无法进行相互调用</p>
+</li>
+<li><p>系统之间相互独立，会有重复的开发任务</p>
+</li>
+</ul>
+<h2 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h2><p>当垂直应用越来越多，重复的业务代码就会越来越多。</p>
+<p>这时候，人们就开始思考可不可以将重复的代码抽取出来，做成统一的业务层作为独立的服务，然后由前端控制层调用不同的业务层服务呢？</p>
+<p>这就产生了分布式系统架构。它把工程拆分成表现层和服务层两个部分。<br>服务层中包含业务逻辑，表现层只需要处理和页面的交互，业务逻辑都是调用服务层的服务来实现。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-2023100120747522.png"
+                      alt="image-20201028103739904"
+                ></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>抽取公共的功能为服务层，提高代码复用性</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>系统间耦合度变高，调用关系错综复杂，难以维护</li>
+</ul>
+<h2 id="SOA架构"><a href="#SOA架构" class="headerlink" title="SOA架构"></a>SOA架构</h2><p>分布式架构下，当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心对集群进行实时管理。<br>此时，用于资源调度和治理中心(SOA Service Oriented Architecture，面向服务的架构)是关键。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-2023100120999613.jpeg"
+                      alt="SOA架构"
+                ></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>使用注册中心解决了服务间调用关系的自动调节</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li><p>服务间会有依赖关系，一旦某个环节出错会影响较大( 服务雪崩 )</p>
+</li>
+<li><p>服务关系复杂，运维、测试部署困难</p>
+</li>
+</ul>
+<h2 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h2><p>微服务架构在某种程度上是面向服务的架构SOA继续发展的下一步，它更加强调服务的”彻底拆分”。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231001203699757.png"
+                      alt="image-20201028110735067"
+                ></p>
+<p><strong>优点</strong></p>
+<ul>
+<li><p>服务原子化拆分，独立打包、部署和升级，保证每个微服务清晰的任务划分，利于扩展</p>
+</li>
+<li><p>微服务之间采用RESTful等轻量级Http协议相互调用</p>
+</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>分布式系统开发的技术成本高（容错、分布式事务等）</li>
+</ul>
+<h1 id="微服务架构简介"><a href="#微服务架构简介" class="headerlink" title="微服务架构简介"></a>微服务架构简介</h1><p>微服务架构，简单的说就是将单体应用进一步拆分，拆分成更小的服务，每个服务都是一个可以独立运行的项目。</p>
+<ul>
+<li>微服务把<strong>一个庞大的单体应用拆分为一个个的小型服务</strong>。以图书管理项目为例，有登录、注册、添加、删除、搜索等功能，那么可以将这些功能单独做成一个个小型的SpringBoot项目，独立运行。</li>
+<li><strong>每个小型的微服务，都可以独立部署和升级</strong>。这样，就算整个系统崩溃，那么也只会影响一个服务的运行。</li>
+<li><strong>微服务之间使用HTTP进行数据交互</strong>，不再是单体应用内部交互了。虽然这样会显得更麻烦，但是带来的好处也是很直接的，甚至能<strong>突破语言限制</strong>，使用不同的编程语言进行微服务开发，只需要使用HTTP进行数据交互即可。</li>
+<li><strong>可以用多台主机来分别部署这些微服务</strong>。这样，单机的压力就被分散到多台机器，并且每台机器的配置不一定需要太高，这节省大量的成本，同时安全性也得到很大的保证。</li>
+<li>甚至<strong>同一个微服务可以同时存在多个</strong>。这样当其中一个服务器出现问题时，其他服务器也在运行同样的微服务，这样就可以保证一个微服务的高可用。</li>
+</ul>
+<p><strong>微服务架构的常见问题</strong></p>
+<ul>
+<li><p>这么多小服务，如何管理他们？</p>
+</li>
+<li><p>这么多小服务，他们之间如何通讯？</p>
+</li>
+<li><p>这么多小服务，客户端怎么访问他们？</p>
+</li>
+<li><p>这么多小服务，一旦出现问题了，应该如何自处理？</p>
+</li>
+<li><p>这么多小服务，一旦出现问题了，应该如何排错?</p>
+</li>
+<li><p>在分布式的环境下，单体应用的某些功能可能会变得比较麻烦，比如分布式事务</p>
+</li>
+</ul>
+<p>大部分的微服务产品都针对每一个问题提供了相应的组件来解决它们</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-2023100120432337.jpeg"
+                      alt="微服务架构"
+                ></p>
+<h1 id="从SpringCloud看微服务架构"><a href="#从SpringCloud看微服务架构" class="headerlink" title="从SpringCloud看微服务架构"></a>从SpringCloud看微服务架构</h1><p>Spring Cloud并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过Spring Boot风格进行再封装，屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。</p>
+<p><strong>SpringBoot和SpringCloud</strong><br>SpringBoot专注于快速方便的开发单个个体微服务。<br>SpringCloud关注全局的微服务协调整理治理，它将SpringBoot开发的一个个单体微服务整合并管理起来，为各个微服务之间提供，配置管理、服务发现、断路器、路由、事件总线、分布式事务、等等集成服务。</p>
+<p><strong>SpringCloud版本名称</strong><br>因为Spring Cloud不同其他独立项目，它是拥有很多子项目的大项目。所以它的版本是 <code>版本名+版本号</code><br>比如：Greenwich.SR6</p>
+<ul>
+<li>版本名：伦敦的地铁名 </li>
+<li>版本号：SR（Service Releases）是固定的，大概意思是稳定版本。后面会有一个递增的数字。</li>
+</ul>
+<p>所以 Greenwich.SR6就是Greenwich的第6个Release版本。</p>
+<p><strong>SpringCloud整体架构</strong><br>SpringCloud在分布式架构下的各个场景，都有对应的组件来处理<br><strong>基于Netflix</strong>的开源分布式解决方案提供的组件：</p>
+<ul>
+<li>Eureka  -  实现服务治理（<strong>服务注册与发现</strong>）。可以对所有的微服务进行集中管理，包括它们的运行状态、信息等。</li>
+<li>Ribbon  -  为服务之间相互调用<strong>提供负载均衡算法</strong>（现在被SpringCloudLoadBalancer取代）</li>
+<li>Hystrix  -  断路器，保护系统，控制故障范围。可以跟家里电闸的保险丝类比，当触电危险发生时能够防止进一步的发展。</li>
+<li>Zuul   -     api网关，路由，负载均衡等多种作用。就像路由器，可能有很多个设备都连接了路由器，但是数据包要转发给谁则是由路由器在进行（已经被SpringCloudGateway取代）</li>
+<li>Config  -  配置管理，可以实现配置文件集中管理</li>
+</ul>
+<p><strong>为什么倾向于使用SpringCloud Alibaba</strong><br>SpringCloud Netflix的组件：服务注册与发现的 Eureka、服务限流降级的 Hystrix、网关 Zuul都已经停止更新了，出现问题，官方不维护，需要自行解决</p>
 
             </div>
 
@@ -408,11 +525,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：RESTful接口设计</li>
+        <li>Post title：微服务基础</li>
         <li>Post author：萧</li>
-        <li>Create time：2023-09-25 10:17:24</li>
+        <li>Create time：2023-10-01 22:17:24</li>
         <li>
-            Post link：https://redefine.ohevan.com/2023/09/25/Java后端开发/SpringMVC/RESTful接口设计/
+            Post link：https://redefine.ohevan.com/2023/10/01/Java后端开发/SpringCloud/微服务基础/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -431,13 +548,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2023/10/01/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringCloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E7%A1%80/"
+                            href="/2023/10/02/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringCloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%90%84%E7%BB%84%E4%BB%B6/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">微服务基础</span>
+                                    <span class="post-nav-title-item">微服务架构各组件</span>
                                     <span class="post-nav-item">Prev posts</span>
                                 </span>
                             </a>
@@ -447,10 +564,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/09/17/%E8%BF%90%E7%BB%B4/Docker%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/"
+                            href="/2023/09/25/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/RESTful%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Docker部署项目</span>
+                                    <span class="post-nav-title-item">RESTful接口设计</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -470,7 +587,7 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E5%87%BA%E8%83%8C%E6%99%AF"><span class="nav-text">提出背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%99"><span class="nav-text">约束规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E8%B7%AF%E5%BE%84"><span class="nav-text">请求路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="nav-text">请求方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94"><span class="nav-text">请求响应</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-text">HTTP响应状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E8%A1%A8%E7%8E%B0%E5%BD%A2%E5%BC%8F"><span class="nav-text">资源表现形式</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-text">一些术语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E3%80%81%E9%9B%86%E7%BE%A4"><span class="nav-text">单体、分布式、集群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98"><span class="nav-text">系统架构演变</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-text">单体应用架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-text">垂直应用架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84"><span class="nav-text">分布式架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SOA%E6%9E%B6%E6%9E%84"><span class="nav-text">SOA架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-text">微服务架构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B"><span class="nav-text">微服务架构简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8ESpringCloud%E7%9C%8B%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-text">从SpringCloud看微服务架构</span></a></li></ol>
     </div>
 </div>
             </div>
