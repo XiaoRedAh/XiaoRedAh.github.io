@@ -374,11 +374,98 @@
 <h2 id="IP数据包格式"><a href="#IP数据包格式" class="headerlink" title="IP数据包格式"></a>IP数据包格式</h2><h1 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h1><p><strong>路由器</strong>：拥有多输入端口和多输入端口的专用计算机，用于连通不同网络，选择信息传送的线路</p>
 <p><strong>路由器结构</strong></p>
 <ul>
-<li>控制平面：负责路由选择，即构造路由表</li>
-<li>数据平面：负责存储转发，即根据路由表，构造转发表</li>
+<li>控制平面：负责<strong>路由选择</strong>，即构造路由表</li>
+<li>数据平面：负责<strong>存储转发</strong>，即根据路由表，构造转发表</li>
 </ul>
 <p><img src="https://image.itbaima.net/images/253/image-20230704162491535.png" alt="pic/路由器结构"></p>
-<h1 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h1><h2 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h2><h2 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h2><h2 id="BGP协议"><a href="#BGP协议" class="headerlink" title="BGP协议"></a>BGP协议</h2><h1 id="分组转发"><a href="#分组转发" class="headerlink" title="分组转发"></a>分组转发</h1><h1 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h1><h1 id="IPV6"><a href="#IPV6" class="headerlink" title="IPV6"></a>IPV6</h1><h1 id="IP多播"><a href="#IP多播" class="headerlink" title="IP多播"></a>IP多播</h1><h1 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h1><h1 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h1>
+<p>路由表需要对网络拓扑变化的计算最优化，转发表应当试查找过程最优化</p>
+<p>后续为了方便，对路由表和转发表不做区分。</p>
+<h1 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><strong>静态路由选择</strong><br>由人工配置的网络路由、默认路由、特定主机路由、黑洞路由等都属于静态路由。</p>
+<ul>
+<li>人工配置方式简单、开销小</li>
+<li>不能及时适应网络状态 (流量、拓扑等)的变化，一般只在小规模网络中采用</li>
+</ul>
+<p><strong>动态路由选择</strong><br>路由器通过路由选择协议自动获取路由信息</p>
+<ul>
+<li>比较复杂、开销比较大，能较好地适应网络状态的变化</li>
+<li>适用于大规模网络</li>
+</ul>
+<p><strong>路由选择协议特点</strong></p>
+<ul>
+<li>自适应：动态路由选择，能较好地适应网络状态地变化</li>
+<li>分布式：路由器之间交换路由信息</li>
+<li>分层次：将整个因特网划分为许多较小的自治系统AS</li>
+</ul>
+<p>同一AS中的路由选择称为域内路由选择，采用内部网关(路由)协议IGP<br>不同AS间的路由选择称为域间路由选择，采用外部网关(路由)协议EGP</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005165013736.png"
+                      alt="路由选择协议概览.png"
+                ></p>
+<h2 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h2><p>RIP协议属于IGP，是基于距离向量的协议，采用最短路径策略</p>
+<p>RIP协议使用<code>跳数</code>衡量距离<br>在RIP中，直连网络的距离为1，其余网络的距离 &#x3D; <code>经过的路由器数 - 1</code>。<br>由于RIP规定，距离最大不超过16，16表示不可达，因此RIP协议只适合小型互联网</p>
+<p><strong>路由表内容</strong>：包括可达的所有地方</p>
+<ul>
+<li>目的地址</li>
+<li>下一跳</li>
+<li>距离</li>
+</ul>
+<p><strong>构造及更新路由表</strong><br><strong>与相邻路由器交换</strong>各自的路由表，得到相邻路由器的路由表后，对表项中的距离全部加1，然后比对自身的路由表，更新路由表时有以下几种情况：<br>① 目的地址相同，下一跳相同：旧表项直接更新为最新获得的距离<br>② 目的地址相同，下一跳不同：如果更新后距离缩短，则更新，否则保持旧值【如果距离相等，有时也会采用等价负载均衡】<br>③ 自身路由表没有该目的地址：直接将其添加到路由表中</p>
+<p><strong>更新</strong>(<strong>交换路由信息</strong>)<strong>的时机</strong>：周期性，例如30s</p>
+<p><strong>坏消息传播得慢</strong>：路由环路问题【距离向量算法固有问题】<br>比如有路由器B经过路由器A到达网段C(A、C直连)。<br>路由器A突然不可达网络C了，对目的地址为C得表项距离设置为16。<br>但是得到路由器B得路由表后，发现经过B可以到C，距离为2，因此将表项中目的地址为C的距离设置为3<br>此时B又得到A的路由表，根据更新原则①，B到网段C的距离更新为4<br>…<br>一直重复，直到B的路由表中，到网段C的距离为16，才识别出不可达。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005164003530.png"
+                      alt="坏消息传播得慢.png"
+                ></p>
+<h2 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h2><p>属于IGP协议，是基于链路状态的协议，采用最短路径策略</p>
+<p><strong>链路状态</strong>：本路由器与哪些路由器相邻，以及相应链路的“代价”</p>
+<blockquote>
+<p>“代价”用来表示费用，距离，时延，带宽等等，由网络管理人员来定<br>思科路由器中OSPF计算代价：100Mbps&#x2F;链路带宽，计算结果小于1则记为1，大于1且有小数点则舍去小数</p>
+</blockquote>
+<p>使用OSPF的路由器都会产生链路状态通告<strong>LSA</strong>，包括：</p>
+<ul>
+<li>直连网络的链路状态信息</li>
+<li>相邻路由器的链路状态信息</li>
+</ul>
+<p>LSA被封装在链路状态更新分组<strong>LSU</strong>中，采用<strong>洪泛法</strong>发送【向系统中所有其他路由器】</p>
+<p>使用OSPF的路由器都有一个链路状态数据库<strong>LSDB</strong>，用于存储LSA。通过各路由器发送封装有自己LSA的LSU分组，各路由器的LSDB最终达成一致<br>可以理解为，一开始，每个路由器都只有各自的地图，经过洪泛后，所有路由器都持有相同的“世界地图”</p>
+<p><strong>构建路由表</strong><br>使用OSPF的各路由器基于自身的LSDB进行<strong>最短距离优先SPF算法</strong>，构建出各自到其他路由器的最短路径，即各自的路由表</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005162215088.png"
+                      alt="OSPF构建路由表.png"
+                ></p>
+<p><strong>分组类型</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005161878393.png"
+                      alt="分组类型.png"
+                ></p>
+<p><strong>基本工作流程</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005163081381.png"
+                      alt="OSPF基本工作流程.png"
+                ></p>
+<p><strong>多点接入网络中的优化</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005167681654.png"
+                      alt="OSPF多点接入网络中的优化.png"
+                ></p>
+<p><strong>再划分：为了适应更大的网络</strong><br>把一个自治系统再划分为若干个更小范围Area，这样，洪泛法的范围从一整个AS缩小为路由器所在的Area<br>Area划分不应过大，最好不要超过200个路由器<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231005161496388.png"
+                      alt="OSPF再划分.png"
+                ></p>
+<h2 id="BGP协议"><a href="#BGP协议" class="headerlink" title="BGP协议"></a>BGP协议</h2><h1 id="分组转发"><a href="#分组转发" class="headerlink" title="分组转发"></a>分组转发</h1><h1 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h1><h1 id="IPV6"><a href="#IPV6" class="headerlink" title="IPV6"></a>IPV6</h1><h1 id="IP多播"><a href="#IP多播" class="headerlink" title="IP多播"></a>IP多播</h1><h1 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h1><h1 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h1>
             </div>
 
             
@@ -447,7 +534,7 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E4%BE%9B%E4%BB%80%E4%B9%88%E6%9C%8D%E5%8A%A1"><span class="nav-text">提供什么服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPV4"><span class="nav-text">IPV4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="nav-text">IP地址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%9A%84IP%E5%9C%B0%E5%9D%80"><span class="nav-text">分类的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E7%9A%84IP%E5%9C%B0%E5%9D%80"><span class="nav-text">划分子网的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%88%B6CIDR"><span class="nav-text">无分类编制CIDR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A0%BC%E5%BC%8F"><span class="nav-text">IP数据包格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9"><span class="nav-text">路由选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE"><span class="nav-text">RIP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E5%8D%8F%E8%AE%AE"><span class="nav-text">OSPF协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BGP%E5%8D%8F%E8%AE%AE"><span class="nav-text">BGP协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%BD%AC%E5%8F%91"><span class="nav-text">分组转发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ICMP%E5%8D%8F%E8%AE%AE"><span class="nav-text">ICMP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPV6"><span class="nav-text">IPV6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP%E5%A4%9A%E6%92%AD"><span class="nav-text">IP多播</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPN"><span class="nav-text">VPN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT"><span class="nav-text">NAT</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E4%BE%9B%E4%BB%80%E4%B9%88%E6%9C%8D%E5%8A%A1"><span class="nav-text">提供什么服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPV4"><span class="nav-text">IPV4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="nav-text">IP地址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%9A%84IP%E5%9C%B0%E5%9D%80"><span class="nav-text">分类的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E7%9A%84IP%E5%9C%B0%E5%9D%80"><span class="nav-text">划分子网的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%88%B6CIDR"><span class="nav-text">无分类编制CIDR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A0%BC%E5%BC%8F"><span class="nav-text">IP数据包格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9"><span class="nav-text">路由选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE"><span class="nav-text">RIP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E5%8D%8F%E8%AE%AE"><span class="nav-text">OSPF协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BGP%E5%8D%8F%E8%AE%AE"><span class="nav-text">BGP协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%BD%AC%E5%8F%91"><span class="nav-text">分组转发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ICMP%E5%8D%8F%E8%AE%AE"><span class="nav-text">ICMP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPV6"><span class="nav-text">IPV6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP%E5%A4%9A%E6%92%AD"><span class="nav-text">IP多播</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPN"><span class="nav-text">VPN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT"><span class="nav-text">NAT</span></a></li></ol>
     </div>
 </div>
             </div>
