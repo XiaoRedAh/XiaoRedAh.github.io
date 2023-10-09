@@ -279,6 +279,446 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/JUC-%E9%94%81%E6%A1%86%E6%9E%B6/">
+                        JUC-锁框架
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        在JDK5之前，只能选择synchronized关键字来实现锁，而JDK5之后，由于volatile关键字得到了升级，所以并发框架包便出现了，相比传统的synchronized关键字，在锁的实现上有了更多的选择。
+Lock接口并发包中新增了Lock接...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 31 2023 15:17:24 GMT+0800">
+                
+                    2023/08/31
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/JUC-%E9%94%81%E6%A1%86%E6%9E%B6/">Read more<span class="seo-reader-text">JUC-锁框架</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E9%94%81%E6%9C%BA%E5%88%B6/">
+                        锁机制
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        锁等级：未锁定 &lt; 偏向锁 &lt; 轻量级锁 &lt; 重量级锁
+synchronized底层实现使用synchronized，一定是和某个对象相关联的，比如对某一段代码加锁，那么就需要提供一个对象来作为锁本身：
+12345public st...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 31 2023 14:17:24 GMT+0800">
+                
+                    2023/08/31
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E9%94%81%E6%9C%BA%E5%88%B6/">Read more<span class="seo-reader-text">锁机制</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/JMM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">
+                        JMM内存模型
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        这里提到的内存模型和JVM中的内存模型不在同一个层次。JVM中的内存模型是虚拟机规范对整个内存区域的规划而Java内存模型（JMM），是在JVM内存模型之上的抽象模型，基于JVM内存模型实现
+Java内存模型为了解决内存的速度跟不上处理器的处理速度的...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 31 2023 13:17:24 GMT+0800">
+                
+                    2023/08/31
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/JMM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">Read more<span class="seo-reader-text">JMM内存模型</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/JavaSE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/">
+                        JavaSE多线程基础
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        多线程进程是程序执行的实体，每一个进程都是一个应用程序，都有自己的内存空间，CPU一个核心同时只能处理一件事情，当出现多个进程需要同时运行时，CPU一般通过时间片轮转调度算法，来实现多个进程的同时运行。
+由于每个进程都有一个自己的内存空间，进程之间的...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 31 2023 12:17:24 GMT+0800">
+                
+                    2023/08/31
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/31/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/JavaSE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/">Read more<span class="seo-reader-text">JavaSE多线程基础</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/25/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/WebSocket%E5%8D%8F%E8%AE%AE/">
+                        WebSocket协议
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        参考文章：https://juejin.cn/post/7020964728386093093 https://www.cnblogs.com/nnngu/p/9347635.html 
+对比http协议http协议：非持久化,单向通信协议客户端主动...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri Aug 25 2023 08:13:24 GMT+0800">
+                
+                    2023/08/25
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/NIO/">NIO</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/25/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/WebSocket%E5%8D%8F%E8%AE%AE/">Read more<span class="seo-reader-text">WebSocket协议</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/24/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/Netty%E6%A1%86%E6%9E%B6/">
+                        Netty框架
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        NIO框架存在的问题通过使用NIO提供的三大组件，可以编写更加高性能的客户端&#x2F;服务端网络程序了，甚至还可以自行规定一种通信协议进行通信。但NIO还是不够方便，而且有一些不容忽视的问题
+客户端关闭导致服务端空轮询之前编写的代码里：当客户端主动...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Aug 24 2023 08:13:24 GMT+0800">
+                
+                    2023/08/24
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/NIO/">NIO</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/24/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/Netty%E6%A1%86%E6%9E%B6/">Read more<span class="seo-reader-text">Netty框架</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/20/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/java%20nio%E5%9F%BA%E7%A1%80/">
+                        java nio基础
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        NIO前置介绍Java IO是同步阻塞的，如果在一次读写数据调用时数据还没有准备好，或者目前不可写，那么读写操作就会被阻塞直到数据准备好或目标可写为止。
+Java NIO则是同步非阻塞的，每一次数据读写调用都会立即返回，并将目前可读（或可写）的内容写...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Aug 20 2023 08:13:24 GMT+0800">
+                
+                    2023/08/20
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/java/">java</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/java/NIO/">NIO</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/20/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/java%20nio/java%20nio%E5%9F%BA%E7%A1%80/">Read more<span class="seo-reader-text">java nio基础</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        RabbitMQ学习笔记
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        安装Windows跟着官网来：https://www.rabbitmq.com/install-windows.html 博客：https://blog.csdn.net/tirster/article/details/121938987 https...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Aug 15 2023 08:13:24 GMT+0800">
+                
+                    2023/08/15
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/2023/08/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Read more<span class="seo-reader-text">RabbitMQ学习笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2023/08/13/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%AE%80%E4%BB%8B/">
                         消息队列简介
                     </a>
@@ -378,453 +818,6 @@ JSON Web Token，是一个基于 RFC 7519 的开放数据标准，它定义了�
     </div>
 
     <a href="/2023/08/01/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%9D%83%E9%99%90%E6%A0%A1%E9%AA%8C/JWT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Read more<span class="seo-reader-text">JWT学习笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        常用的设计模式
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        OO设计原则
-将应用中会变化的那部分取出并封装起来。这样可以使代码变化引起的意外影响变少，使系统更有弹性
-
-
-针对接口编程，而不是针对实现编程
-
-
-多用组合，少用继承
-
-代码复用性，扩展性，维护性每当设计代码实现后，想想该业务在未来可能发生的变化，然...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jul 29 2023 08:13:24 GMT+0800">
-                
-                    2023/07/29
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Read more<span class="seo-reader-text">常用的设计模式</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/OO%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
-                        OO设计原则
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        单一职责原则单一职责原则（Simple Responsibility Pinciple，SRP）是最简单的面向对象设计原则，它用于控制类的粒度大小。
-
-一个对象应该只包含单一的职责，并且该职责被完整地封装在一个类中。
-
-比如在后端开发中，会采用单一职...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jul 15 2023 08:13:24 GMT+0800">
-                
-                    2023/07/15
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/OO%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">Read more<span class="seo-reader-text">OO设计原则</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/10/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Redis%E7%AC%94%E8%AE%B0/">
-                        Redis笔记
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Redis数据库
-之前学习的MySQL数据库是一种传统的关系型数据库，在小型Web应用下，只需要一个MySQL+Mybatis自带的缓存系统就可以胜任大部分的数据存储工作。
-但是MySQL的数据始终是存储在硬盘上的，对于像用户信息这种不需要经常发生修...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Jul 10 2023 08:13:24 GMT+0800">
-                
-                    2023/07/10
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/java/">java</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/java/redis/">redis</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/10/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Redis%E7%AC%94%E8%AE%B0/">Read more<span class="seo-reader-text">Redis笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/06/%E8%BF%90%E7%BB%B4/Nginx%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-                        Nginx基本使用
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
-Nginx 启动特别容易，几乎可以...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Jul 06 2023 17:51:48 GMT+0800">
-                
-                    2023/07/06
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/06/%E8%BF%90%E7%BB%B4/Nginx%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">Read more<span class="seo-reader-text">Nginx基本使用</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/06/%E8%BF%90%E7%BB%B4/Docker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/">
-                        Docker容器技术
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        理论Docker官网：https://www.docker.com 
-入门文档：https://www.yuque.com/wukong-zorrm/xwas40 
-准备：配置2C2G以上Linux服务器一台，云服务器、虚拟机均可。
-虚拟机与容器抛出...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Jul 06 2023 17:45:48 GMT+0800">
-                
-                    2023/07/06
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/06/%E8%BF%90%E7%BB%B4/Docker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/">Read more<span class="seo-reader-text">Docker容器技术</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/04/%E8%AE%A1%E7%BD%91/%E7%BD%91%E7%BB%9C%E5%B1%82/">
-                        网络层
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        网络层
-
-作用范围：多个网络
-任务：异构网络互联，即跨局域网连接和资源共享，属于通信子网
-如何完成任务
-**软件(协议)**：IP协议，ICMP协议，IGMP协议，ARP协议，路由协议（BGP，RIP，OSPF）
-硬件：路由器（结构，功能）
-
-
-层间...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Jul 04 2023 08:13:24 GMT+0800">
-                
-                    2023/07/04
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/04/%E8%AE%A1%E7%BD%91/%E7%BD%91%E7%BB%9C%E5%B1%82/">Read more<span class="seo-reader-text">网络层</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/02/%E8%BF%90%E7%BB%B4/%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E6%96%B9%E6%B3%95/">
-                        最基本的部署项目方法
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        最原始的项目部署：买服务器 -&gt; 装系统 -&gt; 装环境（Java、Nginx、Nodejs）-&gt; 上传项目 -&gt; 编写命令运行项目 -&gt; 服务器重启 -&gt; 重复命令
-服务器选购很多学生优惠，可以去看看
-云服务器阿里...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Jul 02 2023 17:45:48 GMT+0800">
-                
-                    2023/07/02
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2023/07/02/%E8%BF%90%E7%BB%B4/%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E6%96%B9%E6%B3%95/">Read more<span class="seo-reader-text">最基本的部署项目方法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/06/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/SQL%E8%AF%AD%E8%A8%80/">
-                        SQL语言
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        SQL语言分类
-
-
-分类
-功能
-操作语句
-
-
-
-数据定义语言DDL
-提供定义&#x2F;修改&#x2F;删除域&#x2F;关系&#x2F;视图&#x2F;索引&#x2F;数据库的命令
-CREATE，ALTER，DROP
-
-
-数据操纵语言DML
-提供对...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Jun 19 2023 22:00:50 GMT+0800">
-                
-                    2023/06/19
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA/">数据库理论</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/06/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/SQL%E8%AF%AD%E8%A8%80/">Read more<span class="seo-reader-text">SQL语言</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
