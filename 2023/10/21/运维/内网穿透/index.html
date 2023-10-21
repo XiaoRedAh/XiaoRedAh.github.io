@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/10/21/%E8%BF%90%E7%BB%B4/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            内网穿透 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">内网穿透</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-10-21 19:51:48</span>
+        <span class="mobile">2023-10-21 19:51</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/CXikun/article/details/130130901" >https://blog.csdn.net/CXikun/article/details/130130901 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/cyrus0w/p/13123504.html" >https://www.cnblogs.com/cyrus0w/p/13123504.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25046827/article/details/125685406" >https://blog.csdn.net/qq_25046827/article/details/125685406 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h1 id="为什么要内网穿透"><a href="#为什么要内网穿透" class="headerlink" title="为什么要内网穿透"></a>为什么要内网穿透</h1><p>想要搭建一个可供所有用户访问的网站项目，必须在一台具有公网IP地址的云服务器上进行部署，而家中的电脑由于存在于NAT环境中，无法被外部网络主动访问，因此，搭建网站的首选就是购买云服务器。</p>
+<p>但是一些情况下，比如业务比较消耗CPU资源，就不得不去加强云服务器的配置，而这笔费用开销往往还不小。或者用OSS搭建个人网盘系统，其中的流量费用是很高的。</p>
+<p>实际上，购买云服务器，主要就是图一个公网IP，像是什么计算资源、存储空间，实际上自行购买硬件放在家里反而更加经济实惠（云服务器加个硬盘容量都要很多钱）<br>关键是家里的环境外网无法访问，就很难受</p>
+<p>这时就可以用到内网穿透：让家里的机器主动连接到云服务器，再由云服务器向家里的机器进行<strong>数据包转发</strong>，让家里的设备实现外网访问</p>
+<p>内网穿透优点：</p>
+<ul>
+<li>省钱：计算资源、存储资源可以全部自行部署</li>
+<li>安全：内网环境下只要限制好端口，黑客很难入侵</li>
+<li>宽带大：家用宽带一般是10M上行速度起步，办理千兆宽带甚至可以达到100M的上行速度，相比腾讯云的3M小宽带，大了不少。而且，还可以通过增加内网穿透服务器的数量并进行负载均衡来做到吃满上行带宽。</li>
+</ul>
+<p>内网穿透缺点：</p>
+<ul>
+<li>不稳定，停电、断网、电费等</li>
+<li>网络性能瓶颈，网络速度多快，以及能承受的QPS，全部受限于做内网穿透的云服务器上限</li>
+</ul>
+<h1 id="内网穿透实现原理"><a href="#内网穿透实现原理" class="headerlink" title="内网穿透实现原理"></a>内网穿透实现原理</h1><p>NAT设备自动屏蔽了非内网主机主动发起的连接，也就是说从外网发往内网的数据包将被NAT设备丢弃掉<br>内网穿透也称为NAT穿透，使具有某一个特定源IP地址和源端口号的数据包不被NAT设备屏蔽而正确路由到内网主机</p>
+<h2 id="服务器中转数据"><a href="#服务器中转数据" class="headerlink" title="服务器中转数据"></a>服务器中转数据</h2><p><strong>传统实现：服务器中转数据</strong></p>
+<blockquote>
+<p>让内网设备事先去绑定一个具有公网IP设备的端口进行通信。那么当其他内网中的设别请求公网设备的指定端口时，我们的内网设备便能知道请求方的IP和端口，随后主动与其通信，实现与内网设备的通信。</p>
+</blockquote>
+<p>在NAT之后的内网服务器可以主动连接公网，但是不能被公网主动访问的，这时可以在中间架设一个公网服务器</p>
+<ul>
+<li>让在NAT之后的<strong>内网设备持续主动访问这个拥有公网IP地址的服务器</strong>，这样，内网服务器就成功与公网中转服务器建立了一个连接通道。</li>
+<li>公网中转服务器接收到任何其他NAT后的客户端的主动连接请求后，马上把这个请求通过先前建立好的隧道<strong>转发到内网服务器</strong>，内网服务器将响应发送给公网中转服务器，由它返回给其他NAT后的客户端。</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231021183032461.png"
+                      alt="传统内网穿透.png"
+                ></p>
+<h2 id="P2P技术"><a href="#P2P技术" class="headerlink" title="P2P技术"></a>P2P技术</h2><p>在内网穿透传输大量数据时如果都经过服务器中转的话，会对服务器端带宽产生较大压力，这时可以用P2P技术</p>
+<p><strong>UDP打洞技术(最常见)</strong></p>
+<blockquote>
+<p>通过中间服务器的协助，在各自的NAT网关上建立相关的表项，使P2P连接的双方发送的报文能够直接穿透对方的NAT网关，从而实现P2P客户端互连。</p>
+</blockquote>
+<p>如果两台位于NAT设备后面的P2P客户端希望在自己的NAT网关上打个洞，那么他们需要一个协助者——<code>集中服务器</code>【本质上是一台被设置在公网上的服务器，建立P2P的双方都可以直接访问它，通过这台集中服务器了解对方的信息并中转各自的信息】，并且还需要一种用于打洞的<code>Session建立机制</code>。</p>
+<p>Session建立机制：<br>假定客户端A要发起对客户端B的直接连接，具体的“打洞”过程如下：<br>（1） A最初不知道如何向客户端B发起连接，于是A向集中服务器发送消息，请求集中服务器帮助建立与客户端B的UDP连接。<br>（2） 集中服务器将含有B的外网和内网的地址二元组发给A，同时，集中服务器将包含有A的外网和内网的地址二元组信息的消息也发给B。这样一来，A与B就都知道对方外网和内网的地址二元组信息了。<br>（3） 当A收到由集中服务器发来的包含B的外网和内网的地址二元组信息后，就开始向B的地址二元组<strong>发送UDP数据包</strong>，并且A会<strong>自动锁定第一个给出响应的B的地址二元组</strong>。<br>同理，当B收到由集中服务器发来的A的外网和内网地址二元组信息后，也会开始向A的外网和内网的地址二元组<strong>发送UDP数据包</strong>，并且<strong>自动锁定第一个得到A回应的地址二元组</strong>。<br>（4） 一旦A与B都向对方的NAT设备在外网上的地址二元组发送了数据包，就打开了A与B之间的“洞”，A与B向对方的外网地址发送数据，等效于向对方的客户端直接发送UDP数据包。<br>（5） 一旦应用程序确认已经可以通过往对方的外网地址发送数据包的方式让数据包到达NAT后面的目的应用程序，<strong>程序会停止发送用于“打洞”的数据包，转而开始真正的P2P数据传输</strong>。</p>
+<p>UDP转换协议提供的“洞”不是绝对可靠的，多数NAT设备内部都有一个UDP转换的空闲状态计时器，如果在一段时间内没有UDP数据通信，NAT设备会关掉由“打洞”过程打出来的“洞”。如果P2P应用程序希望“洞”的存活时间不受NAT网关的限制，就最好在穿越NAT以后设定一个穿越的有效期。</p>
+<p><strong>TCP打洞技术</strong><br>TCP相对于UDP而言要复杂的多，需要更多的开销。但是，由于TCP协议完备的状态机机制，TCP反而比UDP更能精确的获取某个Session的生命期。<br>一种新的代理类型 XTCP 能解决这个问题，实现方式可以是采用搭建FRP服务器的方式，在传输数据的两端都部署上FRP客户端用于建立直接的连接。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231021198365711.png"
+                      alt="P2P实现内网穿透.png"
+                ></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>内网穿透传统方式会出现服务器和客户机之间的数据传输全部经过中转服务器，传输速度将受制于中转服务器的上下行带宽，不过稳定性很好，对于自己要购置的云主机要求就是大带宽，一般这种云主机按流量计费，传输的数据量越大价格自然越贵。</p>
+<p>而点对点穿透能解决流量带来的困扰，点对点可以实现服务器和客户机之间打洞直接进行数据通信，这种方式一般用于udp协议的传输，比如应用于远程NAS看视频听歌，但这种方式需要服务器和客户机都安装穿透工具，对用户访问端来说不够方便，而且这种方式受复杂网络环境影响较大，不能100%实现，稳定性欠缺。</p>
+<h1 id="常用的内网穿透工具"><a href="#常用的内网穿透工具" class="headerlink" title="常用的内网穿透工具"></a>常用的内网穿透工具</h1><p><a class="link"   target="_blank" rel="noopener" href="http://blog.itpub.net/69915099/viewspace-2647548" >http://blog.itpub.net/69915099/viewspace-2647548 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h1 id="使用frp实现内网穿透"><a href="#使用frp实现内网穿透" class="headerlink" title="使用frp实现内网穿透"></a>使用frp实现内网穿透</h1><p>frp采用Go语言编写，性能很不错，使用起来也非常稳定<br>开源地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/fatedier/frp" >https://github.com/fatedier/frp <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="服务端部署frps服务"><a href="#服务端部署frps服务" class="headerlink" title="服务端部署frps服务"></a>服务端部署frps服务</h2><p>在GitHub上下载对应的frp程序，解压，然后上传frps到服务器</p>
+<p>执行以下命令即可直接运行了</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x frps</span><br><span class="line">./frps</span><br></pre></td></tr></table></figure></div>
+
+<p><code>vim frps.toml</code>编写配置文件，内容如下：</p>
+<div class="highlight-container" data-rel="Toml"><figure class="iseeu highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span>    <span class="comment">#端口</span></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">&quot;token&quot;</span>   <span class="comment">#验证方式</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&quot;123456&quot;</span>   <span class="comment">#token秘钥</span></span><br></pre></td></tr></table></figure></div>
+
+<p>将其配置为Linux服务的形式运行：<br>文档：<a class="link"   target="_blank" rel="noopener" href="https://gofrp.org/zh-cn/" >https://gofrp.org/zh-cn/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/frps.service</span><br></pre></td></tr></table></figure></div>
+
+<p>配置文件如下：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description = frp server</span><br><span class="line">After = network.target syslog.target</span><br><span class="line">Wants = network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type = simple</span><br><span class="line">ExecStart = /root/frps -c /root/frps.toml</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy = multi-user.target</span><br></pre></td></tr></table></figure></div>
+
+<p>打开防火墙端口：包括用于注册的7000端口以及后续给内网其他服务进行穿透的端口（如Nginx的80端口）</p>
+<p>启动服务</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> frps</span><br><span class="line">systemctl start frps</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="客户端部署frpc服务"><a href="#客户端部署frpc服务" class="headerlink" title="客户端部署frpc服务"></a>客户端部署frpc服务</h2><blockquote>
+<p>客户端也是Ubuntu系统</p>
+</blockquote>
+<p>把下载好的frpc放到内网设备里，发现不能直接执行</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x frpc</span><br><span class="line">./frpc</span><br></pre></td></tr></table></figure></div>
+
+<p>需要先进行配置</p>
+<p><code>vim frpc.toml</code>编写一下配置文件，内容如下：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">serverAddr = &quot;47.109.97.136&quot;  //之前搭建好的内网穿透服务器地址</span><br><span class="line">serverPort = 7000      //内网穿透服务器注册端口</span><br><span class="line">auth.method = &quot;token&quot;  //使用token验证</span><br><span class="line">auth.token = &quot;123456&quot;  //使用密码</span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = &quot;nginx&quot;   //配置需要代理的本地服务</span><br><span class="line">type = &quot;tcp&quot;     //类型选择tcp即可（大部分都是）</span><br><span class="line">localIP = &quot;127.0.0.1&quot;   //本地服务的IP地址，因为是直接部署在本地，所以说直接127.0.0.1</span><br><span class="line">localPort = 80    //本地服务端口</span><br><span class="line">remotePort = 80    //远程代理端口</span><br></pre></td></tr></table></figure></div>
+
+<p>配置完成后，就可以启动了</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frpc -c frpc.toml</span><br></pre></td></tr></table></figure></div>
+
+<p>为了方便，直接注册为服务：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/frpc.service</span><br></pre></td></tr></table></figure></div>
+
+<p>内容如下：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description = frp client</span><br><span class="line">After = network.target syslog.target</span><br><span class="line">Wants = network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type = simple</span><br><span class="line">ExecStart = /root/frpc -c /root/frpc.toml</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy = multi-user.target</span><br></pre></td></tr></table></figure></div>
+
+<p>然后就可以启动这个服务</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> frpc</span><br><span class="line">systemctl start frpc</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="开启管理面板"><a href="#开启管理面板" class="headerlink" title="开启管理面板"></a>开启管理面板</h2><p>服务端开启管理面板，可以更加有效的监控流量情况：</p>
+<p>在服务端配置文件中添加以下内容：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">webServer.port = 7500   #管理面板端口</span><br><span class="line">webServer.addr = &quot;0.0.0.0&quot;   #绑定到所有网络上，外网访问</span><br><span class="line">webServer.user = &quot;admin&quot;  #管理员名称</span><br><span class="line">webServer.password = &quot;admin&quot;  #管理员密码</span><br></pre></td></tr></table></figure></div>
+
+<p>防火墙中，7500端口要放开</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：内网穿透</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-10-21 19:51:48</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/10/21/运维/内网穿透/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/10/06/Java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringCloud/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%90%86%E8%AE%BA/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">分布式事务理论</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-text">为什么要内网穿透</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-text">内网穿透实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E8%BD%AC%E6%95%B0%E6%8D%AE"><span class="nav-text">服务器中转数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2P%E6%8A%80%E6%9C%AF"><span class="nav-text">P2P技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7"><span class="nav-text">常用的内网穿透工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-text">使用frp实现内网穿透</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%83%A8%E7%BD%B2frps%E6%9C%8D%E5%8A%A1"><span class="nav-text">服务端部署frps服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%83%A8%E7%BD%B2frpc%E6%9C%8D%E5%8A%A1"><span class="nav-text">客户端部署frpc服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF"><span class="nav-text">开启管理面板</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
