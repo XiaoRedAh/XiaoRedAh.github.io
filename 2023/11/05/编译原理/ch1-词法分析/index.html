@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="萧">
+    <link rel="canonical" href="http://example.com/2023/11/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/ch1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            ch1-词法分析 |
+        
+        等想好起什么名字后再来改
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                等想好起什么名字后再来改
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        主页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        存档记录
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/link2">LINK2
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a href="/link3">LINK3
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                主页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                存档记录
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                快捷链接&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link2">LINK2</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/link3">LINK3</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">ch1-词法分析</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萧</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-11-05 17:03:24</span>
+        <span class="mobile">2023-11-05 17:03</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p><a class="link"   target="_blank" rel="noopener" href="https://houbb.github.io/2020/01/07/regex-and-dfa-03-nfa2dfa" >https://houbb.github.io/2020/01/07/regex-and-dfa-03-nfa2dfa <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://houbb.github.io/2020/01/07/regex-and-dfa-02" >https://houbb.github.io/2020/01/07/regex-and-dfa-02 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/cpaulyz/p/14284671.html" >https://www.cnblogs.com/cpaulyz/p/14284671.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>正则表达式 → NFA → DFA → 最小化DFA → 转换为编程语言，实现词法自动分析器</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231105167651202.png"
+                      alt="词法分析步骤.png"
+                ></p>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>可以理解为一种模式匹配，用数学抽象的方法来表示单词串的组成<br><strong>正则表达式是递归定义的</strong>？</p>
+<p><strong>常用的运算符</strong></p>
+<ul>
+<li>ab：连接，ab同时出现</li>
+<li>a|b：选择，要么a出现，要么b出现</li>
+<li>a^*^：闭包，可以表示ε，a，aa，aaa，…</li>
+<li>a^+^：正闭包，可以表示a，aa，aaa，…遇到它的时候，一般先将其转换为aa^*^的形式</li>
+<li>a?：可以表示ε或a</li>
+</ul>
+<p><strong>并非所有模式都可以用正则表达式展现出来</strong>，正则表达式无法反映与数量有关的条件</p>
+<p>正则表达式太抽象，不利于理解，也不利于代码的编制。</p>
+<p><strong>引擎</strong><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/diyunpeng/archive/2010/01/18/1650855.html" >https://www.cnblogs.com/diyunpeng/archive/2010/01/18/1650855.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>对正则表达式来说，最核心的东西是引擎。正则表达式因为其漫长的历史而衍生出了不同的流派，这些不同的流派使用不同的引擎，彼此提供了不完全一样的语法支持，甚至对于某个相同的表达式匹配任务，也会有不同的结果。</p>
+<table>
+<thead>
+<tr>
+<th>引擎名称</th>
+<th>使用该引擎的程序</th>
+<th>匹配特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NFA</td>
+<td>GNU Emacs,Java,ergp,less,more,.NET语言,PCRE library,Perl,PHP,Python,Ruby,sed,vi等</td>
+<td>回溯，最左匹配</td>
+</tr>
+<tr>
+<td>POSIX NFA</td>
+<td>mawk,Mortice Kern Systems’ utilities,GNU Emac等</td>
+<td>最长匹配</td>
+</tr>
+<tr>
+<td>DFA</td>
+<td>awk,egrep,flex,lex,MySQL,Procmail等</td>
+<td>无捕获，无回溯，最长匹配，不支持忽略优先量词</td>
+</tr>
+</tbody></table>
+<h1 id="有穷自动机"><a href="#有穷自动机" class="headerlink" title="有穷自动机"></a>有穷自动机</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><a class="link"   target="_blank" rel="noopener" href="https://houbb.github.io/2020/01/07/regex-and-dfa-03-nfa2dfa" >https://houbb.github.io/2020/01/07/regex-and-dfa-03-nfa2dfa <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>正则表达式适合于人阅读，但机器阅读正则表达式是十分困难的。而且，用正则表达式直接进行词法分析，不仅工作量大，速度还缓慢。<br>因此，引入一种<strong>专门为机器设计</strong>的表达形式——有穷自动机，可以通过Thompson算法把正则表达式转换成有穷自动机。</p>
+<p><strong>自动机的两大要素</strong></p>
+<ul>
+<li>状态集</li>
+<li>状态转移函数</li>
+</ul>
+<p><strong>有穷自动机</strong>(finite state automata)是一个识别器，它对每个输入的字符做识别和判断，以确定其能到达的最终状态或状态集和路径。系统只需要根据当前所处的状态和当前面临的输入信息就可以决定系统的后继行为。每当系统处理了当前的输入后，系统的内部状态也将发生改变。</p>
+<p>有穷自动机分为两类，即不确定的有穷自动机NFA和确定的有穷自动机DFA</p>
+<p><strong>确定性</strong><br>NFA和DFA的区别主要在于确定性和非确定性<br>确定性是指面对同一输入，不会出现有多条可行的路径执行下一个节点。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022144720998.png"
+                      alt="NFA和DFA区别.png"
+                ></p>
+<p>NFA中，给一个状态，经过一次转换，可以到达的状态有多个，不确定到达哪个状态。比如0节点，在输入”a”之后它分别可以到0，1，2节点。而且NFA有ε边，它可以在没有输入的情况下跳到下一个节点，这也带来了不确定性。<br>相反，DFA中，每个节点对某一特定的输入都只有最多一条边，到达的下一个状态是确定的<br>简而言之，有ε边或者某个节点对同一输入对应多个状态的一定是NFA。</p>
+<blockquote>
+<p>由于NFA的非确定性，在面对一个输入的时候可能有多条可选的路径，所以在一条路径走不通的情况下，需要<strong>回溯</strong>到选择点去走另外一条路径，<strong>NFA的匹配复杂度达到了O(n^2^)</strong><br>而DFA在每个状态下，对每个输入不会存在多条路径，就不需要递归和回溯，可以一条路走到黑，<strong>DFA的匹配复杂度只有O(n)</strong></p>
+</blockquote>
+<p><strong>等价性</strong><br>DFA和NFA存在等价性，任何NFA都可以转化为等价的DFA。</p>
+<p><strong>画有穷自动机的通用符号</strong></p>
+<ul>
+<li>非终结状态：用“圈表示”</li>
+<li>终结状态 （接收状态）：可以有多个，用双圈表示</li>
+<li>状态转移：带标记(输入)的有向边</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022166519987.png"
+                      alt="有穷状态机通用画法.png"
+                ></p>
+<h2 id="正则表达式转NFA"><a href="#正则表达式转NFA" class="headerlink" title="正则表达式转NFA"></a>正则表达式转NFA</h2><p><strong>Thompson算法</strong></p>
+<blockquote>
+<p>先构造识别子表达式的ε-NFA，再通过几个简单的规则将ε-NFA合并，最终得到识别完整正则表达式的ε-NFA。汤普森构造法的优点是构造速度快，且构造的ε-NFA状态数较少。<br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44691608/article/details/110195743" >https://blog.csdn.net/weixin_44691608/article/details/110195743 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<p><strong>单一输入a或ε</strong>：生成一个开始状态和一个终结状态，开始状态通过有向边a或ε与终结状态连接<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231105162934144.png"
+                      alt="NFA单一状态.png"
+                ></p>
+<p><strong>连接运算</strong>：二元运算，前一个 NFA 的终结态通过一个ε边连接到后一个 NFA 的开始状态。连接运算不会产生新的 NFA 状态<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231105162516403.png"
+                      alt="NFA连接.png"
+                ></p>
+<p><strong><code>|</code>运算</strong>：二元运算，生成一个开始状态，引出两个ε边分别连接到两个 NFA 的开始状态。这两个 NFA 的终结态引出两个ε边连接到新生成的终结状态。|运算会产生两个新的 NFA状态<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231105163941924.png"
+                      alt="NFA选择.png"
+                ></p>
+<p><strong><code>*</code>运算</strong>：一元运算，生成一个开始状态和一个终结状态。新开始状态引出两条ε边，一条与 NFA 的开始状态连接，一条与新的终结状态连接。NFA 的终结状态引出两条ε边，一条连接到自己本身的开始状态，一条连接到新的终结状态。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231105162478264.png"
+                      alt="NFA闭包.png"
+                ></p>
+<p><strong><code>?</code>运算</strong>：一元运算，生成一个开始状态和一个终结状态。新开始状态引出两条ε边，一条与 NFA 的开始状态连接，一条与新的终结状态连接。NFA 的终结状态引出一条ε边连接到新的终结状态。(其实就是比闭包运算少一条ε边)</p>
+<hr>
+<p><strong>对于复杂的正则表达式，先拆分，画出各部分的NFA，再根据基础模型将它们组合起来</strong></p>
+<p>科学表示法的数字常量的正则表达式为:<br>nat&#x3D;[0-9]+<br>signedNat&#x3D;(+|-)?nat<br>number&#x3D;signedNat(“.”nat)?(E signedNat)?</p>
+<h2 id="NFA转DFA"><a href="#NFA转DFA" class="headerlink" title="NFA转DFA"></a>NFA转DFA</h2><p>在之前的分析中得知，由于具有确定性，DFA的匹配复杂度比NFA小，效率更高，因此将正则表达式转换为DFA是最终目标<br>然而，直接转换为DFA比较困难，更加合理的做法是通过NFA这个中间模型，将正则表达式转换为NFA，再由NFA转换为DFA</p>
+<p>采用<strong>子集构造法</strong>可以将NFA转换为DFA<br>前置知识</p>
+<blockquote>
+<p>算法步骤，可以用一张<strong>二维状态表</strong>存储<br><strong>求状态A的ε-闭包</strong>：A状态以及A经由一次&#x2F;多次ε转换可以到达的所有状态的集合<br><strong>求集合A的ε-闭包</strong>：对集合中每个状态求ε-闭包，然后取并集</p>
+</blockquote>
+<p><strong>算法步骤</strong><br>① 求开始状态的ε-闭包<br>② 对这个集合依次进行每种状态转换(a,b,c,…)，得到的结果集合还要依次求ε-闭包，然后才记录下来<br>③ 对于之前从未出现过的集合，重复步骤②<br>④ 直到没有新的集合出现，算法结束。包含NFA终结态的集合就是DFA的终结态</p>
+<hr>
+<p><strong>例题</strong><br>子集构造过程<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022156211332.png"
+                      alt="NFA转换为DFA例子.png"
+                ></p>
+<p>结果<br>NFA的终结态是10，因此转换为DFA后，{6,9,4,7,10,5}，{2,3,4,5,7,10}和{8,9,4,7,5,10}都是DFA的终结态<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022158496747.png"
+                      alt="NFA转换为DFA例子答案.png"
+                ></p>
+<hr>
+<p><strong>对于复杂的正则表达式，先拆分，画出各部分的DFA，再根据基础模型将它们组合起来</strong></p>
+<p>科学表示法的数字常量的正则表达式为:<br>nat&#x3D;[0-9]+<br>signedNat&#x3D;(+|-)?nat<br>number&#x3D;signedNat(“.”nat)?(E signedNat)?</p>
+<h2 id="最小化DFA"><a href="#最小化DFA" class="headerlink" title="最小化DFA"></a>最小化DFA</h2><p>通过子集构造法得到DFA后，发现状态数实在太多了，很复杂。其实是可以进行优化的——最小化DFA，即使得状态数最少</p>
+<p><strong>正向思考(等价合并)</strong><br>把多余的、等价(目标一致即可)的状态进行合并，这需要逐个状态进行等价判断以确定是否合并，<strong>比较的次数太多</strong></p>
+<p><strong>反向思考(逆向拆分)</strong><br>直接从DFA拥有的最少状态（终态和非终态）开始进行分析，根据目标是否一致来确定是否需要分拆</p>
+<p><strong>Hopcroft算法步骤</strong><br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37637818/article/details/130453487" >https://blog.csdn.net/qq_37637818/article/details/130453487 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<blockquote>
+<p>以下的步骤描述是我在用代码实现最小化DFA时的做法，比较繁琐，如果是手工做法，没有那么麻烦，就是一直给各种输入，能分的时候就划分，直到划分不了为止(关键就是判断能不能划分)</p>
+</blockquote>
+<p><strong>前置工作</strong>：将所有的DFA非终结态放入集合S1，所有DFA终结态放入集合S2【特别的，如果S1为空集，那就不用划分了，已经是最小化】<br><strong>不断遍历所有可能的输入</strong>：对于当前输入，判断集合S1，S2，…是否可划分，判断方法如下：<br>① 求出集合S中每个DFA状态a,b,c,…对于当前给定的输入，能到达的状态集A,B,C,…<br>② 此时会出现两种情况</p>
+<ul>
+<li>A,B,C,…都是同一集合的真子集，则不用进行划分</li>
+<li>A,B,C,…是不同集合的真子集，则要进行划分【比如A，B是S1的真子集，C是S2的真子集，那么原集合S就要划分为{a,b}和{c}这两个集合】</li>
+</ul>
+<p>③ 判断完当前所有集合后，先更新，然后再去判断下一个输入【比如对于输入a，判断出S1可分为S3和S4，S2可分为S5和S6，那么在判断下一个输入b之前，先将[S1, S2]更新为[S3, S4, S5, S6],然后再去判断】<br><strong>算法循环终止条件</strong></p>
+<ul>
+<li>划分出的集合数量 &#x3D; DFA状态数，即每个集合就只有一个DFA状态，必然的都不可再分下去了。</li>
+<li>在某一次遍历完所有输入后，如果发现集合数量没有变化，说明此时每个集合都不可再分，算法结束。</li>
+</ul>
+<p><strong>伪代码</strong></p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Hopcroft算法  </span></span><br><span class="line"><span class="comment">//基于等价类的思想</span></span><br><span class="line">split(S)</span><br><span class="line">   foreach (character c)</span><br><span class="line">      <span class="keyword">if</span> (c can split S)  <span class="comment">//如果c能切分开S</span></span><br><span class="line">         split S into T1, …, Tk</span><br><span class="line"><span class="title function_">hopcroft</span> <span class="params">()</span></span><br><span class="line">    split all nodes into S1, S2  </span><br><span class="line">    <span class="title function_">while</span> <span class="params">(<span class="built_in">set</span> is still changes)</span></span><br><span class="line">       <span class="title function_">split</span><span class="params">(S)</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p><strong>例题</strong><br>分析过程<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022163647195.png"
+                      alt="最小化DFA例题.png"
+                ></p>
+<p>结果<br>这个例题比较特殊，S1和S2里面的状态都已经等价了，都不用拆分，因此直接就是只有两个状态，一个S1，一个S2终结态<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022161998031.png"
+                      alt="最小化DFA例题答案.png"
+                ></p>
+<h2 id="最小DFA转换为程序语言"><a href="#最小DFA转换为程序语言" class="headerlink" title="最小DFA转换为程序语言"></a>最小DFA转换为程序语言</h2><p>只要将求得的最小DFA转换为程序语言，就可以让计算机帮助我们进行自动的词法分析了！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://image.itbaima.net/images/253/image-20231022161998031.png"
+                      alt="最小化DFA例题答案.png"
+                ></p>
+<p><strong>不推荐的做法</strong><br>它是特殊的，必须用略微不同的方法处理各个DFA，而且规定一个用这种办法将每个DFA翻译为代码的算法较难。<br>此外，当状态增多或更明确时，且当相异的状态与任意路径增多时，代码会变得非常复杂。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123; starting in state <span class="number">1</span> &#125;</span><br><span class="line"><span class="keyword">if</span> the next character is a letter then</span><br><span class="line">  advance the input;</span><br><span class="line">  &#123; now in state <span class="number">2</span> &#125;</span><br><span class="line"><span class="keyword">while</span> the next character is a letter or a digit <span class="keyword">do</span></span><br><span class="line">  advance the input; &#123; stay in state <span class="number">2</span> &#125;</span><br><span class="line">end <span class="keyword">while</span>;</span><br><span class="line">&#123; go to state <span class="number">3</span> without advancing the input &#125;</span><br><span class="line">accept ;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  &#123; error or other cases &#125;</span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>状态转换方法</strong><br>利用一个变量保持当前的状态，并将转换写成一个双层嵌套的case语句，而不是一个循环。其中第1个case语句测试当前的状态，嵌套<br>着的第2层测试输入字符及所给状态</p>
+<blockquote>
+<p>程序一进入的状态设置为最小DFA的开始状态<br>识别过程中出现非法输入直接退出循环，报错<br>如果正常退出循环，则判断最终到达的状态，如果是最小DFA的终结态，说明输入符合词法规则；否则说明不符合规则</p>
+</blockquote>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">state: =<span class="number">1</span>;&#123;start&#125;                                                           <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> state = <span class="number">1</span> or <span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">case</span> state of</span><br><span class="line">  <span class="number">1</span>: <span class="keyword">case</span> input characer of</span><br><span class="line">     leter: advance the input;</span><br><span class="line">            state:=<span class="number">2</span>;</span><br><span class="line">     <span class="keyword">else</span> state: =...&#123;error or other&#125;;</span><br><span class="line">     end <span class="keyword">case</span>;</span><br><span class="line">  <span class="number">2</span>: <span class="keyword">case</span> input characer of</span><br><span class="line">     digit,leter: advance the input;</span><br><span class="line">            state:=<span class="number">2</span>;&#123;acctually unnecessary&#125;</span><br><span class="line">     <span class="keyword">else</span> state: = <span class="number">3</span>;</span><br><span class="line">     end <span class="keyword">case</span>;</span><br><span class="line"> end cases;</span><br><span class="line">end <span class="keyword">while</span>;</span><br><span class="line"><span class="keyword">if</span> state=<span class="number">3</span> then accept <span class="keyword">else</span> error;</span><br></pre></td></tr></table></figure></div>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：ch1-词法分析</li>
+        <li>Post author：萧</li>
+        <li>Create time：2023-11-05 17:03:24</li>
+        <li>
+            Post link：https://redefine.ohevan.com/2023/11/05/编译原理/ch1-词法分析/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/10/23/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/ch0-%E6%80%BB%E8%A7%88/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">ch0-编译原理概述</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-text">有穷自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%ACNFA"><span class="nav-text">正则表达式转NFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFA%E8%BD%ACDFA"><span class="nav-text">NFA转DFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96DFA"><span class="nav-text">最小化DFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8FDFA%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80"><span class="nav-text">最小DFA转换为程序语言</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萧. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
